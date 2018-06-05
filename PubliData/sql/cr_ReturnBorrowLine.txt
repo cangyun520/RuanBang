@@ -1,0 +1,2 @@
+select SUM as 总计,reimbursementamount as 费用报销,subjects as 学科,Number AS 单据编号,BorrowNumber AS 借款单据编号 from dbo.CR_ReturnBorrowLine
+where subjects is  null

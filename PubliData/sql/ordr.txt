@@ -1,0 +1,1 @@
+select CardName AS 客户名称,VatSum AS 单据税额,DocTotal AS 单据总计,DocDate AS 过帐时间,CardCode AS 客户编码,DocCur AS 凭证货币,DocNum AS 单据编号 from ORDR
