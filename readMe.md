@@ -1,3 +1,8 @@
+
+Created by Arvin.liu 15807146017
+Date :2018-06-05.
+
+轻量级自动化测试框架
 Test_framework
     |--config（配置文件）
     |--data（数据文件）
