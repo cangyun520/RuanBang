@@ -4,12 +4,12 @@ from utils.webClass import *
 class ProjectChange(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
-        WebLogin.login_setup(self)
+        WebLogin.submit(self)
         driver = self.driver
         # 打开菜单
-        WebMenu.menu_full_text(self, "项目管理", "项目变更")
+        WebMenu.full_text(self, "项目管理", "项目变更")
         # 移动到页面顶部，防止对象遮挡
-        WebForm.form_top(self, 0)
+        WebForm.top(self, 0)
         time.sleep(2)
         driver.switch_to.frame("frame_tab_PM000756")
 
@@ -45,11 +45,11 @@ class ProjectChange(unittest.TestCase):
         time.sleep(2)
         driver.switch_to.parent_frame()
         # 立项时间
-        WebForm.form_today(self, "dateBuildsData")
+        WebForm.today(self, "dateBuildsData")
         # 计划开始日期
-        WebForm.form_today(self, "dateBuildsStart")
+        WebForm.today(self, "dateBuildsStart")
         # 预计关闭日期
-        WebForm.form_today(self, "dateBuildsEnd")
+        WebForm.today(self, "dateBuildsEnd")
         # 合同编号
         driver.find_element_by_xpath("//*[@id='trContractNo_Container']/div/span").click()
         time.sleep(2)

@@ -7,11 +7,11 @@ from utils.webClass import *
 class ProjectDate(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
-        WebLogin.login_setup(self)
+        WebLogin.submit(self)
         driver = self.driver
         # 打开菜单
-        WebMenu.menu_full_text(self, "项目管理", "项目主数据")
-        WebForm.form_top(self, 0)
+        WebMenu.full_text(self, "项目管理", "项目主数据")
+        WebForm.top(self, 0)
         driver.switch_to.frame("frame_tab_PM000753")
 
     '''项目管理-项目主数据-同步项目主数据功能'''

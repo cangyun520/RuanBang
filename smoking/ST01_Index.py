@@ -5,7 +5,7 @@ from utils.webClass import *
 class Index(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
-        WebLogin.login_setup(self)
+        WebLogin.submit(self)
 
     def test_0101_Task(self):
         """onlin首页-查看我的任务-【收信】检查"""
@@ -31,7 +31,6 @@ class Index(unittest.TestCase):
         time.sleep(3)
 
     # ------首页-个人信息------
-
     def test_0102_Work(self):
         """onlin首页-查看汇报给我的工作-【我收到的】检查"""
         driver = self.driver

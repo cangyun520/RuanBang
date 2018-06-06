@@ -6,12 +6,12 @@ class HRreport(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.PhantomJS()
         # self.driver = webdriver.Chrome()
-        WebLogin.login_setup(self)
+        WebLogin.submit(self)
         driver = self.driver
         # 打开菜单
-        WebMenu.menu_part_text(self, "首页", "HR首页")
+        WebMenu.part_text(self, "首页", "HR首页")
         # 移动到页面底部，防止对象遮挡
-        WebForm.form_top(self, 0)
+        WebForm.top(self, 0)
         driver.switch_to.frame("frame_tab_PM001007")
 
     """首页-HR首页检查"""

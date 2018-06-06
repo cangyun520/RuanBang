@@ -4,13 +4,13 @@ from utils.webClass import *
 class ST02_Communication(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
-        WebLogin.login_setup(self)
+        WebLogin.submit(self)
 
 # #------沟通交流模块------
     def test_0201_Note(self):
         """沟通交流-消息中心-【收信】检查"""
         driver = self.driver
-        WebMenu.menu_full_text(self, "沟通交流", "消息中心")
+        WebMenu.full_text(self, "沟通交流", "消息中心")
         driver.switch_to_frame("frame_tab_PM000416")
         v_receive = driver.find_element_by_id("btnReceive")
         try:
@@ -23,7 +23,7 @@ class ST02_Communication(unittest.TestCase):
     def test_0203_Mobile_SendMessage(self):
         """沟通交流-发短信-【选择系统用户】检查"""
         driver = self.driver
-        WebMenu.menu_full_text(self, "沟通交流", "手机短信", "发短信")
+        WebMenu.full_text(self, "沟通交流", "手机短信", "发短信")
         driver.switch_to_frame("frame_tab_PM001047")
         v_selectProfile = driver.find_element_by_link_text("选择系统用户")
         try:
@@ -36,7 +36,7 @@ class ST02_Communication(unittest.TestCase):
     def test_0204_Mobile_MessageRecord(self):
         """沟通交流-短信发送记录-【查询】检查"""
         driver = self.driver
-        WebMenu.menu_full_text(self, "沟通交流", "手机短信", "短信发送记录")
+        WebMenu.full_text(self, "沟通交流", "手机短信", "短信发送记录")
         driver.switch_to_frame("frame_tab_PM001006")
         MessageRecord_Seach = driver.find_element_by_id("btnSearch")
         try:

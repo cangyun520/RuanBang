@@ -7,8 +7,8 @@ from selenium.webdriver.common.keys import Keys
 
 class WebLogin:
     """初始测试准备工作"""
-    def __login_url(self):
-        # 环境URL地址1
+    def __url(self):
+        # 环境URL地址
         driver = self.driver
         # f = open(propath() + 'data/config/url.txt', 'r')
         # v_url = f.readline()
@@ -21,7 +21,7 @@ class WebLogin:
             driver.get(v_url)
         time.sleep(2)
 
-    def __login_user(self, uname):
+    def __user(self, uname):
         """用户登录"""
         log_file = open(propath() + 'data/text/LogName.txt', 'r')
 
@@ -49,7 +49,7 @@ class WebLogin:
         # 关闭读取，及时释放
         log_file.close()
 
-    def login_setup(self):
+    def submit(self):
         # 设置页面上隐形的智能等待时间30秒
         self.driver.implicitly_wait(20)
         # 定义空verificationErrors数组，脚本运行错误信息被记录到整个数组中
@@ -59,14 +59,14 @@ class WebLogin:
         driver = self.driver
         time.sleep(1)
         # 打开菜单
-        WebLogin.__login_url(self)
+        WebLogin.__url(self)
         # 用户登录
-        WebLogin.__login_user(self, "admin")
+        WebLogin.__user(self, "admin")
 
 
 class WebMenu:
     """打开菜单连接"""
-    def menu_full_text(self, *v_menu):
+    def full_text(self, *v_menu):
         # 全名称菜单
         if v_menu != "":
             for i in v_menu:
@@ -76,7 +76,7 @@ class WebMenu:
             pass
         time.sleep(3)
 
-    def menu_part_text(self, *v_menu):
+    def part_text(self, *v_menu):
         # 关键字名称菜单
         if v_menu != "":
             for i in v_menu:
@@ -88,14 +88,14 @@ class WebMenu:
 
 
 class WebForm:
-    """处理表单内部特殊字段数据"""
-    def form_top(self, number):
+    """js移动到页面顶部，防止对象遮挡"""
+    def top(self, number):
         # js移动到页面顶部，防止对象遮挡
         js_top = "window.scrollTo(0," + str(number) + ")"
         self.driver.execute_script(js_top)
 
     '''表头弹出时间控件选择【今天】'''
-    def form_today(self, uid):
+    def today(self, uid):
         # 选择当天日期
         self.driver.find_element_by_id(uid).click()
         for i in self.driver.find_elements_by_tag_name("button"):
@@ -105,7 +105,7 @@ class WebForm:
         time.sleep(1)
 
     '''行弹出时间控件选择【今天】'''
-    def form_today_line(self, uid):
+    def line(self, uid):
         # 选择当天日期
         self.driver.find_element_by_id(uid).click()
         for i in self.driver.find_elements_by_tag_name("button"):
@@ -116,7 +116,7 @@ class WebForm:
 
 class WebPopupWindow:
     """表头弹出窗体数据选择"""
-    def popup_project(self):
+    def project(self):
         # 项目弹出窗体数据选择
         driver = self.driver
         driver.find_element_by_xpath("//*[@id='ProjectCode_Container']/div/span").click()

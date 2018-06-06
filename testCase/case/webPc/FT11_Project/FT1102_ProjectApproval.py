@@ -4,11 +4,11 @@ from utils.webClass import *
 class ProjectApproval(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
-        WebLogin.login_setup(self)
+        WebLogin.submit(self)
         driver = self.driver
-        WebMenu.menu_full_text(self, "项目管理", "项目立项")
+        WebMenu.full_text(self, "项目管理", "项目立项")
         # 移动到页面顶部，防止对象遮挡
-        WebForm.form_top(self, 0)
+        WebForm.top(self, 0)
         driver.switch_to.frame("frame_tab_PM000755")
 
     '''项目管理-项目立项-添加单据'''
@@ -41,7 +41,7 @@ class ProjectApproval(unittest.TestCase):
         v_group = driver.find_elements_by_class_name("x-combo-list-item")
         v_group[random.randint(len(v_type), len(v_group)-1)].click()
         # 预计关闭时间
-        WebForm.form_today_next(self, 1, "dateBuildsEnd", 10, 15)
+        WebForm.today_next(self, 1, "dateBuildsEnd", 10, 15)
         # 提前执行合同
         driver.find_element_by_id("cbIshasContract").click()
         # 甲方项目组

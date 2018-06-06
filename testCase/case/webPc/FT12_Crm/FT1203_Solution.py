@@ -4,12 +4,12 @@ from utils.webClass import *
 class Solution(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
-        WebLogin.login_setup(self)
+        WebLogin.submit(self)
         driver = self.driver
         # 打开菜单
-        WebMenu.menu_full_text(self, "客户关系", "售后管理", "解决方案")
+        WebMenu.full_text(self, "客户关系", "售后管理", "解决方案")
         # 移动到页面底部，防止对象遮挡
-        WebForm.form_top(self, 0)
+        WebForm.top(self, 0)
         driver.switch_to.frame("frame_tab_PM000279")
 
     '''客户关系-销售管理-解决方案'''

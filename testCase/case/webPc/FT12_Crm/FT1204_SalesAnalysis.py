@@ -4,12 +4,12 @@ from utils.webClass import *
 class SalesAnalysis(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
-        WebLogin.login_setup(self)
+        WebLogin.submit(self)
         driver = self.driver
         # 打开菜单
-        WebMenu.menu_full_text(self, "客户关系", "售前管理", "销售机会分析")
+        WebMenu.full_text(self, "客户关系", "售前管理", "销售机会分析")
         # 移动到页面底部，防止对象遮挡
-        WebForm.form_top(self, 0)
+        WebForm.top(self, 0)
         driver.switch_to.frame("frame_tab_PM001074")
 
     '''客户关系-销售管理-销售机会分析查询所有'''
