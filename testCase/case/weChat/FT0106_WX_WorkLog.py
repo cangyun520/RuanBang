@@ -87,7 +87,6 @@ class WorkLog(unittest.TestCase):
             unittest.expectedFailure("test_0106_01_addDaily")
 
     """工作日志-我发出的-页面检查"""
-
     def test_0106_05_check(self):
         """工作日志-我发出的-页面检查"""
         driver = self.driver

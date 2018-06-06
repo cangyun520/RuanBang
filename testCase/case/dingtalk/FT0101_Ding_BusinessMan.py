@@ -32,7 +32,7 @@ class BusinessMan(unittest.TestCase):
             driver.find_element_by_name("客户管理").is_displayed()
         except Exception as err:
             print(err)
-            driver.get_screenshot_as_file(propath() + "picture/Ding/test_0101_01_check.jpg")
+            driver.get_screenshot_as_file(propath() + "picture/dingtalk/test_0101_01_check.jpg")
             unittest.expectedFailure("test_0101_01_check")
 
     """钉钉-业务管理首页-客户管理添加"""
@@ -73,7 +73,7 @@ class BusinessMan(unittest.TestCase):
             print(v_tip)
         except Exception as err:
             print(err)
-            driver.get_screenshot_as_file(propath() + "picture/Ding/test_0101_02_CustomerAdd.jpg")
+            driver.get_screenshot_as_file(propath() + "picture/dingtalk/test_0101_02_CustomerAdd.jpg")
             unittest.expectedFailure("test_0101_02_Customer")
 
     """钉钉-业务管理首页-供应商添加"""
@@ -115,7 +115,7 @@ class BusinessMan(unittest.TestCase):
             print(v_tip)
         except Exception as err:
             print(err)
-            driver.get_screenshot_as_file(propath() + "picture/Ding/test_0101_03_SupplierAdd.jpg")
+            driver.get_screenshot_as_file(propath() + "picture/dingtalk/test_0101_03_SupplierAdd.jpg")
             unittest.expectedFailure("test_0101_03_SupplierAdd")
 
     """钉钉-业务管理首页-库存查询检查"""
@@ -133,7 +133,7 @@ class BusinessMan(unittest.TestCase):
             driver.find_element_by_name("库存查询").is_displayed()
         except Exception as err:
             print(err)
-            driver.get_screenshot_as_file(propath() + "picture/Ding/test_0101_04_InventoryLook.jpg")
+            driver.get_screenshot_as_file(propath() + "picture/dingtalk/test_0101_04_InventoryLook.jpg")
             unittest.expectedFailure("test_0101_04_InventoryLook")
 
         v_list = driver.find_elements_by_class_name("android.view.View")
@@ -145,7 +145,7 @@ class BusinessMan(unittest.TestCase):
             driver.find_element_by_accessibility_id(" 返回").is_displayed()
         except Exception as err:
             print(err)
-            driver.get_screenshot_as_file(propath() + "picture/Ding/test_0101_04_InventoryLook.jpg")
+            driver.get_screenshot_as_file(propath() + "picture/dingtalk/test_0101_04_InventoryLook.jpg")
             unittest.expectedFailure("test_0101_04_InventoryLook")
 
     """钉钉-业务管理首页-销售订单状态"""
@@ -163,7 +163,7 @@ class BusinessMan(unittest.TestCase):
             driver.find_element_by_name("销售订单状态").is_displayed()
         except Exception as err:
             print(err)
-            driver.get_screenshot_as_file(propath() + "picture/Ding/test_0101_05_SalesOrderStatus.jpg")
+            driver.get_screenshot_as_file(propath() + "picture/dingtalk/test_0101_05_SalesOrderStatus.jpg")
             unittest.expectedFailure("test_0101_05_SalesOrderStatus")
 
         v_list = driver.find_elements_by_class_name("android.view.View")
@@ -175,7 +175,7 @@ class BusinessMan(unittest.TestCase):
             driver.find_element_by_accessibility_id(" 返回 Link").is_displayed()
         except Exception as err:
             print(err)
-            driver.get_screenshot_as_file(propath() + "picture/Ding/test_0101_05_SalesOrderStatus.jpg")
+            driver.get_screenshot_as_file(propath() + "picture/dingtalk/test_0101_05_SalesOrderStatus.jpg")
             unittest.expectedFailure("test_0101_05_SalesOrderStatus")
 
     """钉钉-业务管理首页-订单预警"""
@@ -193,7 +193,7 @@ class BusinessMan(unittest.TestCase):
             driver.find_element_by_name("订单预警").is_displayed()
         except Exception as err:
             print(err)
-            driver.get_screenshot_as_file(propath() + "picture/Ding/test_0101_06_OrderWarning.jpg")
+            driver.get_screenshot_as_file(propath() + "picture/dingtalk/test_0101_06_OrderWarning.jpg")
             unittest.expectedFailure("test_0101_06_OrderWarning")
 
         v_list = driver.find_elements_by_class_name("android.view.View")
@@ -205,7 +205,7 @@ class BusinessMan(unittest.TestCase):
             driver.find_element_by_accessibility_id(" 返回 Link").is_displayed()
         except Exception as err:
             print(err)
-            driver.get_screenshot_as_file(propath() + "picture/Ding/test_0101_06_OrderWarning.jpg")
+            driver.get_screenshot_as_file(propath() + "picture/dingtalk/test_0101_06_OrderWarning.jpg")
             unittest.expectedFailure("test_0101_06_OrderWarning")
 
     """钉钉-业务管理首页-采购订单状态"""
@@ -223,7 +223,7 @@ class BusinessMan(unittest.TestCase):
             driver.find_element_by_name("采购订单状态").is_displayed()
         except Exception as err:
             print(err)
-            driver.get_screenshot_as_file(propath() + "picture/Ding/test_0101_07_PurchaseOrderStatu.jpg")
+            driver.get_screenshot_as_file(propath() + "picture/dingtalk/test_0101_07_PurchaseOrderStatu.jpg")
             unittest.expectedFailure("test_0101_07_PurchaseOrderStatu")
 
         v_list = driver.find_elements_by_class_name("android.view.View")
@@ -235,7 +235,7 @@ class BusinessMan(unittest.TestCase):
             driver.find_element_by_accessibility_id(" 返回 Link").is_displayed()
         except Exception as err:
             print(err)
-            driver.get_screenshot_as_file(propath() + "picture/Ding/test_0101_07_PurchaseOrderStatu.jpg")
+            driver.get_screenshot_as_file(propath() + "picture/dingtalk/test_0101_07_PurchaseOrderStatu.jpg")
             unittest.expectedFailure("test_0101_07_PurchaseOrderStatu")
 
     """钉钉-业务管理首页-采购到货跟踪"""
@@ -253,7 +253,7 @@ class BusinessMan(unittest.TestCase):
             driver.find_element_by_name("采购到货跟踪").is_displayed()
         except Exception as err:
             print(err)
-            driver.get_screenshot_as_file(propath() + "picture/Ding/test_0101_PurchaseTrack.jpg")
+            driver.get_screenshot_as_file(propath() + "picture/dingtalk/test_0101_PurchaseTrack.jpg")
             unittest.expectedFailure("test_0101_PurchaseTrack")
 
         v_list = driver.find_elements_by_class_name("android.view.View")
@@ -265,7 +265,7 @@ class BusinessMan(unittest.TestCase):
             driver.find_element_by_accessibility_id(" 返回 Link").is_displayed()
         except Exception as err:
             print(err)
-            driver.get_screenshot_as_file(propath() + "picture/Ding/test_0101_PurchaseTrack.jpg")
+            driver.get_screenshot_as_file(propath() + "picture/dingtalk/test_0101_PurchaseTrack.jpg")
             unittest.expectedFailure("test_0101_PurchaseTrack")
 
     """钉钉-业务管理首页-销售订单添加"""
@@ -317,7 +317,7 @@ class BusinessMan(unittest.TestCase):
             print(v_tip)
         except Exception as err:
             print(err)
-            driver.get_screenshot_as_file(propath() + "picture/Ding/test_0101_05_SalesOfferAdd.jpg")
+            driver.get_screenshot_as_file(propath() + "picture/dingtalk/test_0101_05_SalesOfferAdd.jpg")
             unittest.expectedFailure("test_0101_05_SalesOfferAdd")
 
     def tearDown(self):

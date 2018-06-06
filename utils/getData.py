@@ -24,7 +24,7 @@ def fun_idcard():
 
 # 获取姓名
 def data_name():
-    v_data = csv.reader(open(propath()+'PubliData/cvs/basedata.csv', 'r'))
+    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
     arr = []
     for i in v_data:
         for ii in i[0]:
@@ -43,7 +43,7 @@ def data_mobile():
 
 # 获取邮箱号码
 def data_email():
-    v_data = csv.reader(open(propath()+'PubliData/cvs/basedata.csv', 'r'))
+    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
     arr = []
     for i in v_data:
         for ii in i[2]:
@@ -54,7 +54,7 @@ def data_email():
 
 # 获取电话
 def data_tel():
-    v_data = csv.reader(open(propath() + 'PubliData/cvs/basedata.csv', 'r'))
+    v_data = csv.reader(open(propath() + 'data/cvs/basedata.csv', 'r'))
     arr = []
     for i in v_data:
         for ii in i[4]:
@@ -65,7 +65,7 @@ def data_tel():
 
 # 获取英文名称
 def data_englishname():
-    v_data = csv.reader(open(propath() + 'PubliData/cvs/basedata.csv', 'r'))
+    v_data = csv.reader(open(propath() + 'data/cvs/basedata.csv', 'r'))
     arr = []
     for i in v_data:
         for ii in i[3]:
@@ -76,7 +76,7 @@ def data_englishname():
 
 # 获取职位名称
 def data_job():
-    v_data = csv.reader(open(propath()+'PubliData/cvs/basedata.csv', 'r'))
+    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
     arr = []
     for i in v_data:
         for ii in i[5]:
@@ -87,7 +87,7 @@ def data_job():
 
 # 获取公司名称
 def data_company():
-    v_data = csv.reader(open(propath()+'PubliData/cvs/basedata.csv', 'r'))
+    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
     arr = []
     for i in v_data:
         for ii in i[6]:
@@ -98,7 +98,7 @@ def data_company():
 
 # 获取详细地址
 def data_address():
-    v_data = csv.reader(open(propath()+'PubliData/cvs/basedata.csv', 'r'))
+    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
     arr = []
     for i in v_data:
         for ii in i[7]:
@@ -109,7 +109,7 @@ def data_address():
 
 # 获取高校名称
 def data_university():
-    v_data = csv.reader(open(propath()+'PubliData/cvs/basedata.csv', 'r'))
+    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
     arr = []
     for i in v_data:
         for ii in i[8]:
@@ -120,7 +120,7 @@ def data_university():
 
 # 获取高校专业
 def data_specialty():
-    v_data = csv.reader(open(propath()+'PubliData/cvs/basedata.csv', 'r'))
+    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
     arr = []
     for i in v_data:
         for ii in i[9]:
@@ -131,7 +131,7 @@ def data_specialty():
 
 # 获取中国人力资格证书
 def data_certificate():
-    v_data = csv.reader(open(propath()+'PubliData/cvs/basedata.csv', 'r'))
+    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
     arr = []
     for i in v_data:
         for ii in i[10]:
@@ -142,7 +142,7 @@ def data_certificate():
 
 # 获取城市
 def data_city():
-    v_data = csv.reader(open(propath()+'PubliData/cvs/basedata.csv', 'r'))
+    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
     arr = []
     for i in v_data:
         for ii in i[11]:
@@ -153,7 +153,7 @@ def data_city():
 
 # 获取中国人力职务名称
 def data_position():
-    v_data = csv.reader(open(propath()+'PubliData/cvs/basedata.csv', 'r'))
+    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
     arr = []
     for i in v_data:
         for ii in i[12]:
@@ -164,7 +164,7 @@ def data_position():
 
 # 获取省份
 def data_province():
-    v_data = csv.reader(open(propath()+'PubliData/cvs/basedata.csv', 'r'))
+    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
     arr = []
     for i in v_data:
         for ii in i[13]:
@@ -175,7 +175,7 @@ def data_province():
 
 # 获取姓氏
 def data_surname():
-    v_data = csv.reader(open(propath() + 'PubliData/cvs/basedata.csv', 'r'))
+    v_data = csv.reader(open(propath() + 'data/cvs/basedata.csv', 'r'))
     arr = []
     for i in v_data:
         for ii in i[16]:
@@ -186,7 +186,7 @@ def data_surname():
 
 # 获取中国少数民族名称
 def data_nation():
-    v_data = csv.reader(open(propath() + 'PubliData/cvs/nation.csv', 'r'))
+    v_data = csv.reader(open(propath() + 'data/cvs/nation.csv', 'r'))
     arr = []
     for i in v_data:
         for ii in i[0]:
@@ -203,7 +203,7 @@ def data_www():
 
 # 获取自定义字符串测试
 def data_character(start, end):
-    write_file = open(propath() + 'PubliData/character5K.txt', 'r')
+    write_file = open(propath() + 'data/character5K.txt', 'r')
     v_lines = write_file.read()
     v_input = v_lines[start:end]
     return v_input
@@ -211,7 +211,7 @@ def data_character(start, end):
 
 # 获取SQL语句
 def data_sql(filename):
-    write_file = open(propath() + 'PubliData/sql/' + filename, 'r')
+    write_file = open(propath() + 'data/sql/' + filename, 'r')
     """
     .read()         读取整个文件
     .readline()     读取一行
@@ -223,7 +223,7 @@ def data_sql(filename):
 
 # 获取开户银行名称
 def data_bank():
-    v_data = csv.reader(open(propath()+'PubliData/cvs/basedata.csv', 'r'))
+    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
     arr = []
     for i in v_data:
         for ii in i[14]:

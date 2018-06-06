@@ -5,7 +5,7 @@ from utils.webClass import *
 testurl_pc("http://test.b1box.net")
 
 url = "http://test.b1box.net"
-f = open(propath() + 'PubliData/config/url.txt', 'w+')
+f = open(propath() + 'data/config/url.txt', 'w+')
 if f.readline() == url:
     pass
 else:

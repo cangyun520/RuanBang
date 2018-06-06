@@ -10,7 +10,7 @@ class WebLogin:
     def __login_url(self):
         # 环境URL地址1
         driver = self.driver
-        # f = open(propath() + 'PubliData/config/url.txt', 'r')
+        # f = open(propath() + 'data/config/url.txt', 'r')
         # v_url = f.readline()
         # f.close()
         v_url = UrlTest.testUrl()
@@ -23,7 +23,7 @@ class WebLogin:
 
     def __login_user(self, uname):
         """用户登录"""
-        log_file = open(propath() + 'PubliData/text/LogName.txt', 'r')
+        log_file = open(propath() + 'data/text/LogName.txt', 'r')
 
         # 读取所有行数据，并匹配当前登陆用户
         for i in log_file.readlines():
@@ -58,19 +58,6 @@ class WebLogin:
         self.accept_next_alert = True
         driver = self.driver
         time.sleep(1)
-        # 打开菜单
-        WebLogin.__login_url(self)
-        # 用户登录
-        WebLogin.__login_user(self, "admin")
-
-    def login_setup_admin(self):
-        # 设置页面上隐形的等待时间30秒
-        self.driver.implicitly_wait(30)
-        # 定义空verificationErrors数组，脚本运行错误信息被记录到整个数组中
-        self.verificationErrors = []
-        # 是否接受下一个警告，默认为是
-        self.accept_next_alert = True
-        driver = self.driver
         # 打开菜单
         WebLogin.__login_url(self)
         # 用户登录
