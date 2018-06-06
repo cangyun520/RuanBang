@@ -5,14 +5,15 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 
-class ClasLogin:
+class WebLogin:
     """初始测试准备工作"""
     def __login_url(self):
         # 环境URL地址1
         driver = self.driver
-        f = open(propath() + 'PubliData/config/url.txt', 'r')
-        v_url = f.readline()
-        f.close()
+        # f = open(propath() + 'PubliData/config/url.txt', 'r')
+        # v_url = f.readline()
+        # f.close()
+        v_url = UrlTest.testUrl()
         driver.maximize_window()
         driver.get(v_url)
         forget_pasd = driver.find_element_by_partial_link_text("忘记密码")
@@ -58,9 +59,9 @@ class ClasLogin:
         driver = self.driver
         time.sleep(1)
         # 打开菜单
-        ClasLogin.__login_url(self)
+        WebLogin.__login_url(self)
         # 用户登录
-        ClasLogin.__login_user(self, "admin")
+        WebLogin.__login_user(self, "admin")
 
     def login_setup_admin(self):
         # 设置页面上隐形的等待时间30秒
@@ -71,12 +72,12 @@ class ClasLogin:
         self.accept_next_alert = True
         driver = self.driver
         # 打开菜单
-        ClasLogin.__login_url(self)
+        WebLogin.__login_url(self)
         # 用户登录
-        ClasLogin.__login_user(self, "admin")
+        WebLogin.__login_user(self, "admin")
 
 
-class ClasMenu:
+class WebMenu:
     """打开菜单连接"""
     def menu_full_text(self, *v_menu):
         # 全名称菜单
@@ -99,7 +100,7 @@ class ClasMenu:
         time.sleep(3)
 
 
-class ClasForm:
+class WebForm:
     """处理表单内部特殊字段数据"""
     def form_top(self, number):
         # js移动到页面顶部，防止对象遮挡
@@ -126,7 +127,7 @@ class ClasForm:
                 break
 
 
-class ClasPopupWindow:
+class WebPopupWindow:
     """表头弹出窗体数据选择"""
     def popup_project(self):
         # 项目弹出窗体数据选择

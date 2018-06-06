@@ -1,3 +1,6 @@
+from utils.config import *
+
+
 # 随机生成18位身份证号码
 def fun_idcard():
     """ 随机生成新的18为身份证号码 """

@@ -2,10 +2,10 @@
 from utils.webClass import *
 
 
-class ST01_Index(unittest.TestCase):
+class Index(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
-        ClasLogin.login_setup(self)
+        WebLogin.login_setup(self)
 
     def test_0101_Task(self):
         """onlin首页-查看我的任务-【收信】检查"""
@@ -137,8 +137,8 @@ if __name__ == "__main__":
     # unittest.main()
     # 构造测试集
     testsuit = unittest.TestSuite()
-    testsuit.addTest(ST01_Index("test_001_Task"))
-    testsuit.addTest(ST01_Index("test_002_Work"))
+    testsuit.addTest(Index("test_001_Task"))
+    testsuit.addTest(Index("test_002_Work"))
     # 获取当前时间
     v_tim = time.strftime("%y%m%d%H%M")
     # 定义报告存放路径
