@@ -4,7 +4,7 @@ import win32api
 import win32con
 from selenium.webdriver.common.action_chains import ActionChains
 
-from utils.webClass import *
+from public.webClass import *
 
 
 class SalesLeads(unittest.TestCase):

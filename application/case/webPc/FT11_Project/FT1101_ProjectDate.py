@@ -1,7 +1,7 @@
 
 from selenium.webdriver.common.action_chains import ActionChains
 
-from utils.webClass import *
+from public.webClass import *
 
 
 class ProjectDate(unittest.TestCase):

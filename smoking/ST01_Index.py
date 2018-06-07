@@ -1,5 +1,5 @@
 
-from utils.webClass import *
+from public.webClass import *
 
 
 class Index(unittest.TestCase):

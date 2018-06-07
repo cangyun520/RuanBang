@@ -1,4 +1,4 @@
-from utils.webClass import *
+from public.webClass import *
 
 
 class SalesAnalysis(unittest.TestCase):

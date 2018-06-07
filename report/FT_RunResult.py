@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from utils.webClass import *
+from public.webClass import *
 
 '''
 思路：

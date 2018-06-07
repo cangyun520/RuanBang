@@ -1,7 +1,7 @@
 # encoding:utf-8
 import win32api
 import win32con
-from utils.webClass import *
+from public.webClass import *
 
 
 class WorkLog(unittest.TestCase):

@@ -1,4 +1,5 @@
-from utils.webClass import *
+from public.webClass import *
+import random
 
 
 class Competitor(unittest.TestCase):

@@ -1,4 +1,4 @@
-from utils.config import *
+from public.config import *
 
 
 # 随机生成18位身份证号码

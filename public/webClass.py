@@ -1,8 +1,9 @@
-from utils.config import *
+from public.config import *
 from selenium import webdriver
 import unittest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from public.getData import *
 
 
 class WebLogin:
@@ -13,7 +14,7 @@ class WebLogin:
         # f = open(propath() + 'data/config/url.txt', 'r')
         # v_url = f.readline()
         # f.close()
-        v_url = UrlTest.testUrl()
+        v_url = UrlTest.pc(self)
         driver.maximize_window()
         driver.get(v_url)
         forget_pasd = driver.find_element_by_partial_link_text("忘记密码")

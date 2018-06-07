@@ -1,7 +1,14 @@
-from utils.webClass import *
+from public.webClass import *
+# 导入测试报告
+from HTMLTestRunner import HTMLTestRunner
+from public.config import *
+
+
+
+
 
 # 指定当前测试PC端地址
-testurl_pc("http://test.b1box.net")
+UrlTest.pc()
 
 # 指定测试用例为当前文件夹下的test_case目录
 # 通过自定函数获取当前文件所在路径

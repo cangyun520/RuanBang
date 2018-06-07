@@ -1,9 +1,8 @@
-
-from utils.webClass import *
+# 导入测试报告
+from HTMLTestRunner import HTMLTestRunner
+from public.webClass import *
 
 # 指定当前测试PC端地址
-testurl_pc("http://test.b1box.net")
-
 url = "http://test.b1box.net"
 f = open(propath() + 'data/config/url.txt', 'w+')
 if f.readline() == url:

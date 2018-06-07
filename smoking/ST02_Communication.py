@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from utils.webClass import *
+from public.webClass import *
 
 class ST02_Communication(unittest.TestCase):
     def setUp(self):

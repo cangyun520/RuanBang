@@ -1,8 +1,9 @@
-
-from utils.webClass import *
+# 导入测试报告
+from HTMLTestRunner import HTMLTestRunner
+from public.webClass import *
 
 # 指定当前测试PC端地址
-testurl_pc("http://test.b1box.net")
+UrlTest.pc("http://test.b1box.net")
 
 '''
     *   OnlineBox功能集成测试报告

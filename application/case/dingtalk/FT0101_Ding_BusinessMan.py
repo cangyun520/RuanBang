@@ -1,5 +1,5 @@
 # encoding:utf-8
-from utils.dingTalkClass import *
+from public.dingTalkClass import *
 
 
 class BusinessMan(unittest.TestCase):
