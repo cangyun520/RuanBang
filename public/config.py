@@ -1,6 +1,10 @@
 import os
 import time
 from public.fileReader import YamlReader
+import csv
+import random
+# 导入测试报告
+from HTMLTestRunner import HTMLTestRunner
 
 
 # 通过当前文件的绝对路径，其父级目录一定是框架的base目录，然后确定各层的绝对路径。如果你的结构不同，可自行修改。
