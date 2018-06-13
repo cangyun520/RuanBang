@@ -1,8 +1,16 @@
 from public.webClass import *
+from selenium.webdriver.chrome.options import Options
 
 
 class ProjectChange(unittest.TestCase):
     def setUp(self):
+        mobile_emulation = {"deviceName": "iPhone 6"}
+        option = Options()
+
+        option.add_experimental_option("mobileEmulation", mobile_emulation)
+        self.driver = webdriver.Chrome(chrome_options = option)
+
+
         self.driver = webdriver.Chrome()
         WebLogin.submit(self)
         driver = self.driver

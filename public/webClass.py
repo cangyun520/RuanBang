@@ -1,9 +1,9 @@
 from public.config import *
+from public.getData import *
 from selenium import webdriver
 import unittest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from public.getData import *
 
 
 class WebLogin:
@@ -11,15 +11,10 @@ class WebLogin:
     def __url(self):
         # 环境URL地址
         driver = self.driver
-        # f = open(propath() + 'data/config/url.txt', 'r')
-        # v_url = f.readline()
-        # f.close()
-        v_url = UrlTest.pc(self)
+        v_url = UrlTest.pc()
+        # driver.set_window_size(420, 700)
         driver.maximize_window()
         driver.get(v_url)
-        forget_pasd = driver.find_element_by_partial_link_text("忘记密码")
-        if forget_pasd.is_displayed():
-            driver.get(v_url)
         time.sleep(2)
 
     def __user(self, uname):
@@ -57,7 +52,6 @@ class WebLogin:
         self.verificationErrors = []
         # 是否接受下一个警告，默认为是
         self.accept_next_alert = True
-        driver = self.driver
         time.sleep(1)
         # 打开菜单
         WebLogin.__url(self)

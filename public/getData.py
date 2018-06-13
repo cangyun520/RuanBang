@@ -1,4 +1,7 @@
-from public.config import *
+import random
+import time
+import csv
+from public.config import propath
 
 
 # 随机生成18位身份证号码
