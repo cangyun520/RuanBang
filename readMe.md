@@ -19,4 +19,6 @@ https://blog.csdn.net/huilan_same/article/details/76572411
 包说明：
 PyMySQL
 selenium
-pip install pyyaml
+Requests
+xlrd库 和 xlwt库--xlrd是读excel，xlwt是写excel的库
+pyyaml

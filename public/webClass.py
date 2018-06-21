@@ -1,6 +1,6 @@
+from selenium import webdriver
 from public.config import *
 from public.getData import *
-from selenium import webdriver
 import unittest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -11,16 +11,16 @@ class WebLogin:
     def __url(self):
         # 环境URL地址
         driver = self.driver
-        v_url = UrlTest.pc()
-        # driver.set_window_size(420, 700)
         driver.maximize_window()
+
+        v_url = UrlTest.pc(self)
         driver.get(v_url)
         time.sleep(2)
 
     def __user(self, uname):
         """用户登录"""
         log_file = open(propath() + 'data/text/LogName.txt', 'r')
-
+        driver = self.driver
         # 读取所有行数据，并匹配当前登陆用户
         for i in log_file.readlines():
             try:
@@ -28,8 +28,6 @@ class WebLogin:
                 break
             except Exception as err:
                 print(err)
-
-        driver = self.driver
         password = 123456
         driver.find_element_by_id("user_login").clear()
         driver.find_element_by_id("user_login").send_keys(uname)
@@ -52,7 +50,6 @@ class WebLogin:
         self.verificationErrors = []
         # 是否接受下一个警告，默认为是
         self.accept_next_alert = True
-        time.sleep(1)
         # 打开菜单
         WebLogin.__url(self)
         # 用户登录
@@ -83,6 +80,7 @@ class WebMenu:
 
 
 class WebForm:
+    driver = webdriver.Chrome
     """js移动到页面顶部，防止对象遮挡"""
     def top(self, number):
         # js移动到页面顶部，防止对象遮挡
@@ -98,27 +96,3 @@ class WebForm:
                 i.click()
                 break
         time.sleep(1)
-
-    '''行弹出时间控件选择【今天】'''
-    def line(self, uid):
-        # 选择当天日期
-        self.driver.find_element_by_id(uid).click()
-        for i in self.driver.find_elements_by_tag_name("button"):
-            if i.text == "今天":
-                i.click()
-                break
-
-
-class WebPopupWindow:
-    """表头弹出窗体数据选择"""
-    def project(self):
-        # 项目弹出窗体数据选择
-        driver = self.driver
-        driver.find_element_by_xpath("//*[@id='ProjectCode_Container']/div/span").click()
-        time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
-        v_projectlist = driver.find_elements_by_class_name("x-grid3-row")
-        v_projectlist[random.randint(0, (len(v_projectlist) - 1))].click()
-        driver.find_element_by_id("btnSelect").click()
-        time.sleep(1)
-        driver.switch_to.parent_frame()

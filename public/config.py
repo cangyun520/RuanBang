@@ -14,7 +14,7 @@ LOG_PATH = os.path.join(BASE_PATH, 'log')
 REPORT_PATH = os.path.join(BASE_PATH, 'report')
 
 
-class Config:
+class Config(object):
     def __init__(self, config=CONFIG_FILE):
         self.config = YamlReader(config).data
 
@@ -36,7 +36,7 @@ def propath(prjname="RuanBang"):
 class UrlTest:
     # 修改当前测试URL地址
     def pc(self):
-        url = Config().get('url')
+        self.url = Config().get('url')
         return self.url['urlTest']
 
 

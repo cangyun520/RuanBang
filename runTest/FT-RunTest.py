@@ -2,11 +2,9 @@
 from HTMLTestRunner import HTMLTestRunner
 from public.webClass import *
 
-# 指定当前测试PC端地址
-UrlTest.pc("http://test.b1box.net")
 
 '''
-    *   OnlineBox功能集成测试报告
+    *   SASS功能集成测试报告
     *   指定测试用例为当前文件夹下的test_case目录
     *   通过自定函数获取当前文件所在路径
     *   获取最新测试报告，并打印运行错误用例
@@ -15,7 +13,8 @@ UrlTest.pc("http://test.b1box.net")
     *   2017-06-13
 '''
 v_tim = time.strftime("%Y%m%d")
-test_dir = propath() + "webPc"
+test_dir = propath() + "/application/webPc"
+# discover会根据测试目录 匹配查找测试用例文件，并将查找到的测试用例组装到测试套件中
 discover = unittest.defaultTestLoader.discover(
     test_dir,
     pattern='FT*.py'
