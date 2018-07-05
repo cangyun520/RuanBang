@@ -36,6 +36,8 @@ class BusinessMan(unittest.TestCase):
             unittest.expectedFailure("test_0101_01_check")
 
     """钉钉-业务管理首页-客户管理添加"""
+
+    # noinspection PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences
     def test_0101_02_CustomerAdd(self):
         """钉钉-业务管理首页-客户管理添加"""
         driver = self.driver
@@ -77,6 +79,8 @@ class BusinessMan(unittest.TestCase):
             unittest.expectedFailure("test_0101_02_Customer")
 
     """钉钉-业务管理首页-供应商添加"""
+
+    # noinspection PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences
     def test_0101_03_SupplierAdd(self):
         """钉钉-业务管理首页-供应商添加"""
         driver = self.driver
@@ -119,6 +123,8 @@ class BusinessMan(unittest.TestCase):
             unittest.expectedFailure("test_0101_03_SupplierAdd")
 
     """钉钉-业务管理首页-库存查询检查"""
+
+    # noinspection PyUnresolvedReferences
     def test_0101_04_InventoryLook(self):
         """钉钉-业务管理首页-库存查询检查"""
         driver = self.driver
@@ -149,6 +155,8 @@ class BusinessMan(unittest.TestCase):
             unittest.expectedFailure("test_0101_04_InventoryLook")
 
     """钉钉-业务管理首页-销售订单状态"""
+
+    # noinspection PyUnresolvedReferences
     def test_0101_05_SalesOrderStatus(self):
         """钉钉-业务管理首页-销售订单状态"""
         driver = self.driver
@@ -179,6 +187,8 @@ class BusinessMan(unittest.TestCase):
             unittest.expectedFailure("test_0101_05_SalesOrderStatus")
 
     """钉钉-业务管理首页-订单预警"""
+
+    # noinspection PyUnresolvedReferences
     def test_0101_06_OrderWarning(self):
         """钉钉-业务管理首页-订单预警"""
         driver = self.driver
@@ -209,6 +219,8 @@ class BusinessMan(unittest.TestCase):
             unittest.expectedFailure("test_0101_06_OrderWarning")
 
     """钉钉-业务管理首页-采购订单状态"""
+
+    # noinspection PyUnresolvedReferences
     def test_0101_07_PurchaseOrderStatu(self):
         """钉钉-业务管理首页-采购订单状态"""
         driver = self.driver
@@ -239,6 +251,8 @@ class BusinessMan(unittest.TestCase):
             unittest.expectedFailure("test_0101_07_PurchaseOrderStatu")
 
     """钉钉-业务管理首页-采购到货跟踪"""
+
+    # noinspection PyUnresolvedReferences
     def test_0101_08_PurchaseTrack(self):
         """钉钉-业务管理首页-采购到货跟踪"""
         driver = self.driver
@@ -269,6 +283,8 @@ class BusinessMan(unittest.TestCase):
             unittest.expectedFailure("test_0101_PurchaseTrack")
 
     """钉钉-业务管理首页-销售订单添加"""
+
+    # noinspection PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences
     def test_0101_06_SalesOrderAdd(self):
         """钉钉-业务管理首页-销售订单添加"""
         driver = self.driver

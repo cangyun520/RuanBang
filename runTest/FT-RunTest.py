@@ -1,7 +1,6 @@
-# 导入测试报告
+
 from HTMLTestRunner import HTMLTestRunner
 from public.webClass import *
-
 
 '''
     *   SASS功能集成测试报告

@@ -8,6 +8,7 @@ from public.config import *
 
 
 # 指定当前测试PC端地址
+# noinspection PyArgumentList
 UrlTest.pc()
 
 # 指定测试用例为当前文件夹下的test_case目录

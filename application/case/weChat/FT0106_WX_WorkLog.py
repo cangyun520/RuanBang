@@ -5,6 +5,7 @@ from public.webClass import *
 
 
 class WorkLog(unittest.TestCase):
+    # noinspection PyUnresolvedReferences
     def setUp(self):
         # 调用微信初始化公共方法
         desired_caps = WeChatPublic.start_weixin(self)
@@ -22,6 +23,8 @@ class WorkLog(unittest.TestCase):
         v_time = time.strftime("%Y-%m-%d %H:%M:%S")
 
     """工作日志-添加日志-日报"""
+
+    # noinspection PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences
     def test_0106_01_addDaily(self):
         """工作日志-添加日志-日报"""
         driver = self.driver

@@ -22,3 +22,6 @@ selenium
 Requests
 xlrd库 和 xlwt库--xlrd是读excel，xlwt是写excel的库
 pyyaml
+
+selenium之 chromedriver与chrome版本映射表
+https://blog.csdn.net/huilan_same/article/details/51896672

@@ -129,6 +129,7 @@ class Index(unittest.TestCase):
             print("BUG 代办工作页面-显示异常")
             unittest.expectedFailure("test_0107_Approval")
 
+    # noinspection PyUnresolvedReferences
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)

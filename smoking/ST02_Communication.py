@@ -47,6 +47,7 @@ class ST02_Communication(unittest.TestCase):
             print("短信发送记录页面-显示正常")
         MessageRecord_Seach.click()
 
+    # noinspection PyUnresolvedReferences
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)

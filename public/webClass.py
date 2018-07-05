@@ -11,49 +11,35 @@ class WebLogin:
     def __url(self):
         # 环境URL地址
         driver = self.driver
+        # 浏览器最大化
         driver.maximize_window()
-
-        v_url = UrlTest.pc(self)
+        # 获取配置文件地址
+        v_url = Config.url_test()
         driver.get(v_url)
         time.sleep(2)
 
-    def __user(self, uname):
+    def __user(self, uname, password):
         """用户登录"""
-        log_file = open(propath() + 'data/text/LogName.txt', 'r')
         driver = self.driver
-        # 读取所有行数据，并匹配当前登陆用户
-        for i in log_file.readlines():
-            try:
-                uname in i
-                break
-            except Exception as err:
-                print(err)
-        password = 123456
-        driver.find_element_by_id("user_login").clear()
-        driver.find_element_by_id("user_login").send_keys(uname)
-        driver.find_element_by_id("user_pass").clear()
-        driver.find_element_by_id("user_pass").send_keys(password)
-        driver.find_element_by_id("btn_Login").click()
-        time.sleep(3)
-        if driver.find_element_by_id("tab_home").is_displayed():
-            driver.find_element_by_id("tab_home").click()
-        else:
-            driver.refresh()
-            time.sleep(2)
-        # 关闭读取，及时释放
-        log_file.close()
+        driver.find_element_by_id("txtCode").clear()
+        driver.find_element_by_id("txtCode").send_keys(uname)
+        driver.find_element_by_id("txtPassword").clear()
+        driver.find_element_by_id("txtPassword").send_keys(password)
+        driver.find_element_by_id("btnSubmit").click()
+        time.sleep(2)
 
     def submit(self):
+        driver = self.driver
         # 设置页面上隐形的智能等待时间30秒
         self.driver.implicitly_wait(20)
         # 定义空verificationErrors数组，脚本运行错误信息被记录到整个数组中
         self.verificationErrors = []
         # 是否接受下一个警告，默认为是
         self.accept_next_alert = True
-        # 打开菜单
+        # 打开浏览器
         WebLogin.__url(self)
         # 用户登录
-        WebLogin.__user(self, "admin")
+        WebLogin.__user(self, "0KOF1MVY04089AD2DQLO", '0KOF1MVY04089AD2DQLO')
 
 
 class WebMenu:
@@ -66,7 +52,7 @@ class WebMenu:
                 time.sleep(1)
         else:
             pass
-        time.sleep(3)
+        time.sleep(2)
 
     def part_text(self, *v_menu):
         # 关键字名称菜单
@@ -80,7 +66,6 @@ class WebMenu:
 
 
 class WebForm:
-    driver = webdriver.Chrome
     """js移动到页面顶部，防止对象遮挡"""
     def top(self, number):
         # js移动到页面顶部，防止对象遮挡

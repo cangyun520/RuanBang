@@ -15,12 +15,15 @@ class Count:
         return self.a + self.b
 
 
+# noinspection PyArgumentList,PyArgumentList
 class TestCount(unittest.TestCase):
     def setUp(self):
         print('test start')
 
+    # noinspection PyArgumentList,PyArgumentList
     def test_add(self):
         try:
+            # noinspection PyArgumentList,PyArgumentList
             j = Count(2, 3)
             self.assertEqual(j.add(), 5)
         except AssertionError as msg:
