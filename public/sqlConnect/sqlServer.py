@@ -26,7 +26,7 @@ class Sqlserverdb(object):
         得到连接信息
         返回: conn.cursor()
         """
-        if (self._db == None):
+        if(self._db == None):
             self._db = pymssql.connect(
                 host=self._config['host'],
                 port=self._config['port'],
@@ -103,10 +103,9 @@ class Sqlserverdb(object):
 
 if __name__ == "__main__":
     # 测试
-    db = Sqlserverdb()
-    sql = "SELECT * FROM wht_Contract"
-    a = db.queryOne(sql)
-    print(a)
+    sql = "SELECT SUM(money) FROM wht_Contract"
+    a = Sqlserverdb().queryOne(sql)
+    print(a[0])
 
 
 """
