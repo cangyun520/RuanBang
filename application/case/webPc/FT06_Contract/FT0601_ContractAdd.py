@@ -1,71 +1,76 @@
-
+# encoding:utf-8
 from public.webClass import *
 
 
 class ContractAdd(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
+        # 登录
         WebLogin.submit(self)
         # 打开菜单
         WebMenu.full_text(self, "合同管理", "合同")
-        timesl(10)
 
     """合同-新增合同"""
-    def test_0601_Add(self):
+    def test_0601_01_Add(self):
         """合同-新增合同"""
-        driver = self.driver
-        v_spans = driver.find_elements_by_tag_name("span")
+        dr = self.driver
+        v_spans = dr.find_elements_by_tag_name("span")
         for i in v_spans:
             if i.text == "新增":
                 i.click()
                 break
         timesl(2)
+        wid = SAASPc.wid(self, "baseForm")
+        # 合同类别
+        wid_htlb = wid + "contractClassId"
+        dr.find_element_by_id(wid_htlb).click()
+        v_htlb = SAASPc.popup(self, wid_htlb)
 
-        v_inputs = driver.find_elements_by_tag_name("input")
-        for i in v_inputs:
-            print(i.get_attribute("placeholder"))
-            if i.get_attribute("placeholder") == "请选择合同类别":
-                i.click()
+        v_htlb = "#v_htlb"
+        print(v_htlb)
+        lis = dr.find_elements_by_css_selector(v_htlb+">ul>li")
+        for i in lis:
+            print(i.text)
+        # 合同小类
+        dr.find_element_by_id(wid + "contractSubClassId").click()
 
+        # 签约单位
+        dr.find_element_by_id(wid + "customId").click()
 
+        # 签约部分
+        dr.find_element_by_id(wid + "deptId").click()
 
+        # 签约公司
+        dr.find_element_by_id(wid + "signingCompanyId").click()
 
+        # 实施人员
+        dr.find_element_by_id(wid + "implementerId").click()
 
-
-    """
-    请选择合同类别
-    请选择合同小类
-    请选择主合同
-    请选择签约单位
-    选择[签约单位]后显示
-    选择[签约单位]后显示
-    请选择签约人
-    请选择签约部门
-    请选择签约日期
-    请选择签约公司
-    请选择实施人员
-    请输入签约金额
-    金额大写
-    
-    请选择产品
-    请输入分摊金额
-    请输入备注
-    请选择款项类型
-    请选择付款时间
-    请输入付款金额
-    请选择负责人
-    请输入付款说明
-    请输入
-    请输入
-    请输入
-    请选择
-    请输入
-    请输入
-    """
-
+        # 签约金额
+        dr.find_element_by_id(wid + "money").click()
 
         #         driver.get_screenshot_as_file(propath() + "picture/oa/test_0103_01_check.jpg")
         #         unittest.expectedFailure("test_0103_01_check")
+
+    """合同-新增合同"""
+    def test_0601_02_check(self):
+        """合同-新增合同"""
+        dr = self.driver
+        v_spans = dr.find_elements_by_tag_name("span")
+        for i in v_spans:
+            if i.text == "新增":
+                i.click()
+                break
+        timesl(2)
+        wid = SAASPc.wid(self, "baseForm")
+        user = dr.find_element_by_xpath("//*[@id='_mainNav_userOperate']/span[2]").text
+        print(user)
+        cuser = dr.find_element_by_xpath("//*[@id='" + wid + "userId']/span[1]/input").text
+
+        print(cuser)
+
+        # driver.get_screenshot_as_file(propath() + "picture/oa/test_0103_01_check.jpg")
+        # unittest.expectedFailure("test_0103_01_check")
 
     def tearDown(self):
         self.driver.quit()

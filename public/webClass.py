@@ -1,12 +1,14 @@
+# encoding:utf-8
 from selenium import webdriver
 from public.config import *
 from public.getData import *
 import unittest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+import execjs
 
 
-class WebLogin:
+class WebLogin(object):
     """初始测试准备工作"""
     def __url(self):
         # 环境URL地址
@@ -28,6 +30,7 @@ class WebLogin:
         driver.find_element_by_id("btnSubmit").click()
         time.sleep(2)
 
+    @staticmethod
     def submit(self):
         driver = self.driver
         # 设置页面上隐形的智能等待时间30秒
@@ -42,8 +45,9 @@ class WebLogin:
         WebLogin.__user(self, "0KOF1MVY04089AD2DQLO", '0KOF1MVY04089AD2DQLO')
 
 
-class WebMenu:
-    """打开菜单连接"""
+class WebMenu(object):
+    """打开导航栏菜单"""
+    @staticmethod
     def full_text(self, *v_menu):
         # 全名称菜单
         if v_menu != "":
@@ -54,6 +58,7 @@ class WebMenu:
             pass
         time.sleep(2)
 
+    @staticmethod
     def part_text(self, *v_menu):
         # 关键字名称菜单
         if v_menu != "":
@@ -62,22 +67,56 @@ class WebMenu:
                 time.sleep(1)
         else:
             pass
-        time.sleep(3)
+        time.sleep(2)
 
 
-class WebForm:
+class SAASPc(object):
     """js移动到页面顶部，防止对象遮挡"""
     def top(self, number):
         # js移动到页面顶部，防止对象遮挡
         js_top = "window.scrollTo(0," + str(number) + ")"
         self.driver.execute_script(js_top)
 
-    '''表头弹出时间控件选择【今天】'''
-    def today(self, uid):
-        # 选择当天日期
-        self.driver.find_element_by_id(uid).click()
-        for i in self.driver.find_elements_by_tag_name("button"):
-            if i.text == "今天":
-                i.click()
-                break
-        time.sleep(1)
+    """获取当前页面编号wid"""
+    @staticmethod
+    # def wid(self, modu, obj):
+    #     """
+    #     param self:
+    #     param modu:页面区域
+    #     param obj : 具体控件对象
+    #     return:
+    #     """
+    #     url = self.driver.current_url
+    #     url = url.split('=')
+    #     if len(url) > 1:
+    #         url = url[1]
+    #         url = url.split('&')
+    #         wid = url[0] + ":" + modu + "$" + obj
+    #         return wid
+    #     else:
+    #         wid = "w0:" + modu + "$" + obj
+    #         return wid
+    def wid(self):
+        jscode = "var wid = Rb.Pages.Page.s_pages;return wid"
+        wid = self.driver.execute_script(jscode)
+        return wid
+
+
+    def setValue(self, value):
+        jscode = "Rb.Pages.Page.s_pages['w0'].getControl('gridEdit')." \
+                 "model.internalData[8].setValue('shortName', '" \
+                 + value + "');"
+        return self.driver.execute_script(jscode)
+
+    def getDada(self):
+        jscode = "var data; Rb.Pages.Page.s_pages['w0'].getData({ id: '', mode: Rb.Data.DataModeEnum.singleTable, attachParams: {} }).done(function(result){data=result}); return data;"
+        return self.driver.execute_script(jscode)
+
+
+
+    """获取控件下拉值区域ID"""
+    @staticmethod
+    def popup(self, modu, obj):
+        wid = SAASPc.wid(self, modu, obj)
+        return wid + "$popup"
+
