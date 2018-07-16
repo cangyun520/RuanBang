@@ -1,7 +1,6 @@
 # encoding:utf-8
 from public.webClass import *
 from public.sqlConnect.sqlServer import *
-from public.log import logger
 
 
 class ContractList(unittest.TestCase):
@@ -10,11 +9,11 @@ class ContractList(unittest.TestCase):
         # 登录
         WebLogin.submit(self)
         # 打开菜单
-        WebMenu.full_text(self, "合同管理", "合同")
+        WebMenu.full_text(self, "合同管理", "回款")
 
-    """合同-合同列表"""
-    def test_0602_01_TotalMoneyCheck(self):
-        """合同-新增合同"""
+    """合同-回款列表"""
+    def test_0603_01_TotalMoneyCheck(self):
+        """合同-回款列表"""
         dr = self.driver
         _tds = dr.find_elements_by_css_selector(".rb-gridview-sum-roll>table>tbody>tr>td")
         for i in _tds:
@@ -24,7 +23,7 @@ class ContractList(unittest.TestCase):
                 break
 
         # 取数据库sum值
-        _sql = "SELECT SUM(money) FROM wht_Contract WHERE deleted = 0"
+        _sql = "SELECT SUM(money) FROM wht_ContractCollection WHERE deleted = 0"
         total = Sqlserverdb().queryOne(_sql)
         total = total[0]
         total = str(round(total, 2))
@@ -33,8 +32,8 @@ class ContractList(unittest.TestCase):
         if money == total:
             print("金额相同")
         else:
-            dr.get_screenshot_as_file(propath() + "picture/webPc/test_0602_01_TotalMoneyCheck.png")
-            unittest.expectedFailure("test_0602_01_TotalMoneyCheck")
+            dr.get_screenshot_as_file(propath() + "picture/webPc/test_0603_01_TotalMoneyCheck.png")
+            unittest.expectedFailure("test_0603_01_TotalMoneyCheck")
 
     def tearDown(self):
         self.driver.quit()

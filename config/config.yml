@@ -1,0 +1,15 @@
+url:
+  url_test: http://fly3c.wicp.net:20000/login
+  url_online: http://test.b1box.net
+
+log:
+    file_name: test.log
+    console_level: WARNING
+    backup: 5
+    file_level: DEBUG
+    pattern: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+
+
+
+
+# https://blog.csdn.net/u013210620/article/details/78618295

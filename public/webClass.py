@@ -15,9 +15,9 @@ class WebLogin(object):
         driver = self.driver
         # 浏览器最大化
         driver.maximize_window()
-        # 获取配置文件地址
-        v_url = Config.url_test()
-        driver.get(v_url)
+        # 通过yaml公共方法，获取配置文件地址。get后续get获取2级目录数据
+        _url = Config().get('url').get('url_test')
+        driver.get(_url)
         time.sleep(2)
 
     def __user(self, uname, password):
