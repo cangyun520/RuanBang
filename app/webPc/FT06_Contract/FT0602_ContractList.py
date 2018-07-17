@@ -2,6 +2,7 @@
 from public.webClass import *
 from public.sqlConnect.sqlServer import *
 from public.log import logger
+from public.HTMLTestRunner_PY3 import HTMLTestRunner
 
 
 class ContractList(unittest.TestCase):
@@ -39,4 +40,7 @@ class ContractList(unittest.TestCase):
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
-    unittest.main()
+    report = REPORT_PATH + '\\report.html'
+    with open(report, 'wb') as f:
+        runner = HTMLTestRunner(f, verbosity=2, title='从0搭建测试框架 灰蓝', description='修改html报告')
+        runner.run(ContractList('test_0602_01_TotalMoneyCheck'))

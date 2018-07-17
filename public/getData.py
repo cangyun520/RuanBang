@@ -1,11 +1,12 @@
+# encoding='UTF-8'
 import random
 import time
 import csv
-from public.config import propath
+from public.config import DATA_PATH
 
 
 # 随机生成18位身份证号码
-def fun_idcard():
+def get_idcard():
     """ 随机生成新的18为身份证号码 """
     arr = (7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2)
     last = ('1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2')
@@ -26,10 +27,10 @@ def fun_idcard():
 
 
 # 获取姓名
-def data_name():
-    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
+def get_name():
+    _data = csv.reader(open(DATA_PATH + '/cvs/basedata.csv', 'r'))
     arr = []
-    for i in v_data:
+    for i in _data:
         for ii in i[0]:
             if ii != " ":
                 arr.append(i[0])
@@ -37,18 +38,18 @@ def data_name():
 
 
 # 获取手机号码
-def data_mobile():
-    v_iphone = random.choice(
+def get_mobile():
+    _iphone = random.choice(
         ['139', '188', '185', '136', '158', '151', '177']
     )+"".join(random.choice("0123456789") for i in range(8))
-    return v_iphone
+    return _iphone
 
 
 # 获取邮箱号码
-def data_email():
-    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
+def get_email():
+    _data = csv.reader(open(DATA_PATH + '/cvs/basedata.csv', 'r'))
     arr = []
-    for i in v_data:
+    for i in _data:
         for ii in i[2]:
             if ii != " ":
                 arr.append(i[2])
@@ -56,10 +57,10 @@ def data_email():
 
 
 # 获取电话
-def data_tel():
-    v_data = csv.reader(open(propath() + 'data/cvs/basedata.csv', 'r'))
+def get_tel():
+    _data = csv.reader(open(DATA_PATH + '/cvs/basedata.csv', 'r'))
     arr = []
-    for i in v_data:
+    for i in _data:
         for ii in i[4]:
             if ii != " ":
                 arr.append(i[4])
@@ -67,10 +68,10 @@ def data_tel():
 
 
 # 获取英文名称
-def data_englishname():
-    v_data = csv.reader(open(propath() + 'data/cvs/basedata.csv', 'r'))
+def get_englishname():
+    _data = csv.reader(open(DATA_PATH + '/cvs/basedata.csv', 'r'))
     arr = []
-    for i in v_data:
+    for i in _data:
         for ii in i[3]:
             if ii != " ":
                 arr.append(i[3])
@@ -78,10 +79,10 @@ def data_englishname():
 
 
 # 获取职位名称
-def data_job():
-    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
+def get_job():
+    _data = csv.reader(open(DATA_PATH + '/cvs/basedata.csv', 'r'))
     arr = []
-    for i in v_data:
+    for i in _data:
         for ii in i[5]:
             if ii != " ":
                 arr.append(i[5])
@@ -89,10 +90,10 @@ def data_job():
 
 
 # 获取公司名称
-def data_company():
-    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
+def get_company():
+    _data = csv.reader(open(DATA_PATH + '/cvs/basedata.csv', 'r'))
     arr = []
-    for i in v_data:
+    for i in _data:
         for ii in i[6]:
             if ii != " ":
                 arr.append(i[6])
@@ -100,10 +101,10 @@ def data_company():
 
 
 # 获取详细地址
-def data_address():
-    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
+def get_address():
+    _data = csv.reader(open(DATA_PATH + '/cvs/basedata.csv', 'r'))
     arr = []
-    for i in v_data:
+    for i in _data:
         for ii in i[7]:
             if ii != " ":
                 arr.append(i[7])
@@ -111,10 +112,10 @@ def data_address():
 
 
 # 获取高校名称
-def data_university():
-    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
+def get_university():
+    _data = csv.reader(open(DATA_PATH + '/cvs/basedata.csv', 'r'))
     arr = []
-    for i in v_data:
+    for i in _data:
         for ii in i[8]:
             if ii != " ":
                 arr.append(i[8])
@@ -122,10 +123,10 @@ def data_university():
 
 
 # 获取高校专业
-def data_specialty():
-    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
+def get_specialty():
+    _data = csv.reader(open(DATA_PATH + '/cvs/basedata.csv', 'r'))
     arr = []
-    for i in v_data:
+    for i in _data:
         for ii in i[9]:
             if ii != " ":
                 arr.append(i[9])
@@ -133,21 +134,21 @@ def data_specialty():
 
 
 # 获取中国人力资格证书
-def data_certificate():
-    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
+def get_certificate():
+    _data = csv.reader(open(DATA_PATH + '/cvs/basedata.csv', 'r'))
     arr = []
-    for i in v_data:
+    for i in _data:
         for ii in i[10]:
             if ii != " ":
                 arr.append(i[10])
     return arr[random.randint(1, len(arr) - 1)]
 
 
-# 获取城市
-def data_city():
-    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
+# 获取中国城市名称
+def get_city():
+    _data = csv.reader(open(DATA_PATH + '/cvs/basedata.csv', 'r'))
     arr = []
-    for i in v_data:
+    for i in _data:
         for ii in i[11]:
             if ii != " ":
                 arr.append(i[11])
@@ -155,10 +156,10 @@ def data_city():
 
 
 # 获取中国人力职务名称
-def data_position():
-    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
+def get_position():
+    _data = csv.reader(open(DATA_PATH + '/cvs/basedata.csv', 'r'))
     arr = []
-    for i in v_data:
+    for i in _data:
         for ii in i[12]:
             if ii != " ":
                 arr.append(i[12])
@@ -166,10 +167,10 @@ def data_position():
 
 
 # 获取省份
-def data_province():
-    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
+def get_province():
+    _data = csv.reader(open(DATA_PATH + '/cvs/basedata.csv', 'r'))
     arr = []
-    for i in v_data:
+    for i in _data:
         for ii in i[13]:
             if ii != " ":
                 arr.append(i[13])
@@ -177,10 +178,10 @@ def data_province():
 
 
 # 获取姓氏
-def data_surname():
-    v_data = csv.reader(open(propath() + 'data/cvs/basedata.csv', 'r'))
+def get_surname():
+    _data = csv.reader(open(DATA_PATH + '/cvs/basedata.csv', 'r'))
     arr = []
-    for i in v_data:
+    for i in _data:
         for ii in i[16]:
             if ii != " ":
                 arr.append(i[16])
@@ -188,10 +189,10 @@ def data_surname():
 
 
 # 获取中国少数民族名称
-def data_nation():
-    v_data = csv.reader(open(propath() + 'data/cvs/nation.csv', 'r'))
+def get_nation():
+    _data = csv.reader(open(DATA_PATH + '/cvs/basedata.csv', 'r'))
     arr = []
-    for i in v_data:
+    for i in _data:
         for ii in i[0]:
             if ii != " ":
                 arr.append(i[0])
@@ -199,37 +200,68 @@ def data_nation():
 
 
 # 随机生成网址
-def data_www():
-    v_www = "www." + "".join(random.choice("abcdefghjklmnopqrst") for i in range(6)) + ".com"
-    return v_www
-
-
-# 获取自定义字符串测试
-def data_character(start, end):
-    write_file = open(propath() + 'data/character5K.txt', 'r')
-    v_lines = write_file.read()
-    v_input = v_lines[start:end]
-    return v_input
-
-
-# 获取SQL语句
-def data_sql(filename):
-    write_file = open(propath() + 'data/sql/' + filename, 'r')
-    """
-    .read()         读取整个文件
-    .readline()     读取一行
-    .readlines()    读取所有行的
-    """
-    v_lines = write_file.read()
-    return v_lines
+def get_www():
+    www = "www." + "".join(random.choice("abcdefghjklmnopqrst") for i in range(6)) + ".com"
+    return www
 
 
 # 获取开户银行名称
-def data_bank():
-    v_data = csv.reader(open(propath()+'data/cvs/basedata.csv', 'r'))
+def get_bank():
+    _data = csv.reader(open(DATA_PATH + ('/cvs/basedata.csv'), 'r'))
     arr = []
-    for i in v_data:
+    for i in _data:
         for ii in i[14]:
             if ii != " ":
                 arr.append(i[14])
     return arr[random.randint(1, len(arr) - 1)]
+
+
+# 设置自定义字符串测试
+def set_character(start, end):
+    with open(DATA_PATH + '/text/character5K.txt', 'r', encoding='UTF-8') as data:
+        _lines = data.read()
+        character = _lines[start:end]
+    return character
+
+
+# 测试
+if __name__ == "__main__":
+    print(get_idcard())
+    print(get_name())
+    print(get_mobile())
+    print(get_email())
+    print(get_tel())
+    print(get_englishname())
+    print(get_job())
+    print(get_company())
+    print(get_address())
+    print(get_university())
+    print(get_specialty())
+    print(get_certificate())
+    print(get_city())
+    print(get_position())
+    print(get_surname())
+    print(get_nation())
+    print(get_www())
+    print(get_bank())
+    print(set_character(6, 20))
+
+
+
+"""
+    With语句是什么？
+    有一些任务，可能事先需要设置，事后做清理工作。对于这种场景，Python的with语句提供了一种非常方便的处理方式。一个很好的例子是文件处理，你需要获取一个文件句柄，从文件中读取数据，然后关闭文件句柄。
+    如果不用with语句，代码如下：
+    file = open("/tmp/foo.txt")
+    data = file.read()
+    file.close()
+    这里有两个问题。一是可能忘记关闭文件句柄；二是文件读取数据发生异常，没有进行任何处理。下面是处理异常的加强版本：
+    file = open("/tmp/foo.txt")
+    try:
+        data = file.read()
+    finally:
+        file.close()
+    虽然这段代码运行良好，但是太冗长了。这时候就是with一展身手的时候了。除了有更优雅的语法，with还可以很好的处理上下文环境产生的异常。下面是with版本的代码：
+    with open("/tmp/foo.txt") as file:
+        data = file.read()
+"""

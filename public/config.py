@@ -14,17 +14,18 @@ DRIVER_PATH = os.path.join(BASE_PATH, 'drivers')
 LOG_PATH = os.path.join(BASE_PATH, 'log')
 REPORT_PATH = os.path.join(BASE_PATH, 'report')
 PICTURE_PATH = os.path.join(BASE_PATH, 'picture')
+APP_PATH = os.path.join(BASE_PATH, 'app')
 
 
 # 获取当前项目根目录
-def propath(prjname="RuanBang"):
-    """
-    param prjname:
-    return:
-    """
-    v_path = os.getcwd()
-    v_thepath = v_path[:v_path.find(prjname)] + prjname + "/"
-    return v_thepath
+# def propath(prjname="RuanBang"):
+#     """
+#     param prjname:
+#     return:
+#     """
+#     v_path = os.getcwd()
+#     v_thepath = v_path[:v_path.find(prjname)] + prjname + "/"
+#     return v_thepath
 
 
 class Config(object):
