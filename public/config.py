@@ -6,12 +6,14 @@ from public.fileReader import YamlReader
 
 # 通过当前文件的绝对路径，其父级目录一定是框架的base目录，然后确定各层的绝对路径。
 # 支持linux和windows等不同的平台，用os.path.split()和os.path.join()，不要直接+'\\xxx\\ss'这样
+# 这是是全局变量
 BASE_PATH = os.path.split(os.path.dirname(os.path.abspath(__file__)))[0]
 CONFIG_FILE = os.path.join(BASE_PATH, 'config', 'config.yml')
 DATA_PATH = os.path.join(BASE_PATH, 'data')
 DRIVER_PATH = os.path.join(BASE_PATH, 'drivers')
 LOG_PATH = os.path.join(BASE_PATH, 'log')
 REPORT_PATH = os.path.join(BASE_PATH, 'report')
+PICTURE_PATH = os.path.join(BASE_PATH, 'picture')
 
 
 # 获取当前项目根目录
@@ -39,17 +41,17 @@ class Config(object):
         """
         return self.config[index].get(element)
 
-    @staticmethod
-    def url_test():
-        cf = configparser.ConfigParser()
-        cf.read(propath() + 'config\config.ini')
-        return cf.get('url', 'url_test')
-
-    @staticmethod
-    def url_online():
-        cf = configparser.ConfigParser()
-        cf.read(propath() + 'config\config.ini')
-        return cf.get('url', 'url_online')
+    # @staticmethod
+    # def url_test():
+    #     cf = configparser.ConfigParser()
+    #     cf.read(propath() + 'config\config.ini')
+    #     return cf.get('url', 'url_test')
+    # 使用yaml 后，本方法作废
+    # @staticmethod
+    # def url_online():
+    #     cf = configparser.ConfigParser()
+    #     cf.read(propath() + 'config\config.ini')
+    #     return cf.get('url', 'url_online')
 
 
 # 休眠时间

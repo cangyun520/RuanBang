@@ -22,9 +22,12 @@ class Logger(object):
     def __init__(self, logger_name='framework'):
         self.logger = logging.getLogger(logger_name)
         logging.root.setLevel(logging.NOTSET)
+        # 获取日志配置
         c = Config().get('log')
-        self.log_file_name = c.get('file_name') if c and c.get('file_name') else 'test.log'  # 日志文件
-        self.backup_count = c.get('backup') if c and c.get('backup') else 5  # 保留的日志数量
+        # 日志文件
+        self.log_file_name = c.get('file_name') if c and c.get('file_name') else 'test.log'
+        # 保留的日志数量
+        self.backup_count = c.get('backup') if c and c.get('backup') else 5
         # 日志输出级别
         self.console_output_level = c.get('console_level') if c and c.get('console_level') else 'WARNING'
         self.file_output_level = c.get('file_level') if c and c.get('file_level') else 'DEBUG'

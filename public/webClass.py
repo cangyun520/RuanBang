@@ -101,7 +101,6 @@ class SAASPc(object):
         wid = self.driver.execute_script(jscode)
         return wid
 
-
     def setValue(self, value):
         jscode = "Rb.Pages.Page.s_pages['w0'].getControl('gridEdit')." \
                  "model.internalData[8].setValue('shortName', '" \

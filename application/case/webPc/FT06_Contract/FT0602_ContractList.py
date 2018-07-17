@@ -20,7 +20,6 @@ class ContractList(unittest.TestCase):
         for i in _tds:
             if i.get_attribute("data-id") == "money":
                 money = (i.text).replace(',', '')
-                print(money)
                 break
 
         # 取数据库sum值
@@ -28,10 +27,9 @@ class ContractList(unittest.TestCase):
         total = Sqlserverdb().queryOne(_sql)
         total = total[0]
         total = str(round(total, 2))
-        print(total)
 
         if money == total:
-            print("金额相同")
+            logger.info("合同列表金额相同")
         else:
             dr.get_screenshot_as_file(propath() + "picture/webPc/test_0602_01_TotalMoneyCheck.png")
             unittest.expectedFailure("test_0602_01_TotalMoneyCheck")
