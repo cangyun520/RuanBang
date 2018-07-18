@@ -1,5 +1,6 @@
 # encoding:utf-8
 from public.dingTalkClass import *
+from public.webClass import *
 
 
 class BusinessMan(unittest.TestCase):

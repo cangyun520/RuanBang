@@ -244,7 +244,7 @@ if __name__ == "__main__":
     print(get_nation())
     print(get_www())
     print(get_bank())
-    print(set_character(6, 20))
+    print(set_character(6, 100))
 
 
 

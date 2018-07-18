@@ -26,7 +26,7 @@ fp = open(FileName, 'wb')
 runner = HTMLTestRunner(
     stream=fp,
     title='webPC功能集成自动化测试',
-    description="webPC自动化测试——主流程功能测试执行结果统计\
+    description="webPC自动化测试——主流程功能测试执行结果统计</br>\
                 *   SASS功能集成测试报告\
                 *   指定测试用例为当前文件夹下的test_case目录\
                 *   通过自定函数获取当前文件所在路径\
