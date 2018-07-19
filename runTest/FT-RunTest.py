@@ -3,7 +3,6 @@ from public.HTMLTestRunner_PY3 import HTMLTestRunner
 from public.webClass import *
 from public.config import APP_PATH, REPORT_PATH
 
-
 '''
     *   SASS功能集成测试报告
     *   指定测试用例为当前文件夹下的test_case目录

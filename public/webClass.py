@@ -1,11 +1,10 @@
 # encoding:utf-8
 from selenium import webdriver
-from public.config import *
+from public.config import Config
 from public.getData import *
 import unittest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-import execjs
 
 
 class WebLogin(object):
