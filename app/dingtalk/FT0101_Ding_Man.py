@@ -11,31 +11,26 @@ class BusinessMan(unittest.TestCase):
         # 引用Appium_Python_Client
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
         self.driver.implicitly_wait(5)
+        dr = self.driver
 
         try:
-            self.driver.find_element_by_name("工作").click()
+            dr.find_element_by_name("工作").click()
         except Exception as err:
             print(err)
-        self.driver.find_element_by_name("业务管理首页").click()
-        timesl(5)
 
     """钉钉-页面检查"""
     def test_0101_01_check(self):
         """钉钉-页面检查"""
-        driver = self.driver
-
-        v_an = driver.find_elements_by_class_name("android.view.View")
-        # for i in v_an:
-        #     print(i.id)
-        v_an[3].click()
-        timesl(3)
-
+        dr = self.driver
         # 进入到页面
+        dr.find_element_by_id("menu_current_company").click()
+        dr.find_element_by_name("源钉云测试").click()
+        timesl(1)
         try:
-            driver.find_element_by_name("客户管理").is_displayed()
+            dr.find_element_by_name("常用应用").is_displayed()
         except Exception as err:
             print(err)
-            driver.get_screenshot_as_file(PICTURE_PATH + "/dingtalk/test_0101_01_check.jpg")
+            dr.get_screenshot_as_file(PICTURE_PATH + "/dingtalk/test_0101_01_check.jpg")
             unittest.expectedFailure("test_0101_01_check")
 
     def tearDown(self):
