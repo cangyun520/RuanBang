@@ -33,41 +33,21 @@ runner.run(discover)
 fp.close()
 
 
-class RunResult(unittest.TestCase):
-    """登录后首页"""
-    def setUp(self):
-        self.driver = webdriver.Chrome()
-        dr = self.driver
-        dr.maximize_window()
-        dr.get(FileName)
-        time.sleep(1)
-
-    def test_list(self):
-        driver = self.driver
-        v_list = driver.find_elements_by_class_name("errorCase")
-        if len(v_list) == 0:
-            print("本次运行全部正确！！！")
-        else:
-            for i in v_list:
-                # str = i.text
-                # result = str.split(':')[0]      # 后面参数0表示向左，1表示向右
-                print(i.text)
-            # %d 格式化输出 数字
-            print("运行失败总计：%d" % (len(v_list)))
-
-    def tearDown(self):
-        self.driver.quit()
-        self.assertEqual([], self.verificationErrors)
-
 if __name__ == "__main__":
-    server = "smtp.126.com"  # SMTP服务器
-    sender = "qinliulangzhou@126.com"  # 用户名
-    password = "qin130sq"  # 授权密码，非登录密码
-    sender = 'qinliulangzhou@126.com'  # 发件人邮箱(最好写全, 不然会失败)
-    # receivers = '405367236@qq.com;506505739@qq.com;sengmitnick@163.com'  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
-    receivers = '405367236@qq.com'
+    # SMTP服务器
+    server = "smtp.126.com"
+    # 用户名
+    sender = "qinliulangzhou@126.com"
+    # 授权密码，非登录密码
+    password = "qin130sq"
+    # 发件人邮箱(最好写全, 不然会失败)
+    sender = 'qinliulangzhou@126.com'
+    # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
+    receivers = '405367236@qq.com;506505739@qq.com;sengmitnick@163.com'
+    # receivers = '405367236@qq.com'
     message = '这是今天的测试报告，请查收！具体请看附件。'
-    title = '王伟合同自动化测试报告'  # 邮件主题
+    # 邮件主题
+    title = '王伟合同自动化测试报告' + v_tim
 
     e = Email(title=title,
               message=message,
