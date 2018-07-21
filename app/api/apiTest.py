@@ -15,17 +15,17 @@ class PollsTest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_get_poll_index(self):
-        r = requests.get(self.base_url)
-        code = r.status_code
-        self.assertEqual(code, 200)
-
-    def test_get_poll_question(self):
-        r = requests.get(self.base_url + "/1/")
-        code = r.status_code
-        text = r.text
-        self.assertEqual(code, 200)
-        self.assertIn("3", text)
+    # def test_get_poll_index(self):
+    #     r = requests.get(self.base_url)
+    #     code = r.status_code
+    #     self.assertEqual(code, 200)
+    #
+    # def test_get_poll_question(self):
+    #     r = requests.get(self.base_url + "/1/")
+    #     code = r.status_code
+    #     text = r.text
+    #     self.assertEqual(code, 200)
+    #     self.assertIn("3", text)
 
 
 if __name__ == "__main__":

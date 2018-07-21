@@ -2,7 +2,7 @@
 from public.webClass import *
 from public.sqlConnect.sqlServer import *
 from public.log import logger
-from public.HTMLTestRunner_PY3 import HTMLTestRunner
+from public.mail import *
 
 
 class ContractList(unittest.TestCase):
@@ -20,6 +20,7 @@ class ContractList(unittest.TestCase):
         _tds = dr.find_elements_by_css_selector(".rb-gridview-sum-roll>table>tbody>tr>td")
         for i in _tds:
             if i.get_attribute("data-id") == "money":
+                # 文本转译
                 money = (i.text).replace(',', '')
                 break
 
@@ -32,15 +33,10 @@ class ContractList(unittest.TestCase):
         if money == total:
             logger.info("合同列表金额相同")
         else:
-            dr.get_screenshot_as_file(propath() + "picture/webPc/test_0602_01_TotalMoneyCheck.png")
+            dr.get_screenshot_as_file(PICTURE_PATH + "/webPc/test_0602_01_TotalMoneyCheck.png")
             unittest.expectedFailure("test_0602_01_TotalMoneyCheck")
 
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
-if __name__ == "__main__":
-    report = REPORT_PATH + '\\report.html'
-    with open(report, 'wb') as f:
-        runner = HTMLTestRunner(f, verbosity=2, title='从0搭建测试框架 灰蓝', description='修改html报告')
-        runner.run(ContractList('test_0602_01_TotalMoneyCheck'))

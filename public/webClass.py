@@ -1,6 +1,6 @@
 # encoding:utf-8
 from selenium import webdriver
-from public.config import Config
+from public.config import *
 from public.getData import *
 import unittest
 from selenium.webdriver.common.by import By
@@ -9,6 +9,7 @@ from selenium.webdriver.common.keys import Keys
 
 class WebLogin(object):
     """初始测试准备工作"""
+    @staticmethod
     def __url(self):
         # 环境URL地址
         driver = self.driver
@@ -19,6 +20,7 @@ class WebLogin(object):
         driver.get(_url)
         time.sleep(2)
 
+    @staticmethod
     def __user(self, uname, password):
         """用户登录"""
         driver = self.driver
@@ -31,7 +33,6 @@ class WebLogin(object):
 
     @staticmethod
     def submit(self):
-        driver = self.driver
         # 设置页面上隐形的智能等待时间30秒
         self.driver.implicitly_wait(20)
         # 定义空verificationErrors数组，脚本运行错误信息被记录到整个数组中

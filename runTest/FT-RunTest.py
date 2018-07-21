@@ -2,15 +2,11 @@
 from public.HTMLTestRunner_PY3 import HTMLTestRunner
 from public.webClass import *
 from public.config import APP_PATH, REPORT_PATH
+from public.mail import *
 
 '''
-    *   SASS功能集成测试报告
-    *   指定测试用例为当前文件夹下的test_case目录
-    *   通过自定函数获取当前文件所在路径
-    *   获取最新测试报告，并打印运行错误用例
-    *   把结果发送到指定邮箱
-    *   Arvin
-    *   2017-06-13
+    *   Arvin.liu
+    *   2018-06-13
 '''
 v_tim = time.strftime("%Y%m%d")
 test_dir = APP_PATH + "/webPc"
@@ -24,15 +20,14 @@ FileName = REPORT_PATH + '/FTRport/' + v_tim + 'FT_webPC.htm'
 fp = open(FileName, 'wb')
 runner = HTMLTestRunner(
     stream=fp,
-    title='webPC功能集成自动化测试',
-    description="webPC自动化测试——主流程功能测试执行结果统计</br>\
-                *   SASS功能集成测试报告\
-                *   指定测试用例为当前文件夹下的test_case目录\
-                *   通过自定函数获取当前文件所在路径\
-                *   获取最新测试报告，并打印运行错误用例\
-                *   把结果发送到指定邮箱\
-                "
-
+    title='王伟合同系统集成自动化测试',
+    description='webPC自动化测试——主流程功能测试执行结果统计<br/>\
+                *   SASS功能集成测试报告<br>\
+                *   指定测试用例为当前文件夹下的test_case目录<br>\
+                *   通过自定函数获取当前文件所在路径<br>\
+                *   获取最新测试报告，并打印运行错误用例<br>\
+                *   把结果发送到指定邮箱<br>\
+                '
 )
 runner.run(discover)
 fp.close()
@@ -43,20 +38,9 @@ class RunResult(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
         dr = self.driver
-        # 定义文件目录
-        resault_dir = REPORT_PATH + '/FTRport/'
-        # 遍历目录
-        v_list = os.listdir(resault_dir)
-        # 重新按时间对目录文件进行排序
-        v_list.sort(
-            key=lambda fn: os.path.getatime(resault_dir+'/'+fn)
-        )
-        # print(('最新的文件为：'+v_list[-1]))
-        # 最新文件的绝对路径
-        v_url = os.path.join(resault_dir, v_list[-1])
         dr.maximize_window()
-        dr.get(v_url)
-        time.sleep(3)
+        dr.get(FileName)
+        time.sleep(1)
 
     def test_list(self):
         driver = self.driver
@@ -74,3 +58,23 @@ class RunResult(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
+
+if __name__ == "__main__":
+    server = "smtp.126.com"  # SMTP服务器
+    sender = "qinliulangzhou@126.com"  # 用户名
+    password = "qin130sq"  # 授权密码，非登录密码
+    sender = 'qinliulangzhou@126.com'  # 发件人邮箱(最好写全, 不然会失败)
+    # receivers = '405367236@qq.com;506505739@qq.com;sengmitnick@163.com'  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
+    receivers = '405367236@qq.com'
+    message = '这是今天的测试报告，请查收！具体请看附件。'
+    title = '王伟合同自动化测试报告'  # 邮件主题
+
+    e = Email(title=title,
+              message=message,
+              receiver=receivers,
+              server=server,
+              sender=sender,
+              password=password,
+              path=FileName
+              )
+    e.send()
