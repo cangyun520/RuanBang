@@ -1,0 +1,49 @@
+SELECT ISNULL(SUM(r.uncollected),0) as uncollected
+FROM
+(SELECT q.*
+,CASE WHEN q.agingd<30 THEN 1 ELSE
+  CASE WHEN q.agingd>=30 AND q.agingd<60 THEN 2 ELSE
+  CASE WHEN q.agingd>=60 AND q.agingd<120 THEN 3 ELSE
+  CASE WHEN q.agingd>=120  THEN 4 ELSE
+  0
+  END
+  END
+  END
+END as agingtype
+,CASE WHEN q.agingd>0 THEN CONVERT(varchar,q.agingd)  ELSE '0'  END as agingday
+FROM
+  (SELECT p.*
+  ,CASE WHEN p.uncollected>0 THEN p.aging ELSE p.agingnot END as agingd
+  FROM
+    (SELECT a.*,b.collectionDate,isNull(b.useMoney,0) as useMoney,b.dccountsDueType,ISNULL( b.dccountsDuetypename,'无') as dccountsDuetypename,b.accountsDueId
+    ,  a.money - ISNULL(b.useMoney,0)  as uncollected
+    ,DATEDIFF(DD,CASE WHEN b.predictDccountsDueDate IS NULL THEN a.date ELSE b.predictDccountsDueDate END ,ISNULL(b.collectionDate, GETDATE())) as agingnot
+    ,DATEDIFF(DD,CASE WHEN b.predictDccountsDueDate IS NULL THEN a.date ELSE b.predictDccountsDueDate END ,GETDATE()) as aging
+    ,CASE WHEN b.predictDccountsDueDate IS NULL THEN a.date ELSE b.predictDccountsDueDate END as dccountsDueDate
+      FROM
+      (SELECT cp.id ,cp.date,cp.money,cp.userId,m.name as moneytypename,m.class AS moneytypeclass,ISNULL(u.name,'无') as username,c.code as contractcode,c.name as contractname,cu.name as customname
+        FROM wht_ContractPayment cp
+        LEFT JOIN wht_Contract c ON cp.contractId=c.id
+        LEFT JOIN (SELECT * FROM wht_MoneyType WHERE deleted=0) m ON cp.moneyTypeId=m.id
+        LEFT JOIN pfUser u ON cp.userId=u.id
+        LEFT JOIN (SELECT * FROM wht_Custom WHERE deleted=0) cu ON cu.id=cp.customId
+      WHERE cp.deleted=0 AND c.deleted=0
+      ) a
+      LEFT OUTER JOIN
+      (
+      SELECT ad.id as accountsDueId ,ad.contractPaymentId, ad.dccountsDueType,ad.useMoney ,e.text as dccountsDuetypename,ccd.collectionDate,ad.predictDccountsDueDate
+      FROM wht_AccountsDue ad
+        LEFT JOIN
+          (SELECT * FROM pfEnums WHERE type='回款状态') e ON e.value=ad.dccountsDueType
+        LEFT JOIN
+          (SELECT accountsDueId ,cc.date as collectionDate ,cc.invoiceMoney,cc.money-cc.invoiceMoney as uninvoiceMoney
+          FROM wht_ContractCollectionDetail ccd
+            LEFT JOIN dbo.wht_ContractCollection cc ON ccd.collectionId=cc.id
+          WHERE cc.deleted=0 AND ccd.deleted=0) ccd
+      ON ccd.accountsDueId=ad.id
+      WHERE ad.deleted=0
+      ) b
+    ON a.id=b.contractPaymentId
+    ) p
+  ) q
+)r

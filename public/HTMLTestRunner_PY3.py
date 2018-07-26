@@ -10,27 +10,11 @@ Change History
 Version 0.9.1
 * 用Echarts添加执行情况统计图 (灰蓝)
 
-Version 0.9.0
-* 改成Python 3.x (灰蓝)
-
 Version 0.8.3
 * 使用 Bootstrap稍加美化 (灰蓝)
-* 改为中文 (灰蓝)
 
 Version 0.8.2
 * Show output inline instead of popup window (Viorel Lupu).
-
-Version in 0.8.1
-* Validated XHTML (Wolfgang Borgert).
-* Added description of test classes and test cases.
-
-Version in 0.8.0
-* Define Template_mixin class for customization.
-* Workaround a IE 6 bug that it does not treat <script> block as CDATA.
-
-Version in 0.7.1
-* Back port to Python 2.3 (Frank Horowitz).
-* Fix missing scroll bars in detail log (Podi).
 """
 
 import datetime
@@ -411,7 +395,7 @@ class Template_mixin(object):
 
     REPORT_TMPL = u"""
     <div class="btn-group btn-group-sm">
-        <button class="btn btn-default" onclick='javascript:showCase(0)'>总结</button>
+        <button class="btn btn-default" onclick='javascript:showCase(0)'>汇总</button>
         <button class="btn btn-default" onclick='javascript:showCase(1)'>失败</button>
         <button class="btn btn-default" onclick='javascript:showCase(2)'>全部</button>
     </div>
@@ -661,7 +645,7 @@ class HTMLTestRunner(Template_mixin):
         # Here at least we want to group them together by class.
         rmap = {}
         classes = []
-        for n,t,o,e in result_list:
+        for n, t, o, e in result_list:
             cls = t.__class__
             if cls not in rmap:
                 rmap[cls] = []
@@ -678,9 +662,9 @@ class HTMLTestRunner(Template_mixin):
         startTime = str(self.startTime)[:19]
         duration = str(self.stopTime - self.startTime)
         status = []
-        if result.success_count: status.append(u'通过 %s' % result.success_count)
-        if result.failure_count: status.append(u'失败 %s' % result.failure_count)
-        if result.error_count:   status.append(u'错误 %s' % result.error_count  )
+        if result.success_count:status.append(u'通过 %s' % result.success_count)
+        if result.failure_count:status.append(u'失败 %s' % result.failure_count)
+        if result.error_count:status.append(u'错误 %s' % result.error_count  )
         if status:
             status = ' '.join(status)
         else:
@@ -700,8 +684,8 @@ class HTMLTestRunner(Template_mixin):
         ending = self._generate_ending()
         chart = self._generate_chart(result)
         output = self.HTML_TMPL % dict(
-            title = saxutils.escape(self.title),
-            generator = generator,
+            title=saxutils.escape(self.title),
+            generator=generator,
             stylesheet = stylesheet,
             heading = heading,
             report = report,
@@ -724,7 +708,9 @@ class HTMLTestRunner(Template_mixin):
         heading = self.HEADING_TMPL % dict(
             title=saxutils.escape(self.title),
             parameters=''.join(a_lines),
-            description=saxutils.escape(self.description),
+            # 技术注释  https://cloud.tencent.com/developer/section/1372251
+            # description=saxutils.escape(self.description),    # 转义'&'，'<'和'>'一串数据
+            description=self.description,
         )
         return heading
 

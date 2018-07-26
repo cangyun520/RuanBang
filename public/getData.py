@@ -224,6 +224,17 @@ def set_character(start, end):
     return character
 
 
+# 用切片去除字符串首尾空格
+def get_trim(s):
+    for i in range(len(s)):
+        if s[0] == ' ':
+            s = s[1:]
+    for k in range(len(s)):
+        if s[-1] == ' ':
+            s = s[:-1]
+    return s
+
+
 # 测试
 if __name__ == "__main__":
     print(get_idcard())

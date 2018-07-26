@@ -8,7 +8,7 @@ import os
 import logging
 from logging.handlers import TimedRotatingFileHandler
 from public.config import LOG_PATH, Config
-
+import time
 
 """
 日志类。通过读取配置文件，定义日志级别、日志文件名、日志格式等。
@@ -25,7 +25,9 @@ class Logger(object):
         # 获取日志配置
         c = Config().get('log')
         # 日志文件
-        self.log_file_name = c.get('file_name') if c and c.get('file_name') else 'test.log'
+        _data = time.strftime('%Y-%m-%d')
+        self.log_file_name = _data + '.log'    # 动态生成每日日志文件
+        # self.log_file_name = c.get('file_name') if c and c.get('file_name') else 'test.log'   # 生成固定日志文件
         # 保留的日志数量
         self.backup_count = c.get('backup') if c and c.get('backup') else 5
         # 日志输出级别

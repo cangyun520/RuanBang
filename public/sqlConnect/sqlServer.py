@@ -1,6 +1,16 @@
 # encoding:utf-8
 import pymssql
 
+"""
+Created by Arvin.liu 15807146017
+Date :2018-06-14.
+
+安装pymssql包  
+    https://blog.csdn.net/amoscn/article/details/78215641
+封装sqlserver增删改查常用方法  
+    https://blog.csdn.net/u012935755/article/details/50178251
+"""
+
 
 # sqlserver 常用基本的增删改查 封装
 class Sqlserverdb(object):
@@ -106,15 +116,3 @@ if __name__ == "__main__":
     sql = "SELECT SUM(money) FROM wht_Contract"
     a = Sqlserverdb().queryOne(sql)
     print(a[0])
-
-
-"""
-
-Created by Arvin.liu 15807146017
-Date :2018-06-14.
-
-安装pymssql包  
-    https://blog.csdn.net/amoscn/article/details/78215641
-封装sqlserver增删改查常用方法  
-    https://blog.csdn.net/u012935755/article/details/50178251
-"""

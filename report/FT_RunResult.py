@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from public.webClass import *
+from public.config import REPORT_PATH
+from public.log import logger
 
 '''
 思路：
@@ -16,35 +18,24 @@ class RunResult(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Chrome()
-        self.driver.implicitly_wait(30)
-        self.verificationErrors = []
-        self.accept_next_alert = True
-        driver = self.driver
-        # 定义文件目录
-        resault_dir = propath() + 'report/FTRport/'
-        # 遍历目录
-        v_list = os.listdir(resault_dir)
-        # 重新按时间对目录文件进行排序
-        v_list.sort(
-            key=lambda fn: os.path.getatime(resault_dir+'/'+fn)
-        )
-        print(('最新的文件为：'+v_list[-1]))
-        # 最新文件的绝对路径
-        v_url = os.path.join(resault_dir, v_list[-1])
-        driver.maximize_window()
-        driver.get(v_url)
+        dr = self.driver
+        v_tim = time.strftime("%Y%m%d")
+        _file = REPORT_PATH + '/FTRport/' + v_tim + 'FT_webPC.htm'
+        dr.maximize_window()
+        dr.get(_file)
         time.sleep(3)
 
     def test_list(self):
         driver = self.driver
-        v_list = driver.find_elements_by_class_name("errorCase")
-        for i in v_list:
-            str = i.text
+        _errors = driver.find_elements_by_class_name("errorCase")
+        _passs = driver.find_elements_by_class_name("testcase")
+        for i in _errors:
+            # str = i.text
             # result = str.split(':')[0]      # 后面参数0表示向左，1表示向右
-            # print(str)
-        # %d 格式化输出 数字
-        print("运行失败总计：%d" % (len(v_list)))
+            print(i.text)
+        # format 格式化输出 数字
+        logger.info("总计运行用例 {0} 条，失败：{1} 条".format((len(_errors)+len(_passs)), len(_errors)))
+        print("总计集成测试运行用例 {0} 条，失败：{1} 条".format((len(_errors)+len(_passs)), len(_errors)))
 
     def tearDown(self):
         self.driver.quit()
-        self.assertEqual([], self.verificationErrors)

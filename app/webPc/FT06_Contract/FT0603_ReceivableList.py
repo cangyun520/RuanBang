@@ -1,6 +1,7 @@
 # encoding:utf-8
 from public.webClass import *
 from public.sqlConnect.sqlServer import *
+from public.config import *
 
 
 class ContractList(unittest.TestCase):
@@ -32,7 +33,7 @@ class ContractList(unittest.TestCase):
         if money == total:
             print("金额相同")
         else:
-            dr.get_screenshot_as_file(propath() + "picture/webPc/test_0603_01_TotalMoneyCheck.png")
+            dr.get_screenshot_as_file(REPORT_PATH + "webPc/test_0603_01_TotalMoneyCheck.png")
             unittest.expectedFailure("test_0603_01_TotalMoneyCheck")
 
     def tearDown(self):

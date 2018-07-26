@@ -5,10 +5,9 @@ url:
 log:
     file_name: test.log
     console_level: WARNING
-    backup: 10
+    backup: 50
     file_level: DEBUG
     pattern: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-
 
 
 
