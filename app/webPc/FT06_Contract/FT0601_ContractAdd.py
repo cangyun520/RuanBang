@@ -8,7 +8,7 @@ class ContractAdd(unittest.TestCase):
         # 登录
         WebLogin.submit(self)
         # 打开菜单
-        WebMenu.full_text(self, "合同管理", "合同")
+        WebMenu.full_text(self, "合同管理", "签约明细")
 
     """合同-新增合同"""
     def test_0601_01_Add(self):
