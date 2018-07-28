@@ -20,7 +20,7 @@ class ContractAdd(unittest.TestCase):
                 i.click()
                 break
         timesl(2)
-        wid = SAASPc.wid(self, "baseForm")
+        wid = SAASPc.get_wid(self, "baseForm")
         # 合同类别
         wid_htlb = wid + "contractClassId"
         dr.find_element_by_id(wid_htlb).click()

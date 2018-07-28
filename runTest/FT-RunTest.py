@@ -20,7 +20,7 @@ FileName = REPORT_PATH + '/FTRport/' + v_tim + 'FT_webPC.htm'
 fp = open(FileName, 'wb')
 runner = HTMLTestRunner(
     stream=fp,
-    title='王伟合同系统集成自动化测试',
+    title='合先升系统集成自动化测试',
     description='webPC自动化测试——主流程功能测试执行结果统计<br/>\
                 *   SASS功能集成测试报告<br>\
                 *   指定测试用例为当前文件夹下的test_case目录<br>\
@@ -43,11 +43,17 @@ if __name__ == "__main__":
     # 发件人邮箱(最好写全, 不然会失败)
     sender = 'qinliulangzhou@126.com'
     # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
-    receivers = '405367236@qq.com;506505739@qq.com;sengmitnick@163.com'
+    receivers = '405367236@qq.com;' \
+                'bill.wang@softnation.cn;' \
+                'sengmitnick@163.com;' \
+                'dingj@yuandingyun.net;' \
+                'w.huang@softnation.cn;' \
+                'fortunearterial@dingtalk.com;' \
+                'zhoumeng9998@dingtalk.com'
     # receivers = '405367236@qq.com'
     message = '这是今天的测试报告，请查收！具体请看附件。'
     # 邮件主题
-    title = '王伟合同自动化测试报告' + v_tim
+    title = '合先升自动化测试报告' + v_tim
 
     e = Email(title=title,
               message=message,

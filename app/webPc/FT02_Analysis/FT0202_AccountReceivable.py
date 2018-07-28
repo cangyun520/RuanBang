@@ -43,22 +43,54 @@ class ContractList(unittest.TestCase):
         total = Sqlserverdb().queryOne(_data)
         total = total[0]
         total = float(round(total, 2))
-        print(total)
         # 数值对比
         if float(_sumReceivable) <= total:
-            print("超过60天本期应收未收金额--")
+            print("总计应收款金额：" + total)
         else:
             dr.get_screenshot_as_file(REPORT_PATH + "webPc/test_0202_01_TotalMoneyCheck.png")
             unittest.expectedFailure("test_0202_01_TotalMoneyCheck")
 
+    """应收款情况-DING用户"""
     def test_0202_02_ding(self):
-        pass
+        """应收款情况-DING人"""
         dr = self.driver
         _dings = dr.find_elements_by_class_name("rb-row-button")
         for i in _dings:
             if i.text == "DING":
                 i.click()
-                timesl(2)
+                timesl(0.5)
+                if SAASPc.get_tip(self):
+                    timesl(2)
+                else:
+                    dr.get_screenshot_as_file(REPORT_PATH + "webPc/test_0202_02_ding.png")
+                    unittest.expectedFailure("test_0202_02_ding")
+
+    """应收款情况-DING用户"""
+
+    def test_0202_03_detail(self):
+        """应收款情况-查看详情"""
+        dr = self.driver
+        # 初始页面标题
+        _title = dr.title
+        _dings = dr.find_elements_by_class_name("rb-row-button")
+        for i in _dings:
+            if i.text == "详情":
+                i.click()
+                timesl(1)
+                break
+        wid = SAASPc.get_wid(self)
+        _customname = dr.find_element_by_id(wid + ":baseForm$customname").text
+
+        if _customname:
+            print(_customname)
+        else:
+            dr.get_screenshot_as_file(REPORT_PATH + "webPc/test_0202_03_detail.png")
+            unittest.expectedFailure("test_0202_03_detail")
+        SAASPc.buttons(self, "返回")
+        _title2 = dr.title
+
+        if _title == _title2:
+            logger.info("当前标题: " + _title2)
 
     def tearDown(self):
         self.driver.quit()

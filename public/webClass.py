@@ -5,6 +5,7 @@ from public.getData import *
 import unittest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from public.log import logger
 
 
 class WebLogin(object):
@@ -79,39 +80,45 @@ class SAASPc(object):
 
     """获取当前页面编号wid"""
     @staticmethod
-    # def wid(self, modu, obj):
-    #     """
-    #     param self:
-    #     param modu:页面区域
-    #     param obj : 具体控件对象
-    #     return:
-    #     """
-    #     url = self.driver.current_url
-    #     url = url.split('=')
-    #     if len(url) > 1:
-    #         url = url[1]
-    #         url = url.split('&')
-    #         wid = url[0] + ":" + modu + "$" + obj
-    #         return wid
-    #     else:
-    #         wid = "w0:" + modu + "$" + obj
-    #         return wid
+    def get_wid(self):
+        """
+        param self:
+        param modu:页面区域
+        param obj : 具体控件对象
+        return:
+        """
+        url = self.driver.current_url
+        url = url.split('=')
+        if len(url) > 1:
+            url = url[1]
+            url = url.split('&')
+            wid = url[0]
+            return wid
+        else:
+            wid = "w0"
+            return wid
+
     def wid(self):
-        jscode = "var wid = Rb.Pages.Page.s_pages;return wid"
+        jscode = "Rb.Pages.Page.s_pages"
         wid = self.driver.execute_script(jscode)
         return wid
 
-    def setValue(self, value):
+    def set_value(self, value):
         jscode = "Rb.Pages.Page.s_pages['w0'].getControl('gridEdit')." \
                  "model.internalData[8].setValue('shortName', '" \
                  + value + "');"
         return self.driver.execute_script(jscode)
 
-    def getDada(self):
+    def get_dada(self):
         jscode = "var data; Rb.Pages.Page.s_pages['w0'].getData({ id: '', mode: Rb.Data.DataModeEnum.singleTable, attachParams: {} }).done(function(result){data=result}); return data;"
         return self.driver.execute_script(jscode)
 
-
+    """获取弹出框提示内容"""
+    @staticmethod
+    def get_tip(self):
+        _tip = self.driver.find_element_by_class_name("rb-hint-popup").text
+        logger.info(_tip)
+        return _tip
 
     """获取控件下拉值区域ID"""
     @staticmethod
@@ -119,3 +126,16 @@ class SAASPc(object):
         wid = SAASPc.wid(self, modu, obj)
         return wid + "$popup"
 
+    """点击指定某一个按钮"""
+    @staticmethod
+    def buttons(self, text, css="rb-button"):
+        buttons = self.driver.find_elements_by_class_name(css)
+        for b in buttons:
+            if b.text == text:
+                b.click()
+                timesl(2)
+                break
+
+    """检查当前列表是否有数据"""
+    def checklist(self):
+        pass
