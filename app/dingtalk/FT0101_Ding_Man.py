@@ -31,7 +31,7 @@ class BusinessMan(unittest.TestCase):
         """主页-签到"""
         dr = self.driver
         # 进入到页面
-        dr.find_element_by_name("签到").click()
+        dr.find_element_by_name("扶贫签到扶贫签到").click()
         timesl(2)
         try:
             dr.find_element_by_name("拜访对象").is_displayed()
@@ -45,7 +45,7 @@ class BusinessMan(unittest.TestCase):
         """主页-日志"""
         dr = self.driver
         # 进入到页面
-        dr.find_element_by_name("扶贫日志").click()
+        dr.find_element_by_name("扶贫日志扶贫日志").click()
         timesl(2)
         try:
             dr.find_element_by_name("写日志").is_displayed()
@@ -59,7 +59,7 @@ class BusinessMan(unittest.TestCase):
         """主页-日志"""
         dr = self.driver
         # 进入到页面
-        dr.find_element_by_name("钉盘").click()
+        dr.find_element_by_name("钉盘钉盘").click()
         timesl(2)
         try:
             dr.find_element_by_name("我的文件").is_displayed()
@@ -73,7 +73,7 @@ class BusinessMan(unittest.TestCase):
         """主页-日志"""
         dr = self.driver
         # 进入到页面
-        dr.find_element_by_name("审批").click()
+        dr.find_element_by_name("审批审批").click()
         timesl(2)
         try:
             dr.find_element_by_name("我审批的").is_displayed()
@@ -232,7 +232,6 @@ class BusinessMan(unittest.TestCase):
             print(err)
             dr.get_screenshot_as_file(PICTURE_PATH + "/dingtalk/test_0101_05_banner.jpg")
             unittest.expectedFailure("test_0101_05_banner")
-
 
     def tearDown(self):
         self.driver.quit()

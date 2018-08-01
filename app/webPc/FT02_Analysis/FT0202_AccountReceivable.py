@@ -14,7 +14,7 @@ class ContractList(unittest.TestCase):
         WebMenu.full_text(self, "经营分析", "应收款情况")
 
     """经营分析-应收款情况"""
-    def test_0202_01_Overdue(self):
+    def test_0202_01_overdue(self):
         """应收款情况-逾期60天"""
         dr = self.driver
         _overdue = dr.find_element_by_id("paymentTotal").text
@@ -45,7 +45,7 @@ class ContractList(unittest.TestCase):
         total = float(round(total, 2))
         # 数值对比
         if float(_sumReceivable) <= total:
-            print("总计应收款金额：" + total)
+            print("总计应收款金额：{0}".format(total))
         else:
             dr.get_screenshot_as_file(REPORT_PATH + "webPc/test_0202_01_TotalMoneyCheck.png")
             unittest.expectedFailure("test_0202_01_TotalMoneyCheck")
@@ -58,12 +58,15 @@ class ContractList(unittest.TestCase):
         for i in _dings:
             if i.text == "DING":
                 i.click()
-                timesl(0.5)
-                if SAASPc.get_tip(self):
-                    timesl(2)
-                else:
-                    dr.get_screenshot_as_file(REPORT_PATH + "webPc/test_0202_02_ding.png")
-                    unittest.expectedFailure("test_0202_02_ding")
+                break
+        timesl(0.5)
+        try:
+            SAASPc.get_tip(self)
+            timesl(2)
+        except Exception as e:
+            logger.info(e)
+            dr.get_screenshot_as_file(REPORT_PATH + "webPc/test_0202_02_ding.png")
+            unittest.expectedFailure("test_0202_02_ding")
 
     """应收款情况-DING用户"""
 
