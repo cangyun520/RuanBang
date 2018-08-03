@@ -84,6 +84,7 @@ class ExcelReader(object):
                     self._data.append(s.row_values(col))
         return self._data
 
+
 if __name__ == '__main__':
     y = "E:\PythonTest\RuanBang\config\config.yml"
 

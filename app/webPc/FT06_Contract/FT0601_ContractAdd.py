@@ -20,6 +20,12 @@ class ContractAdd(unittest.TestCase):
                 i.click()
                 break
         timesl(2)
+
+        wid = SAASPc.wid(self)
+        print(wid)
+
+
+
         wid = SAASPc.get_wid(self, "baseForm")
         # 合同类别
         wid_htlb = wid + "contractClassId"
@@ -51,26 +57,6 @@ class ContractAdd(unittest.TestCase):
 
         #         driver.get_screenshot_as_file(propath() + "picture/oa/test_0103_01_check.jpg")
         #         unittest.expectedFailure("test_0103_01_check")
-
-    """合同-新增合同"""
-    def test_0601_02_check(self):
-        """合同-新增合同"""
-        dr = self.driver
-        v_spans = dr.find_elements_by_tag_name("span")
-        for i in v_spans:
-            if i.text == "新增":
-                i.click()
-                break
-        timesl(2)
-        wid = SAASPc.wid(self, "baseForm")
-        user = dr.find_element_by_xpath("//*[@id='_mainNav_userOperate']/span[2]").text
-        print(user)
-        cuser = dr.find_element_by_xpath("//*[@id='" + wid + "userId']/span[1]/input").text
-
-        print(cuser)
-
-        # driver.get_screenshot_as_file(propath() + "picture/oa/test_0103_01_check.jpg")
-        # unittest.expectedFailure("test_0103_01_check")
 
     def tearDown(self):
         self.driver.quit()

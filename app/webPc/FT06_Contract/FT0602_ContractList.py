@@ -15,7 +15,7 @@ class ContractList(unittest.TestCase):
 
     """合同-合同列表"""
     def test_0602_01_TotalMoneyCheck(self):
-        """合同-新增合同"""
+        """合同-合同列表"""
         dr = self.driver
         _tds = dr.find_elements_by_css_selector(".rb-gridview-sum-roll>table>tbody>tr>td")
         for i in _tds:
@@ -31,7 +31,7 @@ class ContractList(unittest.TestCase):
         total = str(round(total, 2))
 
         if money == total:
-            logger.info("合同列表金额相同")
+            logger.info("列表金额{0}，数据查询金额{1}".format(money, total))
         else:
             dr.get_screenshot_as_file(PICTURE_PATH + "/webPc/test_0602_01_TotalMoneyCheck.png")
             unittest.expectedFailure("test_0602_01_TotalMoneyCheck")
