@@ -89,7 +89,7 @@ class ContractList(unittest.TestCase):
         else:
             dr.get_screenshot_as_file(REPORT_PATH + "webPc/test_0202_03_detail.png")
             unittest.expectedFailure("test_0202_03_detail")
-        SAASPc.buttons(self, "返回")
+        SAASPc.button(self, "返回")
         _title2 = dr.title
 
         if _title == _title2:

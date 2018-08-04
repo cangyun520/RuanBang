@@ -11,13 +11,13 @@ from public.log import logger
 class WebLogin(object):
     """初始测试准备工作"""
     @staticmethod
-    def __url(self):
+    def __url(self, url):
         # 环境URL地址
         driver = self.driver
         # 浏览器最大化
         driver.maximize_window()
         # 通过yaml公共方法，获取配置文件地址。get后续get获取2级目录数据
-        _url = Config().get('url').get('url_test')
+        _url = Config().get('url').get(url)
         driver.get(_url)
         time.sleep(2)
 
@@ -33,7 +33,7 @@ class WebLogin(object):
         time.sleep(2)
 
     @staticmethod
-    def submit(self):
+    def submit(self, url, uname):
         # 设置页面上隐形的智能等待时间30秒
         self.driver.implicitly_wait(20)
         # 定义空verificationErrors数组，脚本运行错误信息被记录到整个数组中
@@ -41,9 +41,12 @@ class WebLogin(object):
         # 是否接受下一个警告，默认为是
         self.accept_next_alert = True
         # 打开浏览器
-        WebLogin.__url(self)
+        WebLogin.__url(self, url)
         # 用户登录
-        WebLogin.__user(self, "0KOF1MVY04089AD2DQLO", '0KOF1MVY04089AD2DQLO')
+        # WebLogin.__user(self, "0KOF1MVY04089AD2DQLO", '0KOF1MVY04089AD2DQLO')
+        password = uname
+        WebLogin.__user(self, uname, password)
+
 
 
 class WebMenu(object):
@@ -128,13 +131,22 @@ class SAASPc(object):
 
     """点击指定某一个按钮"""
     @staticmethod
-    def buttons(self, text, css="rb-button"):
-        buttons = self.driver.find_elements_by_class_name(css)
-        for b in buttons:
+    def button(self, text, css="rb-button"):
+        button = self.driver.find_elements_by_class_name(css)
+        for b in button:
             if b.text == text:
                 b.click()
                 timesl(2)
                 break
+
+    """循环点击所有该按钮所有的"""
+    @staticmethod
+    def button_cycle(self, text, css="rb-row-button"):
+        button = self.driver.find_elements_by_class_name(css)
+        for b in button:
+            if b.text == text:
+                b.click()
+                timesl(2)
 
     """检查当前列表是否有数据"""
     def checklist(self):

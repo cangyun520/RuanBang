@@ -34,8 +34,8 @@ class ProjectChange(unittest.TestCase):
         pwd.send_keys("asdfghjkl123")
         timesl(1)
 
-        buttons = dr.find_elements_by_class_name("name")
-        for i in buttons:
+        button = dr.find_elements_by_class_name("name")
+        for i in button:
             if i.text == "登录":
                 i.click()
                 break

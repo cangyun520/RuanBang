@@ -34,7 +34,7 @@ class DataExport(unittest.TestCase):
         sunCount = dr.find_element_by_class_name("rb-gridview-sumCount").text
 
         # 导出到指定data/down目录并校验文件是否导出
-        SAASPc.buttons(self, "导出")
+        SAASPc.button(self, "导出")
         timesl(2)
         file_find("xlsx")
         f = _menu + "(" + _time + ")" + ".xlsx"
