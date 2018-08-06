@@ -35,6 +35,7 @@ class HomeManag(unittest.TestCase):
                         break
                 n += 1
         except Exception as e:
+            logger.info(e)
             dr.get_screenshot_as_file(REPORT_PATH + "homePage/test_0101_01_deleteGroup.png")
             unittest.expectedFailure("test_0101_01_deleteGroup")
 

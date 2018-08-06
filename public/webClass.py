@@ -101,9 +101,10 @@ class SAASPc(object):
             wid = "w0"
             return wid
 
-    def wid(self):
-        jscode = "Rb.Pages.Page.s_pages"
-        wid = self.driver.execute_script(jscode)
+    """获取当前页面编号wid,当页面出现2个wid时候"""
+    @staticmethod
+    def get_wid_body(self):
+        wid = self.driver.find_element_by_class_name("body").get_attribute("id")
         return wid
 
     def set_value(self, value):
@@ -111,6 +112,9 @@ class SAASPc(object):
                  "model.internalData[8].setValue('shortName', '" \
                  + value + "');"
         return self.driver.execute_script(jscode)
+
+
+
 
     def get_dada(self):
         jscode = "var data; Rb.Pages.Page.s_pages['w0'].getData({ id: '', mode: Rb.Data.DataModeEnum.singleTable, attachParams: {} }).done(function(result){data=result}); return data;"
