@@ -14,6 +14,7 @@ class HomeManag(unittest.TestCase):
         WebMenu.full_text(self, "钉钉定制", "首页管理")
 
     """首页管理-行数据删除"""
+
     def test_0101_01_deleteGroup(self):
         """应收款情况-行数据删除"""
         dr = self.driver
@@ -21,10 +22,10 @@ class HomeManag(unittest.TestCase):
         # num = 3     # 后续通过数据库查询获取值或者根据列表查询（考虑到外部不能访问数据）
 
         js = "return Rb.Pages.Page.s_pages['w0'].getControl('gridEditGroup').model.length;"
-        num = self.driver.execute_script(js)
+        num = dr.execute_script(js)
         """
         1、通过数据库查询获取
-        2、Js接口获取
+        2、
         3、通过html定位获取
         """
         print(num)
@@ -48,7 +49,8 @@ class HomeManag(unittest.TestCase):
             dr.get_screenshot_as_file(REPORT_PATH + "homePage/test_0101_01_deleteGroup.png")
             unittest.expectedFailure("test_0101_01_deleteGroup")
 
-    """首页管理-行增加"""
+    """首页管理-行增加URL地址"""
+
     def test_0101_02_lineAdd(self):
         """应收款情况-行增加"""
         dr = self.driver
@@ -57,10 +59,10 @@ class HomeManag(unittest.TestCase):
         wid = SAASPc.get_wid_body(self)
 
         lpath = wid + ':baseForm$name'
-        dr.find_element_by_xpath("//*[@id='"+lpath+"']/span[1]/input").send_keys("行自动化应用")
+        dr.find_element_by_xpath("//*[@id='" + lpath + "']/span[1]/input").send_keys("行自动化应用")
 
         ltb = wid + ':toolbar'
-        dr.find_element_by_xpath("//*[@id='"+ltb+"']/div/span[1]").click()
+        dr.find_element_by_xpath("//*[@id='" + ltb + "']/div/span[1]").click()
         timesl(1)
 
         if "成功" in SAASPc.get_tip(self):
@@ -69,23 +71,9 @@ class HomeManag(unittest.TestCase):
             dr.get_screenshot_as_file(REPORT_PATH + "homePage/test_0101_02_lineAdd.png")
             unittest.expectedFailure("test_0101_02_lineAdd")
 
-    """首页管理-行配置（高度，说明）"""
-    def test_0101_03_lineSet(self):
-        """应收款情况-行配置（高度，说明）"""
-        dr = self.driver
-        cells = dr.find_elements_by_class_name("dataCell")
-        for i in cells:
-            # if i.text == "行自动化应用":
-            #     i.click()
-            #     break
-            if i.get_attribute("data-id") == "rowHeight":
-                i.click()
-                dr.find_element_by_id("w0:gridEditGroup$rowHeight").send_keys(150)
-        # 保存
-        dr.find_element_by_xpath("//*[@id='w0:toolBarGroup']/div[1]/span[2]").click()
-
     """首页管理-列新增"""
-    def test_0101_04_colAddUrl(self):
+
+    def test_0101_03_colAddUrl(self):
         """应收款情况-列新增"""
         dr = self.driver
         # 选定特定行
@@ -102,12 +90,12 @@ class HomeManag(unittest.TestCase):
 
         # 类型
         _lx = wid + ':baseForm$type'
-        dr.find_element_by_xpath("//*[@id='"+_lx+"']").send_keys("外部链接")
+        dr.find_element_by_xpath("//*[@id='" + _lx + "']").send_keys("外部链接")
         dr.find_element_by_xpath("//*[@id='" + _lx + "']").send_keys(Keys.ENTER)
 
         # URL地址
         _url = wid + ':baseForm$path'
-        _http = 'https://www.baidu.com/'
+        _http = 'https://m.baidu.com/?tn=&from'
         _httpName = '百度一下'
         dr.find_element_by_xpath("//*[@id='" + _url + "']").send_keys(_http)
 
@@ -117,7 +105,7 @@ class HomeManag(unittest.TestCase):
 
         # 列名称隐藏
         _lmc_yc = wid + ':baseForm$hidden'
-        dr.find_element_by_xpath("//*[@id='"+_lmc_yc+"']/span[2]").click()
+        dr.find_element_by_xpath("//*[@id='" + _lmc_yc + "']/span[2]").click()
 
         # 风格 钉钉应用风格
         _fg = wid + ':baseForm$style'
@@ -130,13 +118,13 @@ class HomeManag(unittest.TestCase):
 
         # 保存
         _save = wid + ':toolbar'
-        dr.find_element_by_xpath("//*[@id='"+_save+"']/div/span[1]").click()
+        dr.find_element_by_xpath("//*[@id='" + _save + "']/div/span[1]").click()
 
         if "成功" in SAASPc.get_tip(self):
             dr.find_element_by_xpath("//*[@id='" + _save + "']/div/span[2]").click()
         else:
-            dr.get_screenshot_as_file(REPORT_PATH + "homePage/test_0101_02_lineAdd.png")
-            unittest.expectedFailure("test_0101_02_lineAdd")
+            dr.get_screenshot_as_file(REPORT_PATH + "homePage/test_0101_03_colAddUrl.png")
+            unittest.expectedFailure("test_0101_03_colAddUrl")
 
         # 列保存
         dr.find_element_by_xpath("//*[@id='w0:toolBarMetro']/div[1]/span[2]").click()
@@ -146,11 +134,95 @@ class HomeManag(unittest.TestCase):
             SAASPc.button(self, "确认")
         except Exception as e:
             logger.info(e)
-            dr.get_screenshot_as_file(REPORT_PATH + "homePage/test_0101_04_colAddUrl.png")
-            unittest.expectedFailure("test_0101_04_colAddUrl")
+            dr.get_screenshot_as_file(REPORT_PATH + "homePage/test_0101_03_colAddUrl.png")
+            unittest.expectedFailure("test_0101_03_colAddUrl")
+
+    """首页管理-列新增页面"""
+    def test_0101_04_colAddPage(self):
+        """应收款情况-列新增页面"""
+        dr = self.driver
+        # 选定特定行
+        cells = dr.find_elements_by_class_name("dataCell")
+        for i in cells:
+            if i.text == "行自动化应用":
+                i.click()
+                break
+        # 新增列-页面
+        dr.find_element_by_xpath("//*[@id='w0:toolBarMetro']/div[1]/span[1]").click()
+        # 进入到区块页面
+        # 获取新增的wid
+        wid = SAASPc.get_wid_body(self)
+        # 类型
+        _lx = wid + ':baseForm$type'
+        dr.find_element_by_xpath("//*[@id='" + _lx + "']").send_keys("页面")
+        timesl(1)
+        dr.find_element_by_xpath("//*[@id='"+_lx+"']").send_keys(Keys.ENTER)
+        timesl(2)
+        # 页面列表
+        js = "return Rb.Pages.Page.s_pages['"+wid+"'].getControl('gridPost').data;"
+        # print(js)
+        _list = dr.execute_script(js)
+        for i in _list:
+            if i['name'] == 'Python爬虫之selenium':
+                rd = i['_id']
+                break
+        # 选定指定行
+        js2 = "return Rb.Pages.Page.s_pages['"+wid+"'].getControl('gridPost').selectedRow('"+rd+"')"
+        dr.execute_script(js2)
+        timesl(1)
+
+        # 列名称隐藏
+        _lmc_yc = wid + ':baseForm$hidden'
+        dr.find_element_by_xpath("//*[@id='" + _lmc_yc + "']/span[2]").click()
+
+        # 风格 钉钉应用风格
+        _fg = wid + ':baseForm$style'
+        dr.find_element_by_xpath("//*[@id='" + _fg + "']/span[2]").click()
+
+        # 图片
+        _log = DATA_PATH + "/img/log/selenium_logo.png"
+        dr.find_element_by_id("metro_fileUpload").send_keys(_log)
+        timesl(2)
+
+        # 保存
+        _save = wid + ':toolbar'
+        dr.find_element_by_xpath("//*[@id='" + _save + "']/div/span[1]").click()
+
+        if "成功" in SAASPc.get_tip(self):
+            dr.find_element_by_xpath("//*[@id='" + _save + "']/div/span[2]").click()
+        else:
+            dr.get_screenshot_as_file(REPORT_PATH + "homePage/test_0101_04_colAddPage.png")
+            unittest.expectedFailure("test_0101_04_colAddPage")
+
+        # 列保存
+        dr.find_element_by_xpath("//*[@id='w0:toolBarMetro']/div[1]/span[2]").click()
+        # 发布
+        dr.find_element_by_xpath("//*[@id='w0:buttons']/div/span").click()
+        try:
+            SAASPc.button(self, "确认")
+        except Exception as e:
+            logger.info(e)
+            dr.get_screenshot_as_file(REPORT_PATH + "homePage/test_0101_04_colAddPage.png")
+            unittest.expectedFailure("test_0101_04_colAddPage")
+
+    """首页管理-行配置（高度，说明）"""
+    def test_0101_06_lineSet(self):
+        """应收款情况-行配置（高度，说明）"""
+        dr = self.driver
+        cells = dr.find_elements_by_class_name("dataCell")
+        for i in cells:
+            # if i.text == "行自动化应用":
+            #     i.click()
+            #     break
+            if i.get_attribute("data-id") == "rowHeight":
+                i.click()
+                dr.find_element_by_id("w0:gridEditGroup$rowHeight").send_keys(150)
+        # 保存
+        dr.find_element_by_xpath("//*[@id='w0:toolBarGroup']/div[1]/span[2]").click()
 
     def tearDown(self):
         self.driver.quit()
+
 
 if __name__ == "__main__":
     unittest.main()
