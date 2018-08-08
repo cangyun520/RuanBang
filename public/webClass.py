@@ -107,17 +107,19 @@ class SAASPc(object):
         wid = self.driver.find_element_by_class_name("body").get_attribute("id")
         return wid
 
+    """获取页面某模块列表数据"""
+    @staticmethod
+    def get_list_value(self, wid, obj):
+        js = "return Rb.Pages.Page.s_pages['"+wid+"'].getControl('"+obj+"').data;"
+        list_value = self.driver.execute_script(js)
+        logger.info(js)
+        return list_value
+
+    @staticmethod
     def set_value(self, value):
         jscode = "Rb.Pages.Page.s_pages['w0'].getControl('gridEdit')." \
                  "model.internalData[8].setValue('shortName', '" \
                  + value + "');"
-        return self.driver.execute_script(jscode)
-
-
-
-
-    def get_dada(self):
-        jscode = "var data; Rb.Pages.Page.s_pages['w0'].getData({ id: '', mode: Rb.Data.DataModeEnum.singleTable, attachParams: {} }).done(function(result){data=result}); return data;"
         return self.driver.execute_script(jscode)
 
     """获取弹出框提示内容"""

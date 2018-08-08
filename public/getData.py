@@ -217,7 +217,7 @@ def get_bank():
 
 
 # 设置自定义字符串测试
-def set_character(start, end):
+def get_character(start, end):
     with open(DATA_PATH + '/text/character5K.txt', 'r', encoding='UTF-8') as data:
         _lines = data.read()
         character = _lines[start:end]
@@ -255,7 +255,7 @@ if __name__ == "__main__":
     print(get_nation())
     print(get_www())
     print(get_bank())
-    print(set_character(6, 100))
+    print(get_character(6, 100))
 
 
 

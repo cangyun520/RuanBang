@@ -1,8 +1,6 @@
 # encoding:utf-8
 from public.webClass import *
-from public.sqlConnect.sqlServer import *
 from public.config import *
-import re
 
 
 class ContractList(unittest.TestCase):

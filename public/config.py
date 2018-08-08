@@ -12,7 +12,7 @@ DATA_PATH = os.path.join(BASE_PATH, 'data')
 DRIVER_PATH = os.path.join(BASE_PATH, 'drivers')
 LOG_PATH = os.path.join(BASE_PATH, 'log')
 REPORT_PATH = os.path.join(BASE_PATH, 'report')
-PICTURE_PATH = os.path.join(BASE_PATH, 'picture')
+PICTURE_PATH = os.path.join(BASE_PATH, 'picture\\')
 APP_PATH = os.path.join(BASE_PATH, 'app')
 DOWN_PATH = os.path.join(BASE_PATH, 'data\\down\\')
 
