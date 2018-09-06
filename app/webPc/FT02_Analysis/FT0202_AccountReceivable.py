@@ -61,7 +61,7 @@ class ContractList(unittest.TestCase):
                 break
         timesl(0.5)
         try:
-            SAASPc.get_tip(self)
+            SaaSPc.get_tip(self)
             timesl(2)
         except Exception as e:
             logger.info(e)
@@ -81,7 +81,7 @@ class ContractList(unittest.TestCase):
                 i.click()
                 timesl(1)
                 break
-        wid = SAASPc.get_wid(self)
+        wid = SaaSPc.get_wid(self)
         _customname = dr.find_element_by_id(wid + ":baseForm$customname").text
 
         if _customname:
@@ -89,7 +89,7 @@ class ContractList(unittest.TestCase):
         else:
             dr.get_screenshot_as_file(REPORT_PATH + "webPc/test_0202_03_detail.png")
             unittest.expectedFailure("test_0202_03_detail")
-        SAASPc.button(self, "返回")
+        SaaSPc.button(self, "返回")
         _title2 = dr.title
 
         if _title == _title2:

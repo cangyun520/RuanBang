@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>王伟合同系统集成自动化测试</title>
+    <title>合先升系统集成自动化测试</title>
     <meta name="generator" content="HTMLTestRunner 0.9.1"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     
@@ -198,10 +198,10 @@
 
     <div id="div_base">
         
-    <div class='page-header'><h1>王伟合同系统集成自动化测试</h1>
-    <p class='attribute'><strong>开始时间:</strong> 2018-07-27 11:47:54</p>
-<p class='attribute'><strong>运行时长:</strong> 0:03:10.108000</p>
-<p class='attribute'><strong>状态:</strong> 通过 4 错误 3</p>
+    <div class='page-header'><h1>合先升系统集成自动化测试</h1>
+    <p class='attribute'><strong>开始时间:</strong> 2018-08-01 10:13:17</p>
+<p class='attribute'><strong>运行时长:</strong> 0:03:40.863000</p>
+<p class='attribute'><strong>状态:</strong> 通过 4 错误 5</p>
 
     </div>
     <div style="float: left;width:50%;"><p class='description'>webPC自动化测试——主流程功能测试执行结果统计<br/>                *   SASS功能集成测试报告<br>                *   指定测试用例为当前文件夹下的test_case目录<br>                *   通过自定函数获取当前文件所在路径<br>                *   获取最新测试报告，并打印运行错误用例<br>                *   把结果发送到指定邮箱<br>                </p></div>
@@ -232,28 +232,30 @@
             <td>查看</td>
         </tr>
         
-    <tr class='passClass'>
+    <tr class='errorClass'>
         <td>FT02_Analysis.FT0202_AccountReceivable.ContractList</td>
         <td>3</td>
-        <td>3</td>
+        <td>1</td>
         <td>0</td>
-        <td>0</td>
+        <td>2</td>
         <td><a href="javascript:showClassDetail('c1',3)">详情</a></td>
     </tr>
 
-<tr id='pt1.1' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_0202_01_Overdue: 应收款情况-逾期60天</div></td>
+<tr id='ft1.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_0202_01_Overdue: 应收款情况-逾期60天</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
-        通过</a>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
+        错误</a>
 
-    <div id='div_pt1.1' class="popup_window">
-        <pre>pt1.1: 超过60天账龄款项数相同
-420000.00
-520000.0
-超过60天本期应收未收金额--
+    <div id='div_ft1.1' class="popup_window">
+        <pre>ft1.1: 超过60天账龄款项数相同
+585000.00
+Traceback (most recent call last):
+  File "E:\PythonTest\RuanBang\app\webPc\FT02_Analysis\FT0202_AccountReceivable.py", line 48, in test_0202_01_Overdue
+    print("总计应收款金额：" + total)
+TypeError: must be str, not float
 </pre>
     </div>
     <!--css div popup end-->
@@ -261,13 +263,30 @@
     </td>
 </tr>
 
-<tr id='pt1.2' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_0202_02_ding</div></td>
-    <td colspan='5' align='center'>通过</td>
+<tr id='ft1.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_0202_02_ding: 应收款情况-DING人</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.2')" >
+        错误</a>
+
+    <div id='div_ft1.2' class="popup_window">
+        <pre>ft1.2: Traceback (most recent call last):
+  File "E:\PythonTest\RuanBang\app\webPc\FT02_Analysis\FT0202_AccountReceivable.py", line 66, in test_0202_02_ding
+    unittest.expectedFailure("test_0202_02_ding")
+  File "C:\Program Files\Python36\lib\unittest\case.py", line 120, in expectedFailure
+    test_item.__unittest_expecting_failure__ = True
+AttributeError: 'str' object has no attribute '__unittest_expecting_failure__'
+</pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
 </tr>
 
 <tr id='pt1.3' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_0202_03_detail</div></td>
+    <td class='none'><div class='testcase'>test_0202_03_detail: 应收款情况-查看详情</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
@@ -283,27 +302,79 @@
     </td>
 </tr>
 
+    <tr class='passClass'>
+        <td>FT03_Provided.FT0301_Budget.ContractList</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c2',1)">详情</a></td>
+    </tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0301_01_save: 预算-保存</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.1')" >
+        通过</a>
+
+    <div id='div_pt2.1' class="popup_window">
+        <pre>pt2.1: 保存成功！
+</pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>FT03_Provided.FT0302_Spending.ContractList</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c3',1)">详情</a></td>
+    </tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0302_01_save: 支出-保存</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.1')" >
+        通过</a>
+
+    <div id='div_pt3.1' class="popup_window">
+        <pre>pt3.1: 保存成功！
+</pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
     <tr class='errorClass'>
         <td>FT06_Contract.FT0601_ContractAdd.ContractAdd</td>
         <td>2</td>
         <td>0</td>
         <td>0</td>
         <td>2</td>
-        <td><a href="javascript:showClassDetail('c2',2)">详情</a></td>
+        <td><a href="javascript:showClassDetail('c4',2)">详情</a></td>
     </tr>
 
-<tr id='ft2.1' class='none'>
+<tr id='ft4.1' class='none'>
     <td class='errorCase'><div class='testcase'>test_0601_01_Add: 合同-新增合同</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.1')" >
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.1')" >
         错误</a>
 
-    <div id='div_ft2.1' class="popup_window">
-        <pre>ft2.1: Traceback (most recent call last):
+    <div id='div_ft4.1' class="popup_window">
+        <pre>ft4.1: Traceback (most recent call last):
   File "E:\PythonTest\RuanBang\app\webPc\FT06_Contract\FT0601_ContractAdd.py", line 23, in test_0601_01_Add
-    wid = SAASPc.get_wid(self, "baseForm")
+    wid = SaaSPc.get_wid(self, "baseForm")
 TypeError: get_wid() takes 1 positional argument but 2 were given
 </pre>
     </div>
@@ -312,18 +383,18 @@ TypeError: get_wid() takes 1 positional argument but 2 were given
     </td>
 </tr>
 
-<tr id='ft2.2' class='none'>
+<tr id='ft4.2' class='none'>
     <td class='errorCase'><div class='testcase'>test_0601_02_check: 合同-新增合同</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.2')" >
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.2')" >
         错误</a>
 
-    <div id='div_ft2.2' class="popup_window">
-        <pre>ft2.2: Traceback (most recent call last):
+    <div id='div_ft4.2' class="popup_window">
+        <pre>ft4.2: Traceback (most recent call last):
   File "E:\PythonTest\RuanBang\app\webPc\FT06_Contract\FT0601_ContractAdd.py", line 65, in test_0601_02_check
-    wid = SAASPc.wid(self, "baseForm")
+    wid = SaaSPc.wid(self, "baseForm")
 TypeError: wid() takes 1 positional argument but 2 were given
 </pre>
     </div>
@@ -338,10 +409,10 @@ TypeError: wid() takes 1 positional argument but 2 were given
         <td>1</td>
         <td>0</td>
         <td>0</td>
-        <td><a href="javascript:showClassDetail('c3',1)">详情</a></td>
+        <td><a href="javascript:showClassDetail('c5',1)">详情</a></td>
     </tr>
 
-<tr id='pt3.1' class='hiddenRow'>
+<tr id='pt5.1' class='hiddenRow'>
     <td class='none'><div class='testcase'>test_0602_01_TotalMoneyCheck: 合同-新增合同</div></td>
     <td colspan='5' align='center'>通过</td>
 </tr>
@@ -352,19 +423,19 @@ TypeError: wid() takes 1 positional argument but 2 were given
         <td>0</td>
         <td>0</td>
         <td>1</td>
-        <td><a href="javascript:showClassDetail('c4',1)">详情</a></td>
+        <td><a href="javascript:showClassDetail('c6',1)">详情</a></td>
     </tr>
 
-<tr id='ft4.1' class='none'>
+<tr id='ft6.1' class='none'>
     <td class='errorCase'><div class='testcase'>test_0603_01_TotalMoneyCheck: 合同-回款列表</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.1')" >
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.1')" >
         错误</a>
 
-    <div id='div_ft4.1' class="popup_window">
-        <pre>ft4.1: Traceback (most recent call last):
+    <div id='div_ft6.1' class="popup_window">
+        <pre>ft6.1: Traceback (most recent call last):
   File "E:\PythonTest\RuanBang\app\webPc\FT06_Contract\FT0603_ReceivableList.py", line 13, in setUp
     WebMenu.full_text(self, "合同管理", "回款")
   File "E:\PythonTest\RuanBang\public\webClass.py", line 56, in full_text
@@ -390,10 +461,10 @@ selenium.common.exceptions.NoSuchElementException: Message: no such element: Una
 
         <tr id='total_row'>
             <td>总计</td>
-            <td>7</td>
+            <td>9</td>
             <td>4</td>
             <td>0</td>
-            <td>3</td>
+            <td>5</td>
             <td>&nbsp;</td>
         </tr>
     </table>
@@ -429,7 +500,7 @@ selenium.common.exceptions.NoSuchElementException: Message: no such element: Una
                     data:[
                         {value:4, name:'通过'},
                         {value:0, name:'失败'},
-                        {value:3, name:'错误'}
+                        {value:5, name:'错误'}
                     ],
                     itemStyle: {
                         emphasis: {

@@ -23,3 +23,31 @@
 2018-08-08 17:09:18,663 - framework - INFO - 保存成功！
 2018-08-08 17:09:48,756 - framework - INFO - 保存成功！
 2018-08-08 17:10:24,287 - framework - INFO - 保存成功！
+2018-08-08 17:37:16,857 - framework - INFO - return Rb.Pages.Page.s_pages['w0'].getControl('leftGrid').data;
+2018-08-08 17:37:39,639 - framework - INFO - 保存成功！
+2018-08-08 18:18:18,572 - framework - INFO - return Rb.Pages.Page.s_pages['w0'].getControl('leftGrid').data;
+2018-08-08 18:18:43,209 - framework - INFO - return Rb.Pages.Page.s_pages['w0'].getControl('leftGrid').data;
+2018-08-08 18:18:52,455 - framework - INFO - 保存成功！
+2018-08-08 18:19:46,839 - framework - INFO - return Rb.Pages.Page.s_pages['w0'].getControl('leftGrid').data;
+2018-08-08 18:20:09,583 - framework - INFO - return Rb.Pages.Page.s_pages['w0'].getControl('leftGrid').data;
+2018-08-08 18:20:18,374 - framework - INFO - 保存成功！
+2018-08-08 18:21:14,384 - framework - INFO - 保存成功！
+2018-08-08 18:21:43,881 - framework - INFO - 保存成功！
+2018-08-08 18:22:20,607 - framework - INFO - 保存成功！
+2018-08-08 18:22:55,752 - framework - INFO - attach file E:\PythonTest\RuanBang\report/FTRport/20180808FT_webPC.htm
+2018-08-08 18:22:57,585 - framework - INFO - 发送邮件"主页定义自动化测试报告20180808"成功! 收件人：405367236@qq.com;bill.wang@softnation.cn;sengmitnick@163.com;dingj@yuandingyun.net;w.huang@softnation.cn;fortunearterial@dingtalk.com;zhoumeng9998@dingtalk.com。
+2018-08-08 18:42:10,990 - framework - INFO - return Rb.Pages.Page.s_pages['w0'].getControl('leftGrid').data;
+2018-08-08 18:42:33,774 - framework - INFO - return Rb.Pages.Page.s_pages['w0'].getControl('leftGrid').data;
+2018-08-08 18:42:43,977 - framework - INFO - 保存成功！
+2018-08-08 18:43:40,936 - framework - INFO - 保存成功！
+2018-08-08 18:44:11,969 - framework - INFO - 保存成功！
+2018-08-08 18:44:48,518 - framework - INFO - 保存成功！
+2018-08-08 18:45:24,937 - framework - INFO - attach file E:\PythonTest\RuanBang\report/HPRport/20180808FT_webPC.htm
+2018-08-08 18:45:26,745 - framework - INFO - 发送邮件"主页定义自动化测试报告20180808"成功! 收件人：405367236@qq.com;bill.wang@softnation.cn;sengmitnick@163.com;dingj@yuandingyun.net;w.huang@softnation.cn;fortunearterial@dingtalk.com;zhoumeng9998@dingtalk.com。
+2018-08-08 18:48:18,622 - framework - INFO - return Rb.Pages.Page.s_pages['w0'].getControl('leftGrid').data;
+2018-08-08 18:48:41,848 - framework - INFO - return Rb.Pages.Page.s_pages['w0'].getControl('leftGrid').data;
+2018-08-08 18:48:52,564 - framework - INFO - 保存成功！
+2018-08-08 18:51:04,540 - framework - INFO - 保存成功！
+2018-08-08 18:51:55,564 - framework - INFO - 保存成功！
+2018-08-08 18:52:45,903 - framework - INFO - attach file E:\PythonTest\RuanBang\report/HPRport/20180808FT_webPC.htm
+2018-08-08 18:52:48,488 - framework - INFO - 发送邮件"主页定义自动化测试报告20180808"成功! 收件人：405367236@qq.com;。

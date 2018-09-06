@@ -22,9 +22,12 @@ class WebLogin(object):
         time.sleep(2)
 
     @staticmethod
-    def __user(self, uname, password):
+    def __user(self, uname, password, tenantid=None):
         """用户登录"""
         driver = self.driver
+        if driver.find_element_by_id('txtTenantId').is_displayed():
+            driver.find_element_by_id('txtTenantId').clear()
+            driver.find_element_by_id('txtTenantId').send_keys(tenantid)
         driver.find_element_by_id("txtCode").clear()
         driver.find_element_by_id("txtCode").send_keys(uname)
         driver.find_element_by_id("txtPassword").clear()
@@ -34,6 +37,7 @@ class WebLogin(object):
 
     @staticmethod
     def submit(self, url, uname):
+        self.driver = webdriver.Chrome()
         # 设置页面上隐形的智能等待时间30秒
         self.driver.implicitly_wait(20)
         # 定义空verificationErrors数组，脚本运行错误信息被记录到整个数组中
@@ -47,6 +51,27 @@ class WebLogin(object):
         password = uname
         WebLogin.__user(self, uname, password)
 
+    # 扶贫登录页面
+    """
+    @url        : 应用的登录地址
+    @ucode      : 用户登录id一般为电话号码
+    @upasswd    : 用户登录密码
+    @tenantid   : 租户ID
+    """
+    @staticmethod
+    def sass_submit(self, url, ucode, upasswd, tenantid):
+        # self.driver = webdriver.Chrome()
+        # 设置页面上隐形的智能等待时间30秒
+        self.driver.implicitly_wait(20)
+        # 定义空verificationErrors数组，脚本运行错误信息被记录到整个数组中
+        self.verificationErrors = []
+        # 是否接受下一个警告，默认为是
+        self.accept_next_alert = True
+        # 打开浏览器
+        WebLogin.__url(self, url)
+        # 用户登录
+        # WebLogin.__user(self, "0KOF1MVY04089AD2DQLO", '0KOF1MVY04089AD2DQLO')
+        WebLogin.__user(self, ucode, upasswd, tenantid)
 
 
 class WebMenu(object):
@@ -74,7 +99,7 @@ class WebMenu(object):
         time.sleep(2)
 
 
-class SAASPc(object):
+class SaaSPc(object):
     """js移动到页面顶部，防止对象遮挡"""
     def top(self, number):
         # js移动到页面顶部，防止对象遮挡
@@ -115,6 +140,13 @@ class SAASPc(object):
         logger.info(js)
         return list_value
 
+    # 设置某表格某列，某行进入编辑状态
+    # Rb.Pages.Page.s_pages["w0"].getControl('gridEditGroup').modifyCell('r1', 'remark')
+    @staticmethod
+    def set_list_modifyCell(self, wid, obj, rid, cid):
+        js = "Rb.Pages.Page.s_pages['" + wid + "'].getControl('"+obj+"').modifyCell.('"+rid+"','"+cid+"');"
+        self.driver.execute_script(js)
+
     @staticmethod
     def set_value(self, value):
         jscode = "Rb.Pages.Page.s_pages['w0'].getControl('gridEdit')." \
@@ -132,7 +164,7 @@ class SAASPc(object):
     """获取控件下拉值区域ID"""
     @staticmethod
     def popup(self, modu, obj):
-        wid = SAASPc.wid(self, modu, obj)
+        wid = SaaSPc.wid(self, modu, obj)
         return wid + "$popup"
 
     """点击指定某一个按钮"""
@@ -157,3 +189,12 @@ class SAASPc(object):
     """检查当前列表是否有数据"""
     def checklist(self):
         pass
+
+    """切换tab页签"""
+    @staticmethod
+    def tab_nav(self, text, css='rb-tab-nav-item'):
+        nav = self.driver.find_elements_by_class_name(css)
+        for i in nav:
+            if i.text == text:
+                i.click()
+                timesl(1)

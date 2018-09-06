@@ -7,8 +7,6 @@ _time = time.strftime("%m%d")
 
 class HomeManag(unittest.TestCase):
     def setUp(self):
-        # 指定浏览器
-        self.driver = webdriver.Chrome()
         # 登录
         WebLogin.submit(self, "homePage", "0KPTYTUA7R0UQBR3P4IF")
         # 打开菜单
@@ -48,7 +46,7 @@ class HomeManag(unittest.TestCase):
         dr = self.driver
         dr.find_element_by_xpath("//*[@id='w0:toolBarGroup']/div[1]/span[1]").click()
         # 获取新增的wid
-        wid = SAASPc.get_wid_body(self)
+        wid = SaaSPc.get_wid_body(self)
 
         lpath = wid + ':baseForm$name'
         dr.find_element_by_xpath("//*[@id='" + lpath + "']/span[1]/input").send_keys("行自动化"+_time)
@@ -57,7 +55,7 @@ class HomeManag(unittest.TestCase):
         dr.find_element_by_xpath("//*[@id='" + ltb + "']/div/span[1]").click()
         timesl(1)
 
-        if "成功" in SAASPc.get_tip(self):
+        if "成功" in SaaSPc.get_tip(self):
             dr.find_element_by_xpath("//*[@id='" + ltb + "']/div/span[2]").click()
         else:
             dr.get_screenshot_as_file(PICTURE_PATH + "homePage/test_0102_02_lineAdd.png")
@@ -77,7 +75,7 @@ class HomeManag(unittest.TestCase):
         dr.find_element_by_xpath("//*[@id='w0:toolBarMetro']/div[1]/span[1]").click()
         # 进入到区块页面
         # 获取新增的wid
-        wid = SAASPc.get_wid_body(self)
+        wid = SaaSPc.get_wid_body(self)
 
         # 类型
         _lx = wid + ':baseForm$type'
@@ -111,7 +109,7 @@ class HomeManag(unittest.TestCase):
         _save = wid + ':toolbar'
         dr.find_element_by_xpath("//*[@id='" + _save + "']/div/span[1]").click()
 
-        if "成功" in SAASPc.get_tip(self):
+        if "成功" in SaaSPc.get_tip(self):
             dr.find_element_by_xpath("//*[@id='" + _save + "']/div/span[2]").click()
         else:
             dr.get_screenshot_as_file(PICTURE_PATH + "homePage/test_0102_03_colAddUrl.png")
@@ -122,7 +120,7 @@ class HomeManag(unittest.TestCase):
         # 发布
         dr.find_element_by_xpath("//*[@id='w0:buttons']/div/span").click()
         try:
-            SAASPc.button(self, "确认")
+            SaaSPc.button(self, "确认")
         except Exception as e:
             logger.info(e)
             dr.get_screenshot_as_file(PICTURE_PATH + "homePage/test_0102_03_colAddUrl.png")
@@ -142,7 +140,7 @@ class HomeManag(unittest.TestCase):
         dr.find_element_by_xpath("//*[@id='w0:toolBarMetro']/div[1]/span[1]").click()
         # 进入到区块页面
         # 获取新增的wid
-        wid = SAASPc.get_wid_body(self)
+        wid = SaaSPc.get_wid_body(self)
         # 类型
         _lx = wid + ':baseForm$type'
         dr.find_element_by_xpath("//*[@id='" + _lx + "']").send_keys("页面")
@@ -179,7 +177,7 @@ class HomeManag(unittest.TestCase):
         _save = wid + ':toolbar'
         dr.find_element_by_xpath("//*[@id='" + _save + "']/div/span[1]").click()
 
-        if "成功" in SAASPc.get_tip(self):
+        if "成功" in SaaSPc.get_tip(self):
             dr.find_element_by_xpath("//*[@id='" + _save + "']/div/span[2]").click()
         else:
             dr.get_screenshot_as_file(PICTURE_PATH + "homePage/test_0102_04_colAddPage.png")
@@ -190,7 +188,7 @@ class HomeManag(unittest.TestCase):
         # 发布
         dr.find_element_by_xpath("//*[@id='w0:buttons']/div/span").click()
         try:
-            SAASPc.button(self, "确认")
+            SaaSPc.button(self, "确认")
         except Exception as e:
             logger.info(e)
             dr.get_screenshot_as_file(PICTURE_PATH + "homePage/test_0102_04_colAddPage.png")
@@ -210,7 +208,7 @@ class HomeManag(unittest.TestCase):
         # 发布
         dr.find_element_by_xpath("//*[@id='w0:buttons']/div/span").click()
         try:
-            SAASPc.button(self, "确认")
+            SaaSPc.button(self, "确认")
         except Exception as e:
             logger.info(e)
             dr.get_screenshot_as_file(PICTURE_PATH + "homePage/test_0102_06_lineSet.png")

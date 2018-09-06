@@ -19,17 +19,13 @@ https://blog.csdn.net/huilan_same/article/details/76572411
 -----------------------
 
 包说明：
-PyMySQL
-
-selenium
-
-Requests
-
-xlrd库 和 xlwt库--xlrd是读excel，xlwt是写excel的库
-
-pyyaml
-
+PyMySQL,
+selenium,
+Requests,
+xlrd库 和 xlwt库--xlrd是读excel，xlwt是写excel的库,
+pyyaml,
 pymssql
+faker
 -----------------------
 安卓
 pip install --pre uiautomator2

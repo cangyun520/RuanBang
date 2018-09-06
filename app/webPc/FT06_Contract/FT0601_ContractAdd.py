@@ -21,16 +21,14 @@ class ContractAdd(unittest.TestCase):
                 break
         timesl(2)
 
-        wid = SAASPc.wid(self)
+        wid = SaaSPc.wid(self)
         print(wid)
 
-
-
-        wid = SAASPc.get_wid(self, "baseForm")
+        wid = SaaSPc.get_wid(self, "baseForm")
         # 合同类别
         wid_htlb = wid + "contractClassId"
         dr.find_element_by_id(wid_htlb).click()
-        v_htlb = SAASPc.popup(self, wid_htlb)
+        v_htlb = SaaSPc.popup(self, wid_htlb)
 
         v_htlb = "#v_htlb"
         print(v_htlb)

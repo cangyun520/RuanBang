@@ -16,7 +16,8 @@ discover = unittest.defaultTestLoader.discover(
     pattern='FT*.py'
 )
 # 报告文件存放路径
-FileName = REPORT_PATH + '/FTRport/' + v_tim + 'FT_webPC.htm'
+FileName = REPORT_PATH + '\\HPReport\\' + v_tim + 'FT_webPC.htm'
+
 fp = open(FileName, 'wb')
 runner = HTMLTestRunner(
     stream=fp,
@@ -34,31 +35,23 @@ fp.close()
 
 
 if __name__ == "__main__":
-    # SMTP服务器
-    server = "smtp.126.com"
-    # 用户名
-    sender = "qinliulangzhou@126.com"
-    # 授权密码，非登录密码
-    password = "qin130sq"
-    # 发件人邮箱(最好写全, 不然会失败)
-    sender = 'qinliulangzhou@126.com'
+    mail_smtp = "smtp.qq.com"                    # SMTP服务器
+    sender = "405367236@qq.com"                 # 用户名
+    password = 'cdbxikdixeppcadg'               # QQ授权密码，非登录密码
     # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
-    receivers = '405367236@qq.com;' \
+    receivers = 'whonline08@126.com;' \
                 'bill.wang@softnation.cn;' \
                 'sengmitnick@163.com;' \
                 'dingj@yuandingyun.net;' \
                 'w.huang@softnation.cn;' \
-                'fortunearterial@dingtalk.com;' \
-                'zhoumeng9998@dingtalk.com'
-    # receivers = '405367236@qq.com'
-    message = '这是今天的测试报告，请查收！具体请看附件。'
-    # 邮件主题
-    title = '主页定义自动化测试报告' + v_tim
+                'fortunearterial@dingtalk.com'
 
+    content = '今天的自动化测试运行结果，请查收'
+    title = '自动化测试报告'                       # 邮件标题
     e = Email(title=title,
-              message=message,
+              message=content,
               receiver=receivers,
-              server=server,
+              server=mail_smtp,
               sender=sender,
               password=password,
               path=FileName

@@ -3,14 +3,26 @@
  * Created by Arvin.liu on 2018-7-18.
  * QQ 405367236
 """
-
-import unittest
+from public.webClass import *
 import requests
+from app.interface.fuping import *
+from public.config import *
 
 
 class PollsTest(unittest.TestCase):
     def setUp(self):
-        self.base_url = 'http://fly3c.wicp.net:20000/login'
+        self.driver = webdriver.Chrome()
+        base_url = 'http://192.168.0.55:9004/login'
+        self.driver.get(base_url)
+
+    def fuping(self):
+        dr = self.driver
+        js_path = DATA_PATH + '/js/fuping.js'
+        with open(js_path, 'r', encoding='utf-8') as f:
+            line = f.read()
+            print(line)
+        print(dr.execute_script(line))
+        timesl(2)
 
     def tearDown(self):
         pass
@@ -46,9 +58,8 @@ class Douban(object):
     response = requests.request("GET", url, headers=headers, params=querystring)
 
     print(response.status_code)
-    for i in response:
-        print(response.text)
-
-
-
-
+    # for i in response:
+    #     print(response.text)
+    cooike = response.cookies
+    for i in cooike:
+        print(i)

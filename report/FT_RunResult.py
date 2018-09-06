@@ -20,7 +20,7 @@ class RunResult(unittest.TestCase):
         self.driver = webdriver.Chrome()
         dr = self.driver
         v_tim = time.strftime("%Y%m%d")
-        _file = REPORT_PATH + '/FTRport/' + v_tim + 'FT_webPC.htm'
+        _file = REPORT_PATH + '/FTReport/' + v_tim + 'FT_webPC.htm'
         dr.maximize_window()
         dr.get(_file)
         time.sleep(3)

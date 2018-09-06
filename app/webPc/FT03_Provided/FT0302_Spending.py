@@ -15,8 +15,8 @@ class ContractList(unittest.TestCase):
     def test_0302_01_save(self):
         """支出-保存"""
         dr = self.driver
-        SAASPc.button(self, "保存")
-        _tip = SAASPc.get_tip(self)
+        SaaSPc.button(self, "保存")
+        _tip = SaaSPc.get_tip(self)
         if "保存成功" in _tip:
             print(_tip)
             logger.info(_tip)

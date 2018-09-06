@@ -235,15 +235,15 @@ class BusinessMan(unittest.TestCase):
 
     """主页-百度一下"""
     def test_0101_14_baidu(self):
-        """主页-签到"""
+        """主页-百度一下"""
         dr = self.driver
         # 进入到页面
         dr.find_element_by_name("百度一下百度一下").click()
         timesl(2)
         try:
             dr.find_element_by_name("百度一下").is_displayed()
-        except Exception as err:
-            print(err)
+        except Exception as e:
+            logger.info(e)
             dr.get_screenshot_as_file(PICTURE_PATH + "/dingtalk/test_0101_01_sign.jpg")
             unittest.expectedFailure("test_0101_01_sign")
 

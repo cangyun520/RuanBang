@@ -5,8 +5,6 @@ from public.config import *
 
 class PageRelease(unittest.TestCase):
     def setUp(self):
-        # 指定浏览器
-        self.driver = webdriver.Chrome()
         # 登录
         WebLogin.submit(self, "homePage", "0KPTYTUA7R0UQBR3P4IF")
         # 打开菜单
@@ -16,13 +14,12 @@ class PageRelease(unittest.TestCase):
     def test_0101_01_deleteGroup(self):
         """页面发布-行数据删除"""
         dr = self.driver
-        wid = SAASPc.get_wid(self)
+        wid = SaaSPc.get_wid(self)
 
         # 页面分类数据列表
         js = "return Rb.Pages.Page.s_pages['" + wid + "'].getControl('leftGrid').data;"
         # 记录运行日志
         logger.info(js)
-        print(js)
         _list = dr.execute_script(js)
         for i in _list:
             if i['name'] == '自动化测试':
@@ -61,11 +58,11 @@ class PageRelease(unittest.TestCase):
     def test_0101_02_pageAdd(self):
         """页面发布-行数据添加"""
         dr = self.driver
-        wid = SAASPc.get_wid(self)
+        wid = SaaSPc.get_wid(self)
         _time = time.strftime("%m%d")
 
         # 页面分类数据列表
-        _list = SAASPc.get_list_value(self, wid, "leftGrid")
+        _list = SaaSPc.get_list_value(self, wid, "leftGrid")
         for i in _list:
             if i['name'] == '自动化测试':
                 rd = i['_id']
@@ -75,31 +72,30 @@ class PageRelease(unittest.TestCase):
         dr.execute_script(js)
         dr.find_element_by_xpath("//*[@id='w0:rightToolbar']/div[1]/span[1]").click()
         timesl(1)
-
         # 文章发布页面
-        wid = SAASPc.get_wid(self)
+        wid = SaaSPc.get_wid(self)
         _title = "Python爬虫之"+_time
         # 标题
         dr.find_element_by_xpath("//*[@id='"+wid+":baseForm$title']/span[1]/input").send_keys(_title)
         # 页面分类
         _ymfl = wid + ':baseForm$categoryId'
-        dr.find_element_by_xpath("//*[@id='" + _ymfl + "']").send_keys("自动化")
-        dr.find_element_by_xpath("//*[@id='" + _ymfl + "']").send_keys(Keys.ENTER)
+        dr.find_element_by_xpath("//*[@id='"+_ymfl+"']").send_keys("自动化")
+        dr.find_element_by_xpath("//*[@id='"+_ymfl+"']").send_keys(Keys.ENTER)
         # 正文内容
         dr.find_element_by_id("edui1_iframeholder").click()
-        dr.find_element_by_id("ueditor_0").send_keys(get_character(100, 2000))
+        dr.find_element_by_id("ueditor_0").send_keys(get_character(100, 1200))
         timesl(2)
         # 发布状态
         _fbzt = wid + ':baseForm$state'
-        dr.find_element_by_xpath("//*[@id='" + _fbzt + "']/span[2]").click()
+        dr.find_element_by_xpath("//*[@id='"+_fbzt+"']/span[2]").click()
 
         # 保存
         _save = wid + ':toolbar'
-        dr.find_element_by_xpath("//*[@id='" + _save + "']/div/span[1]").click()
+        dr.find_element_by_xpath("//*[@id='"+_save+"']/div/span[1]").click()
         timesl(0.5)
 
-        if "成功" in SAASPc.get_tip(self):
-            dr.find_element_by_xpath("//*[@id='" + _save + "']/div/span[2]").click()
+        if "成功" in SaaSPc.get_tip(self):
+            dr.find_element_by_xpath("//*[@id='"+_save+"']/div/span[2]").click()
         else:
             dr.get_screenshot_as_file(PICTURE_PATH + "homePage/test_0101_02_pageAdd.png")
             unittest.expectedFailure("test_0101_02_pageAdd")

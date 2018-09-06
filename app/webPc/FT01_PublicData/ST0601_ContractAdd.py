@@ -20,14 +20,14 @@ class ContractAdd(unittest.TestCase):
                 i.click()
                 break
         timesl(2)
-        wid = SAASPc.wid(self)
+        wid = SaaSPc.wid(self)
         print(wid)
         dr.close()
         v_cloun = dr.find_elements_by_class_name("selected")
         v_cloun[1].click()
         timesl(1)
 
-        v_sjdv = SAASPc.popup(self, "gridEdit", "parentId")
+        v_sjdv = SaaSPc.popup(self, "gridEdit", "parentId")
         # dr.find_element_by_id(v_sjdv).click()
         print(v_sjdv)
 

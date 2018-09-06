@@ -16,7 +16,7 @@ discover = unittest.defaultTestLoader.discover(
     pattern='FT*.py'
 )
 # 报告文件存放路径
-FileName = REPORT_PATH + '/FTRport/' + v_tim + 'FT_webPC.htm'
+FileName = REPORT_PATH + '/FTReport/' + v_tim + 'FT_webPC.htm'
 fp = open(FileName, 'wb')
 runner = HTMLTestRunner(
     stream=fp,
@@ -39,7 +39,7 @@ if __name__ == "__main__":
     # 用户名
     sender = "qinliulangzhou@126.com"
     # 授权密码，非登录密码
-    password = "qin130sq"
+    password = "qin130sqm"
     # 发件人邮箱(最好写全, 不然会失败)
     sender = 'qinliulangzhou@126.com'
     # 接收邮件，可设置为你的QQ邮箱或者其他邮箱

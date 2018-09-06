@@ -34,8 +34,8 @@ class Email:
         self.msg = MIMEMultipart('related')
         self.server = server
         self.sender = sender
-        self.receiver = receiver
         self.password = password
+        self.receiver = receiver
 
     def _attach_file(self, att_file):
         """将单个文件添加到附件列表中"""
@@ -67,36 +67,35 @@ class Email:
         try:
             smtp_server = smtplib.SMTP(self.server)  # 连接sever
         except (gaierror and error) as e:
-            logger.exception('发送邮件失败,无法连接到SMTP服务器，检查网络以及SMTP服务器. %s', e)
+            logger.exception('发送邮件失败,无法连接到SMTP服务器，检查网络以及SMTP服务器. {1}'.format(e))
         else:
             try:
                 smtp_server.login(self.sender, self.password)  # 登录
             except smtplib.SMTPAuthenticationError as e:
-                logger.exception('用户名密码验证失败！%s', e)
+                logger.exception('用户名密码验证失败！{1}'.format(e))
             else:
                 smtp_server.sendmail(self.sender, self.receiver.split(';'), self.msg.as_string())  # 发送邮件
-            finally:
-                smtp_server.quit()  # 断开连接
                 logger.info('发送邮件"{0}"成功! 收件人：{1}。'.format(self.title, self.receiver))
                 print('发送邮件"{0}"成功! 收件人：{1}。'.format(self.title, self.receiver))
+            finally:
+                smtp_server.quit()  # 断开连接
 
 
 if __name__ == "__main__":
-    report = REPORT_PATH + '\\FTRport\\20180720FT_webPC.htm'
-    # with open(report, 'wb') as f:
-    #     content = f
-    mail_host = "smtp.126.com"              # SMTP服务器
+    # report = REPORT_PATH + '\\FTReport\\20180720FT_webPC.htm'
+    report = REPORT_PATH + '\\FTReport\\20180727FT_webPC.htm'
+    mail_smtp = "smtp.126.com"              # SMTP服务器
     sender = "qinliulangzhou@126.com"       # 用户名
-    password = "qin130sq"                       # 授权密码，非登录密码
-    sender = 'qinliulangzhou@126.com'        # 发件人邮箱(最好写全, 不然会失败)
-    receivers = '405367236@qq.com'           # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
-    content = '我用Python'
+    password = "qin130sqm"                       # 授权密码，非登录密码
+    # password = cdbxikdixeppcadg                 # QQ
+    receivers = '405367236@qq.com;whonline08@126.com'           # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
+    content = '我用Python+Selenium进行自动化测试'
     title = '自动化测试报告'                            # 邮件主题
 
     e = Email(title=title,
               message=content,
               receiver=receivers,
-              server=mail_host,
+              server=mail_smtp,
               sender=sender,
               password=password,
               path=report
