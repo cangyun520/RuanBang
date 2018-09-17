@@ -48,7 +48,8 @@ class PageRelease(unittest.TestCase):
 
         SaaSPc.button(self, "保存")
         if "成功" in SaaSPc.get_tip(self):
-            SaaSPc.button(self, "关闭")
+            pass
+            # SaaSPc.button(self, "关闭")
         else:
             dr.get_screenshot_as_file(PICTURE_PATH + "homePage/test_0101_01_add.png")
             unittest.expectedFailure("test_0101_01_add")

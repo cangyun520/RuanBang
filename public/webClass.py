@@ -198,3 +198,24 @@ class SaaSPc(object):
             if i.text == text:
                 i.click()
                 timesl(1)
+
+    """随机选择指定下拉控件值"""
+    @staticmethod
+    def selectButton(self, wid, _id):
+        js = "return Rb.Pages.Page.s_pages['" + wid + "'].getControl('" + _id + "')._data['length'];"
+        _length = self.driver.execute_script(js)
+        if _length:
+            _num = random.randint(0, (_length - 1))
+        else:
+            _num = 0
+        js = "return Rb.Pages.Page.s_pages['" + wid + "'].getControl('" + _id + "')._data;"
+        _name = self.driver.execute_script(js)
+        # 记录运行日志
+        logger.info(js)
+        _name = _name[_num]['name']
+        rowDatas = self.driver.find_elements_by_class_name("rowData")
+        for i in rowDatas:
+            if i.text == _name:
+                i.click()
+                break
+        return _name
