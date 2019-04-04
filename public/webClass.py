@@ -36,6 +36,22 @@ class WebLogin(object):
         time.sleep(2)
 
     @staticmethod
+    def __masterUser(self, user, passwd):
+        """用户登录"""
+        driver = self.driver
+        driver.find_element_by_id("username").clear()
+        driver.find_element_by_id("username").send_keys(user)
+        driver.find_element_by_id("password").clear()
+        driver.find_element_by_id("password").send_keys(passwd)
+        elements = driver.find_elements_by_tag_name("span")
+        for i in elements:
+            if i.text == '登 录':
+                # print(i.text)
+                i.click()
+                break
+        time.sleep(2)
+
+    @staticmethod
     def submit(self, url, uname):
         self.driver = webdriver.Chrome()
         # 设置页面上隐形的智能等待时间30秒
@@ -70,8 +86,29 @@ class WebLogin(object):
         # 打开浏览器
         WebLogin.__url(self, url)
         # 用户登录
-        # WebLogin.__user(self, "0KOF1MVY04089AD2DQLO", '0KOF1MVY04089AD2DQLO')
         WebLogin.__user(self, ucode, upasswd, tenantid)
+
+
+    # 主数据登录页面
+    """
+    @url        : 应用的登录地址
+    @ucode      : 用户登录id一般为电话号码
+    @upasswd    : 用户登录密码
+    """
+
+    @staticmethod
+    def master_login(self, url, user, passwd):
+        # self.driver = webdriver.Chrome()
+        # 设置页面上隐形的智能等待时间30秒
+        self.driver.implicitly_wait(20)
+        # 定义空verificationErrors数组，脚本运行错误信息被记录到整个数组中
+        self.verificationErrors = []
+        # 是否接受下一个警告，默认为是
+        self.accept_next_alert = True
+        # 打开浏览器
+        WebLogin.__url(self, url)
+        # 用户登录
+        WebLogin.__masterUser(self, user, passwd)
 
 
 class WebMenu(object):
@@ -97,6 +134,15 @@ class WebMenu(object):
         else:
             pass
         time.sleep(2)
+
+    @staticmethod
+    def top_full_text(self, menu):
+        # 全名称菜单
+        menus = self.driver.find_elements_by_class_name("ant-menu-submenu-title")
+        for i in menus:
+            if i.text == menu:
+                i.click()
+                break
 
 
 class SaaSPc(object):
@@ -169,9 +215,9 @@ class SaaSPc(object):
 
     """点击指定某一个按钮"""
     @staticmethod
-    def button(self, text, css="rb-button"):
-        button = self.driver.find_elements_by_class_name(css)
-        for b in button:
+    def button(self, text):
+        buttons = self.driver.find_elements_by_tag_name('button')
+        for b in buttons:
             if b.text == text:
                 b.click()
                 timesl(2)

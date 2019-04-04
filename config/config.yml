@@ -4,6 +4,7 @@ url:
   homePage: https://tps.smk17.cn:446/login
   saas_fuping: http://192.168.0.55:9004/login
   saas_zhzj: http://192.168.0.55:9006/login
+  master_test: http://192.168.0.112:9010/#/login
 
 log:
     file_name: test.log
