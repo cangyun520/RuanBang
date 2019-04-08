@@ -1,1 +1,5 @@
-RbCore.currentPage.getControlInstance().rIframe.context.getControlInstance().form.dataModel.type
+设置字段值：
+RbCore.currentPage.getControlInstance().rIframe.context.getControlInstance().form.dataModel.type=1
+
+获取字段值
+RbCore.currentPage.getControlInstance().rIframe.context.getControlInstance().form.dataModel.productTypeIds

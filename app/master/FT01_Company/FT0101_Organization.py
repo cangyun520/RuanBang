@@ -15,47 +15,55 @@ class Organization(unittest.TestCase):
         # 登录
         WebLogin.master_login(self, "master_test", "user", "user123456")
         # 打开菜单
-        WebMenu.top_full_text(self, "公司主数据")
+        WebMenu.top_full_text(self, "组织主数据")
         self.driver.find_element_by_id('/page/mdm/02/$Menu').click()
         self.driver.find_element_by_xpath("//*[@id='/page/mdm/02/$Menu']/li[1]").click()
+        timesl(2)
 
     """管理组织-添加组织"""
     def test_0101_01_add(self):
         """管理组织-添加组织"""
         dr = self.driver
+        # 选择 武汉光谷地产股份有限公司 自动化数据全部添加到这个公司
+        v_tree = dr.find_elements_by_class_name("ant-tree-title")
+        for i in v_tree:
+            if "光谷地产" in i.text:
+                i.click()
+                break
+
+        v_num = dr.find_elements_by_css_selector(".ant-table-tbody")[0].find_elements_by_css_selector("tr")
+        v_num = len(v_num)
+
         SaaSPc.button(self, "添加组织")
-        timesl(20)
+        v_company = random_company()
+        dr.find_element_by_xpath("//*[@id='form_name']/div/div[2]/div/span/span/input").send_keys(v_company)
+
+        # 组织类型
         js = "RbCore.currentPage.getControlInstance().rIframe.context.getControlInstance().form.dataModel.type=1"
         dr.execute_script(js)
 
+        # 产品范围
+        dr.find_element_by_xpath("//*[@id='form_productTypeIds']/div/div[2]/div/span/div/div/div").click()
+        v_proTypes = dr.find_elements_by_class_name("ant-select-dropdown-menu-item")
+        m = 5
+        n = 0
+        while n < m:
+            v_proTypes[n].click()
+            n += 1
+        timesl(1)
 
-        '''所属板块
-        295939592245350400 = 地产开发
-        295939592312459264 = 物业服务
-        295939592312459265 = 商业运营
-        303505516171235328 = 医疗养老
-        303505516171235329 = 海外业务
-        '''
-        data = '295939592245350400'
-        js = "RbCore.currentPage.getControlInstance().rIframe.context.getControlInstance().form.dataModel.businessPlateId="+ data
-
-        '''产品范围
-        296616656422178816,高层
-        296616656422178817,小高层
-        296616656422178818,花园洋房
-        296616656422178819,别墅
-        296616656422178820产业园
-        '''
-        data = '296616656422178816,296616656422178817,296616656422178818,296616656422178819,296616656422178820'
-        js = "RbCore.currentPage.getControlInstance().rIframe.context.getControlInstance().form.dataModel.productTypeIds="+ data
-        dr.execute_script(js)
-
+        # 保存
         SaaSPc.button(self, "保存")
-        if "成功" in SaaSPc.get_tip(self):
-            SaaSPc.button(self, "返回")
+        timesl(2)
+
+        # 添加数据后列表校验
+        v_total = dr.find_elements_by_css_selector(".ant-table-tbody")[0].find_elements_by_css_selector("tr")
+        v_total = len(v_total)
+        if v_total > v_num:
+            print("初始行数据：{0}，添加后数量：{1}，添加公司：{2}".format(v_num, v_total, v_company))
         else:
-            dr.get_screenshot_as_file(PICTURE_PATH + "homePage/test_0101_02add.png")
-            unittest.expectedFailure("test_0101_02add")
+            dr.get_screenshot_as_file(PICTURE_PATH + "master/test_0101_01_add.png")
+            unittest.expectedFailure("test_0101_01_add")
 
     def tearDown(self):
         self.driver.quit()
