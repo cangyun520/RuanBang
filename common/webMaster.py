@@ -1,7 +1,6 @@
 # encoding:utf-8
-from public.getData import *
-
-from common.config import *
+from common.getData import *
+from common.config.config import *
 
 
 class WebLogin(object):

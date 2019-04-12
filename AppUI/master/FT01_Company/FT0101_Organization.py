@@ -4,10 +4,9 @@
  * QQ 405367236
 """
 # 随机数据
-from public.generator import *
-from public.webMaster import *
-
-from common.config import *
+from common.webMaster import *
+from common.generator import *
+from common.config.config import Config
 
 
 class Organization(unittest.TestCase):
