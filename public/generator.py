@@ -183,22 +183,17 @@ def random_uri():
     """随机URI地址"""
     return fake.uri()
 
-
 def random_digit():
     """0~9随机数"""
     return fake.random_digit()
-
 
 def random_int(a, b):
     """0~9随机数"""
     return fake.random_int(a, b)
 
-
-
 def random_color():
     """随机颜色名"""
     return fake.color_name()
-
 
 def random_sentence():
     """生成一句话"""
@@ -213,6 +208,27 @@ def random_word():
 def random_paragraphs():
     """生成多个段落，通过参数nb来控制段落数，返回数组"""
     return fake.paragraphs()
+
+def random_credit_card():
+    # 生成信用卡号
+    return fake.credit_card_number()
+
+def random_past_date():
+    # 随机生成已经过去的日期
+    return fake.past_date()
+
+def random_future_date():
+    # 随机生成未来日期
+    return fake.future_date()
+
+
+
+
+
+
+
+
+
 
 
 

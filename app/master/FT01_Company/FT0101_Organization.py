@@ -1,9 +1,9 @@
 # encoding:utf-8
 """
- * Created by Arvin.liu on 2018-9-6.
+ * Created by Arvin.liu on 2019-4-2.
  * QQ 405367236
 """
-from public.webClass import *
+from public.webMaster import *
 from public.config import *
 # 随机数据
 from public.generator import *
@@ -15,10 +15,8 @@ class Organization(unittest.TestCase):
         # 登录
         WebLogin.master_login(self, "master_test", "user", "user123456")
         # 打开菜单
-        WebMenu.top_full_text(self, "组织主数据")
-        self.driver.find_element_by_id('/page/mdm/02/$Menu').click()
+        MenuOpen.menu_top_full(self, "公司主数据")
         self.driver.find_element_by_xpath("//*[@id='/page/mdm/02/$Menu']/li[1]").click()
-        timesl(2)
 
     """管理组织-添加组织"""
     def test_0101_01_add(self):
@@ -34,13 +32,14 @@ class Organization(unittest.TestCase):
         v_num = dr.find_elements_by_css_selector(".ant-table-tbody")[0].find_elements_by_css_selector("tr")
         v_num = len(v_num)
 
-        SaaSPc.button(self, "添加组织")
+        ObjectPc.button(self, "添加组织")
         v_company = random_company()
         dr.find_element_by_xpath("//*[@id='form_name']/div/div[2]/div/span/span/input").send_keys(v_company)
 
         # 组织类型
         js = "RbCore.currentPage.getControlInstance().rIframe.context.getControlInstance().form.dataModel.type=1"
         dr.execute_script(js)
+        logger.info(js)
 
         # 产品范围
         dr.find_element_by_xpath("//*[@id='form_productTypeIds']/div/div[2]/div/span/div/div/div").click()
@@ -53,17 +52,20 @@ class Organization(unittest.TestCase):
         timesl(1)
 
         # 保存
-        SaaSPc.button(self, "保存")
+        ObjectPc.button(self, "保存")
         timesl(2)
 
         # 添加数据后列表校验
         v_total = dr.find_elements_by_css_selector(".ant-table-tbody")[0].find_elements_by_css_selector("tr")
         v_total = len(v_total)
-        if v_total > v_num:
+        try:
+            v_total > v_num
             print("初始行数据：{0}，添加后数量：{1}，添加公司：{2}".format(v_num, v_total, v_company))
-        else:
+        except Exception as e:
+            logger.info(e)
+            unittest.expectedFailure('test_0101_01_add')
             dr.get_screenshot_as_file(PICTURE_PATH + "master/test_0101_01_add.png")
-            unittest.expectedFailure("test_0101_01_add")
+
 
     def tearDown(self):
         self.driver.quit()

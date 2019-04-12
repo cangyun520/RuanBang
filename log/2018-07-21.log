@@ -1,4 +1,0 @@
-2018-07-21 17:33:45,659 - framework - INFO - 总计运行用例 6 条，失败：2 条
-2018-07-21 18:43:17,763 - framework - INFO - 合同列表金额相同
-2018-07-21 18:43:41,340 - framework - INFO - attach file E:\PythonTest\RuanBang\report/FTRport/20180721FT_webPC.htm
-2018-07-21 18:43:43,239 - framework - INFO - 发送邮件"王伟合同自动化测试报告20180721"成功! 收件人：405367236@qq.com;506505739@qq.com;sengmitnick@163.com;liuy@ydyhl.onaliyun.com;ligd@ydyhl.onaliyun.com。

@@ -3,7 +3,7 @@ import pymysql
 import types
 """
 Created by Arvin.liu 15807146017
-Date :2018-06-04.
+Date :2019-04-04.
 """
 # server    数据库服务器名称或IP
 # user      用户名
@@ -11,15 +11,15 @@ Date :2018-06-04.
 # database  数据库名称
 
 
-class Mysqldb():
+class Mysqldb(object):
     __db = None
 
     __config = {
-        'host': "192.168.0.55",
-        'port': 1433,
-        'username': "sa",
-        'password': "rb1234",
-        'database': "sass_wwht",
+        'host': "192.168.0.126",
+        'port': 3306,
+        'username': "root",
+        'password': "myroot@1234",
+        'database': "master",
         'charset': "utf8"
     }
 
@@ -127,6 +127,9 @@ class Mysqldb():
                     else:
                         s += ", " + domain
             return s + ")"
+
+
+
 
 """
 参考  https://blog.csdn.net/leyounger/article/details/73277209
