@@ -8,7 +8,7 @@ from common.log import logger
 op = webdriver.ChromeOptions()
 prefs = {
     'profile.default_content_settings.popups': 0,   # 不弹窗
-    'download.default_directory': DOWN_PATH     # 下载路径
+    'down.default_directory': DOWN_PATH     # 下载路径
 }
 op.add_experimental_option('prefs', prefs)
 

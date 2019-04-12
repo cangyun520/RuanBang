@@ -5,11 +5,8 @@ Date :2018-06-05.
 """
 
 import logging
-import os
-import time
 from logging.handlers import TimedRotatingFileHandler
-
-from common.config import LOG_PATH, Config
+from common.config.config import *
 
 """
 日志类。通过读取配置文件，定义日志级别、日志文件名、日志格式等。
@@ -30,7 +27,7 @@ class Logger(object):
         self.log_file_name = _data + '.log'    # 动态生成每日日志文件
         # self.log_file_name = c.get('file_name') if c and c.get('file_name') else 'test.log'   # 生成固定日志文件
         # 保留的日志数量
-        self.backup_count = c.get('backup') if c and c.get('backup') else 5
+        self.backup_count = c.get('backup') if c and c.get('backup') else 50
         # 日志输出级别
         self.console_output_level = c.get('console_level') if c and c.get('console_level') else 'WARNING'
         self.file_output_level = c.get('file_level') if c and c.get('file_level') else 'DEBUG'
@@ -38,7 +35,7 @@ class Logger(object):
         pattern = c.get('pattern') if c and c.get('pattern') else '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
         self.formatter = logging.Formatter(pattern)
 
-    def get_logger(self):
+    def get_logger(self, appname):
         """在logger中添加日志句柄并返回，如果logger已有句柄，则直接返回
         我们这里添加两个句柄，一个输出日志到控制台，另一个输出到日志文件。
         两个句柄的日志级别不同，在配置文件中可设置。
@@ -50,7 +47,7 @@ class Logger(object):
             self.logger.addHandler(console_handler)
 
             # 每天重新创建一个日志文件，最多保留backup_count份
-            file_handler = TimedRotatingFileHandler(filename=os.path.join(LOG_PATH, self.log_file_name),
+            file_handler = TimedRotatingFileHandler(filename=os.path.join(log_path_app(appname), self.log_file_name),
                                                     when='D',
                                                     interval=1,
                                                     backupCount=self.backup_count,
@@ -62,4 +59,7 @@ class Logger(object):
             self.logger.addHandler(file_handler)
         return self.logger
 
-logger = Logger().get_logger()
+
+
+def logger(appname=None):
+    return Logger().get_logger(appname)

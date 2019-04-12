@@ -6,7 +6,7 @@
 # 随机数据
 from common.webMaster import *
 from common.generator import *
-from common.config.config import Config
+from common.log import *
 
 
 class Organization(unittest.TestCase):
@@ -41,7 +41,7 @@ class Organization(unittest.TestCase):
         # 组织类型
         js = "RbCore.currentPage.getControlInstance().rIframe.context.getControlInstance().form.dataModel.type=1"
         dr.execute_script(js)
-        logger.info(js)
+        logger('master').info(js)
 
         # 产品范围
         dr.find_element_by_xpath("//*[@id='form_productTypeIds']/div/div[2]/div/span/div/div/div").click()
@@ -66,7 +66,7 @@ class Organization(unittest.TestCase):
         except Exception as e:
             logger.info(e)
             unittest.expectedFailure('test_0101_01_add')
-            dr.get_screenshot_as_file(PICTURE_PATH + "master/test_0101_01_add.png")
+            dr.get_screenshot_as_file(screenshot_path_app('master') + "master/test_0101_01_add.png")
 
 
     def tearDown(self):

@@ -9,13 +9,20 @@ from common.fileReader import YamlReader
 # 这是是全局变量
 BASE_PATH = os.path.split(os.path.dirname(os.path.abspath(__file__)))[0]
 CONFIG_FILE = os.path.join(BASE_PATH, 'config', 'config.yml')
-DATA_PATH = os.path.join(BASE_PATH, 'data')
-DRIVER_PATH = os.path.join(BASE_PATH, 'drivers')
-LOG_PATH = os.path.join(BASE_PATH, 'log')
+PUBLIC_PATH = os.path.join(BASE_PATH, 'public')
+APPUI_PATH = os.path.join(BASE_PATH, 'AppUI')
+EXTEND_PATH = os.path.join(BASE_PATH, 'extend')
+APPINTERFACE_PATH = os.path.join(BASE_PATH, 'AppInterface')
+LOG_PATH = os.path.join(BASE_PATH, 'log\\')
 REPORT_PATH = os.path.join(BASE_PATH, 'report')
-PICTURE_PATH = os.path.join(BASE_PATH, 'picture\\')
-APP_PATH = os.path.join(BASE_PATH, 'AppUI')
-DOWN_PATH = os.path.join(BASE_PATH, 'data\\down\\')
+IMG_PATH = os.path.join(PUBLIC_PATH, 'img\\')
+DOWN_PATH = os.path.join(PUBLIC_PATH, 'down\\')
+DATA_PATH = os.path.join(PUBLIC_PATH, 'data\\')
+DRIVER_PATH = os.path.join(PUBLIC_PATH, 'drivers')
+EXCEL_PATH = os.path.join(PUBLIC_PATH, 'excel\\')
+COOKIE_PATH = os.path.join(PUBLIC_PATH, 'cookie\\')
+SCREENSHOT_PATH = os.path.join(PUBLIC_PATH, 'screenshot\\')
+JS_PATH = os.path.join(PUBLIC_PATH, 'js\\')
 
 
 class Config(object):
@@ -33,6 +40,18 @@ class Config(object):
         return self.config[index].get(element)
 
 
+# 获取应用日志路径
+def log_path_app(app):
+    return LOG_PATH + app
+
+# 获取屏幕截图应用路径
+def screenshot_path_app(app):
+    return SCREENSHOT_PATH + app
+
+# 后去UI测试应用路径
+def appui_path_app(app):
+    return APPUI_PATH + app
+
 # 休眠时间
 def timesl(num):
     if 0 < num < 100:
@@ -40,6 +59,10 @@ def timesl(num):
     else:
         print("休眠时间非 大于0，小于100，请重新设置")
 
+
+
+if __name__ == "__main__":
+    print(log_path_app('wwww'))
 
 
 """
