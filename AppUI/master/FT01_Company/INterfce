@@ -1,0 +1,10 @@
+设置字段值：
+RbCore.currentPage.getControlInstance().rIframe.context.getControlInstance().form.dataModel.type=1
+
+获取字段值
+RbCore.currentPage.getControlInstance().rIframe.context.getControlInstance().form.dataModel.productTypeIds
+
+# 选定指定行
+        js2 = "return Rb.Pages.Page.s_pages['"+wid+"'].getControl('gridPost').selectedRow('"+rd+"')"
+# 页面分类数据列表
+        js = "return Rb.Pages.Page.s_pages['" + wid + "'].getControl('leftGrid').data;"
