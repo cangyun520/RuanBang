@@ -6,12 +6,14 @@ Date :2018-06-05.
 轻量级自动化测试框架
 Test_framework
     |--application（测试用例工程）
+    |--common（公共方法）
     |--config（配置文件）
     |--drivers（驱动）
     |--log（日志）
+    |--extend（扩展插件）
     |--report（报告）
     |--data（数据文件）
-    |--public（公共方法）
+    |--public（公共文件）
     |--ReadMe.md（框架需要的环境以及用法）
 
 参考文章
