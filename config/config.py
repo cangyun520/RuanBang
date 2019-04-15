@@ -1,7 +1,6 @@
 # encoding:utf-8
 import os
 import time
-
 from common.fileReader import YamlReader
 
 # 通过当前文件的绝对路径，其父级目录一定是框架的base目录，然后确定各层的绝对路径。
@@ -41,8 +40,8 @@ class Config(object):
 
 
 # 获取应用日志路径
-def log_path_app(app):
-    return LOG_PATH + app
+def log_path_app(appname):
+    return LOG_PATH + appname
 
 # 获取屏幕截图应用路径
 def screenshot_path_app(app):
@@ -62,6 +61,7 @@ def timesl(num):
 
 
 if __name__ == "__main__":
+    print(BASE_PATH)
     print(log_path_app('wwww'))
 
 

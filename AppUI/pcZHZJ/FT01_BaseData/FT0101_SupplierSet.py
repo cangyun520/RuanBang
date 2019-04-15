@@ -6,8 +6,6 @@
 from public.generator import *
 from public.webClass import *
 
-from common.config import *
-
 
 class PageRelease(unittest.TestCase):
     def setUp(self):

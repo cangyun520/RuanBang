@@ -6,7 +6,8 @@ Date :2018-06-05.
 
 import logging
 from logging.handlers import TimedRotatingFileHandler
-from common.config.config import *
+
+from config.config import *
 
 """
 日志类。通过读取配置文件，定义日志级别、日志文件名、日志格式等。
@@ -17,7 +18,7 @@ logger.info('test log')
 
 
 class Logger(object):
-    def __init__(self, logger_name='framework'):
+    def __init__(self, logger_name='llz'):
         self.logger = logging.getLogger(logger_name)
         logging.root.setLevel(logging.NOTSET)
         # 获取日志配置

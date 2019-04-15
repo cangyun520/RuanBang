@@ -3,8 +3,6 @@ from public.getData import *
 from public.log import logger
 from selenium import webdriver
 
-from common.config import *
-
 
 class WebLogin(object):
     """初始测试准备工作"""

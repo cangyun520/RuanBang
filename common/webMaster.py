@@ -1,7 +1,7 @@
 # encoding:utf-8
-from common.config.config import *
-from selenium import webdriver
+from config.config import *
 import unittest
+from selenium import webdriver
 
 
 class WebLogin(object):

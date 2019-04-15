@@ -2,8 +2,6 @@
 import requests
 from public.webClass import *
 
-from common.config import *
-
 
 class PageRelease(unittest.TestCase):
     def setUp(self):

@@ -4,8 +4,6 @@ import re
 from public.sqlConnect.sqlServer import *
 from public.webClass import *
 
-from common.config import *
-
 
 class ContractList(unittest.TestCase):
     def setUp(self):

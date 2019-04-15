@@ -4,10 +4,8 @@
  * QQ 405367236
 """
 # 随机数据
-from public.generator import *
-from public.webMaster import *
-
-from common.config import *
+from common.generator import *
+from common.webMaster import *
 
 
 class LegalPerson(unittest.TestCase):

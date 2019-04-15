@@ -3,7 +3,7 @@ from public.HTMLTestRunner_PY3 import HTMLTestRunner
 from public.mail import *
 from public.webClass import *
 
-from common.config import APP_PATH, REPORT_PATH
+from config import APP_PATH, REPORT_PATH
 
 '''
     *   Arvin.liu

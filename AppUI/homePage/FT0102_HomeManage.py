@@ -1,8 +1,6 @@
 # encoding:utf-8
 from public.webClass import *
 
-from common.config import *
-
 _time = time.strftime("%m%d")
 
 

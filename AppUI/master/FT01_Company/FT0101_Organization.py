@@ -39,19 +39,15 @@ class Organization(unittest.TestCase):
         dr.find_element_by_xpath("//*[@id='form_name']/div/div[2]/div/span/span/input").send_keys(v_company)
 
         # 组织类型
-        js = "RbCore.currentPage.getControlInstance().rIframe.context.getControlInstance().form.dataModel.type=1"
+        js = 'RbCore.currentPage.getControlInstance().rIframe.context.getControlInstance().form.dataModel.type=1'
         dr.execute_script(js)
         logger('master').info(js)
 
         # 产品范围
-        dr.find_element_by_xpath("//*[@id='form_productTypeIds']/div/div[2]/div/span/div/div/div").click()
-        v_proTypes = dr.find_elements_by_class_name("ant-select-dropdown-menu-item")
-        m = 5
-        n = 0
-        while n < m:
-            v_proTypes[n].click()
-            n += 1
-        timesl(1)
+        v_proTypes = '296616656422178817,296616656422178818,296616656422178819,296616656422178820,296616656422178821'
+        js = "RbCore.currentPage.getControlInstance().rIframe.context.getControlInstance().form.dataModel.productTypeIds ='" + v_proTypes + "'"
+        logger('master').info(js)
+        dr.execute_script(js)
 
         # 保存
         ObjectPc.button(self, "保存")
@@ -62,9 +58,11 @@ class Organization(unittest.TestCase):
         v_total = len(v_total)
         try:
             v_total > v_num
-            print("初始行数据：{0}，添加后数量：{1}，添加公司：{2}".format(v_num, v_total, v_company))
+            v_result = "初始行数据：{0}，添加后数量：{1}，添加公司：{2}".format(v_num, v_total, v_company)
+            print(v_result)
+            logger('master').info(v_result)
         except Exception as e:
-            logger.info(e)
+            logger('master').info(e)
             unittest.expectedFailure('test_0101_01_add')
             dr.get_screenshot_as_file(screenshot_path_app('master') + "master/test_0101_01_add.png")
 

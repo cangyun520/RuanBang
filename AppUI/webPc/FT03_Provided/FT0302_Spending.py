@@ -1,8 +1,6 @@
 # encoding:utf-8
 from public.webClass import *
 
-from common.config import *
-
 
 class ContractList(unittest.TestCase):
     def setUp(self):

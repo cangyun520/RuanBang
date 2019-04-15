@@ -2,7 +2,7 @@
 from public.log import logger
 from public.webClass import *
 
-from common.config import REPORT_PATH
+from config import REPORT_PATH
 
 '''
 思路：

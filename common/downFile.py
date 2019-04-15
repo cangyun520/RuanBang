@@ -5,7 +5,7 @@ Date :2018-08-02.
 """
 import os
 
-from common.config import DOWN_PATH
+from config import DOWN_PATH
 
 
 # 查找某类型文件

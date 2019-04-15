@@ -3,7 +3,7 @@ import time
 
 from selenium import webdriver
 
-from common.config import DRIVER_PATH, REPORT_PATH
+from config import DRIVER_PATH, REPORT_PATH
 
 # 可根据需要扩展
 CHROMEDRIVER_PATH = DRIVER_PATH + '\cchromedriver.exe'
