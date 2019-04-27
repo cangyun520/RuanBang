@@ -15,7 +15,14 @@ class LegalPerson(unittest.TestCase):
         WebLogin.master_login(self, "master_test", "user", "user123456")
         # 打开菜单
         MenuOpen.menu_top_full(self, "公司主数据")
-        self.driver.find_element_by_xpath("//*[@id='/page/mdm/02/$Menu']/li[6]").click()
+        timesl(100)
+        menus = self.driver.find_elements_by_class_name("ant-menu-item")
+        for i in menus:
+            print(i.text)
+            if i.text == "法人公司":
+                i.click()
+                break
+        # self.driver.find_element_by_xpath("//*[@id='/page/mdm/02/$Menu']/li[6]").click()
 
     """管理组织-法人公司"""
     def test_0102_01_add(self):
@@ -42,7 +49,7 @@ class LegalPerson(unittest.TestCase):
         # 类型
         js = "RbCore.currentPage.getControlInstance().form.dataModel.businessTypeId='295939592316653568';"
         dr.execute_script(js)
-        logger.info(js)
+        logger("master").info(js)
         # 住所
         dr.find_element_by_xpath("//*[@id='form_address']/div/div[2]/div/span/span/input").send_keys(random_address())
         # 法定代表人

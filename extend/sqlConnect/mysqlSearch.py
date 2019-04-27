@@ -11,7 +11,7 @@ Date :2018-06-04.
 # database  数据库名称
 
 
-class Mysqldb():
+class Mysqldb2():
     __db = None
 
     __config = {

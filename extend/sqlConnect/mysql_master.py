@@ -1,6 +1,7 @@
 # encoding:utf-8
 import pymysql
 import types
+import re
 """
 Created by Arvin.liu 15807146017
 Date :2019-04-04.
@@ -11,7 +12,7 @@ Date :2019-04-04.
 # database  数据库名称
 
 
-class Mysqldb(object):
+class MysqlMaster():
     __db = None
 
     __config = {
@@ -32,7 +33,7 @@ class Mysqldb(object):
 
     def __connect(self):
         if(self.__db == None):
-            self.__db = Mysqldb.connect(
+            self.__db = pymysql.connect(
                 host=self.__config['host'],
                 port=self.__config['port'],
                 user=self.__config['username'],
@@ -136,7 +137,7 @@ class Mysqldb(object):
 """
 
 if __name__ == "__main__":
-    db = Mysqldb()
-    _sql = "SELECT * FROM wht_Contract"
-    a= db.query_one(_sql)
+    # db = MysqlMaster()
+    _sql = "SELECT count(id) from md_organizationextend"
+    a = MysqlMaster().query_one(_sql)
     print(a)

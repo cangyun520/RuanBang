@@ -7,6 +7,7 @@
 from common.webMaster import *
 from common.generator import *
 from common.log import *
+from extend.sqlConnect.mysql_master import MysqlMaster
 
 
 class Organization(unittest.TestCase):
@@ -31,8 +32,7 @@ class Organization(unittest.TestCase):
                 i.click()
                 break
 
-        v_num = dr.find_elements_by_css_selector(".ant-table-tbody")[0].find_elements_by_css_selector("tr")
-        v_num = len(v_num)
+        v_num = MysqlMaster().query_one("SELECT count(id) from md_organizationextend")
 
         ObjectPc.button(self, "添加组织")
         v_company = random_company()
@@ -54,8 +54,7 @@ class Organization(unittest.TestCase):
         timesl(2)
 
         # 添加数据后列表校验
-        v_total = dr.find_elements_by_css_selector(".ant-table-tbody")[0].find_elements_by_css_selector("tr")
-        v_total = len(v_total)
+        v_total = MysqlMaster().query_one("SELECT count(id) from md_organizationextend")
         try:
             v_total > v_num
             v_result = "初始行数据：{0}，添加后数量：{1}，添加公司：{2}".format(v_num, v_total, v_company)
