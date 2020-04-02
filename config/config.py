@@ -59,7 +59,6 @@ def timesl(num):
         print("休眠时间非 大于0，小于100，请重新设置")
 
 
-
 if __name__ == "__main__":
     print(BASE_PATH)
     print(log_path_app('wwww'))

@@ -1,16 +1,16 @@
 # encoding:utf-8
 from public.HTMLTestRunner_PY3 import HTMLTestRunner
-from public.mail import *
-from public.webClass import *
+from common.mail import *
+from common.webClass import *
 
-from config import APP_PATH, REPORT_PATH
+from config.config import APPUI_PATH, REPORT_PATH
 
 '''
     *   Arvin.liu
     *   2018-06-13
 '''
 v_tim = time.strftime("%Y%m%d")
-test_dir = APP_PATH + "/pcZHZJ"
+test_dir = APPUI_PATH + "/pcZHZJ"
 # discover会根据测试目录 匹配查找测试用例文件，并将查找到的测试用例组装到测试套件中
 discover = unittest.defaultTestLoader.discover(
     test_dir,

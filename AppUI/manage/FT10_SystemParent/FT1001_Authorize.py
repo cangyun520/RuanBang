@@ -12,7 +12,7 @@ class Authorize(unittest.TestCase):
         # 登录
         WebLogin.submit(self, "manage", "刘朗洲", "YUANDINGYUN", "368739960423059456")
         # 打开菜单
-        WebMenu.f_menu(self, "经营报表")
+        WebMenu.f_menu(self, "系统设置")
         WebMenu.menu(self, '//*[@id="/manage/SystemParent$Menu"]/li[1]')
 
     """权限设置-行数据添加"""

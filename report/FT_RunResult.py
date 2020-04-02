@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-from public.log import logger
-from public.webClass import *
+from common.log import logger
+from common.webClass import *
 
-from config import REPORT_PATH
+from config.config import REPORT_PATH
 
 '''
 思路：

@@ -22,7 +22,7 @@ class CollectionBook(unittest.TestCase):
         cy_check = dr.find_element_by_class_name("ant-breadcrumb-link")
 
         if "收款台账" in cy_check.text:
-            print(cy_check)
+            print(dr.current_url)
         else:
             dr.get_screenshot_as_file(SCREENSHOT_PATH + "Income/test_0302_01_add.png")
             unittest.expectedFailure("test_0302_01_add")

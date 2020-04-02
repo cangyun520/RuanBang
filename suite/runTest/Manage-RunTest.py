@@ -1,28 +1,28 @@
 # encoding:utf-8
-from public.HTMLTestRunner_PY3 import HTMLTestRunner
-from public.mail import *
-from public.webClass import *
+from extend.HTMLTestRunner_PY3 import HTMLTestRunner
+from common.mail import *
+from common.webClass import *
 
-from config import APP_PATH, REPORT_PATH
+from config.config import APPUI_PATH, REPORT_PATH
 
 '''
     *   Arvin.liu
-    *   2018-06-13
+    *   2020-04-02
 '''
 v_tim = time.strftime("%Y%m%d")
-test_dir = APP_PATH + "/homePage"
+test_dir = APPUI_PATH + "/manage"
 # discover会根据测试目录 匹配查找测试用例文件，并将查找到的测试用例组装到测试套件中
 discover = unittest.defaultTestLoader.discover(
     test_dir,
     pattern='FT*.py'
 )
 # 报告文件存放路径
-FileName = REPORT_PATH + '\\HPReport\\' + v_tim + 'FT_webPC.htm'
+FileName = REPORT_PATH + '\\ManageReport\\' + v_tim + 'FT_ManageReport.htm'
 
 fp = open(FileName, 'wb')
 runner = HTMLTestRunner(
     stream=fp,
-    title='主页定义系统集成自动化测试',
+    title='智慧资金系统集成自动化测试',
     description='webPC自动化测试——主流程功能测试执行结果统计<br/>\
                 *   SASS功能集成测试报告<br>\
                 *   指定测试用例为当前文件夹下的test_case目录<br>\
@@ -42,9 +42,6 @@ if __name__ == "__main__":
     # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
     receivers = 'whonline08@126.com;' \
                 'bill.wang@softnation.cn;' \
-                'sengmitnick@163.com;' \
-                'dingj@yuandingyun.net;' \
-                'w.huang@softnation.cn;' \
                 'fortunearterial@dingtalk.com'
 
     content = '今天的自动化测试运行结果，请查收'

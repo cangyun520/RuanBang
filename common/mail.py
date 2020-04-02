@@ -5,9 +5,9 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from socket import gaierror, error
 
-from public.log import logger
+from common.log import logger
 
-from config import REPORT_PATH
+from config.config import REPORT_PATH
 
 """
 Created by Arvin.liu 15807146017

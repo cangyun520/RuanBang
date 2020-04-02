@@ -1,3 +1,0 @@
-2018-08-20 18:00:16,557 - framework - INFO - return Rb.Pages.Page.s_pages['w0'].getControl('leftGrid').data;
-2018-08-20 18:00:39,731 - framework - INFO - return Rb.Pages.Page.s_pages['w0'].getControl('leftGrid').data;
-2018-08-20 18:00:51,099 - framework - INFO - 保存成功！
