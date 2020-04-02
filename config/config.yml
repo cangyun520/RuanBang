@@ -6,6 +6,11 @@ url:
   saas_zhzj: http://192.168.0.55:9006/login
   master_test: http://192.168.0.112:9010/#/login
 
+onlineUrl:
+  manage: http://platform.yuandingyun.vip/?_t=1585643718668#/manage/8c2b76ev
+  certificate: http://platform.yuandingyun.vip/?_t=1585644130902#/certificate/8c2b76ev
+  labo: http://platform.yuandingyun.vip/?_t=1585644632245#/labo/8c2b76ev
+
 log:
     file_name: test.log
     console_level: WARNING

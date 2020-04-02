@@ -3,8 +3,8 @@
  * Created by Arvin.liu on 2018-9-6.
  * QQ 405367236
 """
-from public.generator import *
-from public.webClass import *
+from common.generator import *
+from common.webClass import *
 
 
 class PageRelease(unittest.TestCase):

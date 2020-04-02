@@ -3,7 +3,7 @@ import csv
 import random
 import time
 
-from config import DATA_PATH
+from config.config import DATA_PATH
 
 
 # 随机生成18位身份证号码

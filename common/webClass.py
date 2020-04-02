@@ -1,120 +1,92 @@
 # encoding:utf-8
-from public.getData import *
-from public.log import logger
 from selenium import webdriver
+from config.config import *
+from common.getData import *
+from common.log import logger
+from common.generator import *
+import unittest
 
 
 class WebLogin(object):
     """初始测试准备工作"""
-    @staticmethod
-    def __url(self, url):
-        # 环境URL地址
-        driver = self.driver
-        # 浏览器最大化
-        driver.maximize_window()
-        # 通过yaml公共方法，获取配置文件地址。get后续get获取2级目录数据
-        _url = Config().get('url').get(url)
-        driver.get(_url)
-        time.sleep(2)
+    # @staticmethod
+    # def __url(self, url):
+    #     # 环境URL地址
+    #     driver = self.driver
+    #     # 浏览器最大化
+    #     driver.maximize_window()
+    #     # 通过yaml公共方法，获取配置文件地址。get后续get获取2级目录数据
+    #     # _url = Config().get().get(url)
+    #     _url = 'http://platform.yuandingyun.vip/?_t=1585643718668#/manage/8c2b76ev'
+    #     driver.get(_url)
+    #     time.sleep(2)
 
     @staticmethod
     def __user(self, uname, password, tenantid=None):
         """用户登录"""
         driver = self.driver
-        if driver.find_element_by_id('txtTenantId').is_displayed():
-            driver.find_element_by_id('txtTenantId').clear()
-            driver.find_element_by_id('txtTenantId').send_keys(tenantid)
-        driver.find_element_by_id("txtCode").clear()
-        driver.find_element_by_id("txtCode").send_keys(uname)
-        driver.find_element_by_id("txtPassword").clear()
-        driver.find_element_by_id("txtPassword").send_keys(password)
-        driver.find_element_by_id("btnSubmit").click()
-        time.sleep(2)
-
-    @staticmethod
-    def __masterUser(self, user, passwd):
-        """用户登录"""
-        driver = self.driver
+        # if driver.find_element_by_id('tenantId').is_displayed():
+        driver.find_element_by_id('tenantId').send_keys(tenantid)
         driver.find_element_by_id("username").clear()
-        driver.find_element_by_id("username").send_keys(user)
+        driver.find_element_by_id("username").send_keys(uname)
         driver.find_element_by_id("password").clear()
-        driver.find_element_by_id("password").send_keys(passwd)
-        elements = driver.find_elements_by_tag_name("span")
-        for i in elements:
-            if i.text == '登 录':
-                # print(i.text)
-                i.click()
-                break
+        driver.find_element_by_id("password").send_keys(password)
+        driver.find_element_by_tag_name('button').click()
         time.sleep(2)
 
-    @staticmethod
-    def submit(self, url, uname):
-        self.driver = webdriver.Chrome()
-        # 设置页面上隐形的智能等待时间30秒
-        self.driver.implicitly_wait(20)
-        # 定义空verificationErrors数组，脚本运行错误信息被记录到整个数组中
-        self.verificationErrors = []
-        # 是否接受下一个警告，默认为是
-        self.accept_next_alert = True
-        # 打开浏览器
-        WebLogin.__url(self, url)
-        # 用户登录
-        # WebLogin.__user(self, "0KOF1MVY04089AD2DQLO", '0KOF1MVY04089AD2DQLO')
-        password = uname
-        WebLogin.__user(self, uname, password)
-
-    # 扶贫登录页面
     """
     @url        : 应用的登录地址
-    @ucode      : 用户登录id一般为电话号码
+    @ucode      : 用户登录code
     @upasswd    : 用户登录密码
     @tenantid   : 租户ID
     """
     @staticmethod
-    def sass_submit(self, url, ucode, upasswd, tenantid):
+    def submit(self, url, ucode, upasswd, tenantid):
         # self.driver = webdriver.Chrome()
+        driver = self.driver
         # 设置页面上隐形的智能等待时间30秒
-        self.driver.implicitly_wait(20)
+        driver.implicitly_wait(20)
         # 定义空verificationErrors数组，脚本运行错误信息被记录到整个数组中
         self.verificationErrors = []
         # 是否接受下一个警告，默认为是
         self.accept_next_alert = True
         # 打开浏览器
-        WebLogin.__url(self, url)
+        driver.maximize_window()
+        driver.get('http://platform.yuandingyun.vip/?_t=1585643718668#/manage/8c2b76ev')
+        # WebLogin.__url(self, url)
         # 用户登录
-        WebLogin.__user(self, ucode, upasswd, tenantid)
-
-
-    # 主数据登录页面
-    """
-    @url        : 应用的登录地址
-    @ucode      : 用户登录id一般为电话号码
-    @upasswd    : 用户登录密码
-    """
-
-    @staticmethod
-    def master_login(self, url, user, passwd):
-        # self.driver = webdriver.Chrome()
-        # 设置页面上隐形的智能等待时间30秒
-        self.driver.implicitly_wait(20)
-        # 定义空verificationErrors数组，脚本运行错误信息被记录到整个数组中
-        self.verificationErrors = []
-        # 是否接受下一个警告，默认为是
-        self.accept_next_alert = True
-        # 打开浏览器
-        WebLogin.__url(self, url)
-        # 用户登录
-        WebLogin.__masterUser(self, user, passwd)
+        WebLogin.__user(self, '刘朗洲', 'YUANDINGYUN', '368739960423059456')
 
 
 class WebMenu(object):
     """打开导航栏菜单"""
+
+    @staticmethod
+    def f_menu(self, menu):
+        # 全名称菜单
+        menus = self.driver.find_elements_by_class_name("ant-menu-submenu-title")
+        for i in menus:
+            if i.text == menu:
+                i.click()
+                break
+
+    @staticmethod
+    def menu(self, menu):
+        # 全名称菜单
+        self.driver.find_element_by_xpath(menu).click()
+        # menus = self.driver.find_elements_by_class_name("ant-menu-item")
+        # for i in menus:
+        #     if i.text == menu:
+        #         i.click()
+        #         break
+
     @staticmethod
     def full_text(self, *v_menu):
         # 全名称菜单
         if v_menu != "":
             for i in v_menu:
-                self.driver.find_element_by_link_text(i).click()
+                if self.driver.find_elements_by_class_name('ant-menu-item').find_elements_by_tag_name('span').text == 1:
+                    i.click()
                 time.sleep(1)
         else:
             pass
